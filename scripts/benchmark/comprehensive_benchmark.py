@@ -51,8 +51,16 @@ from pathlib import Path
 # ============================================================================
 
 from ppd.config import MODEL_PATH
+from ppd.benchmark_options import (TWO_NODE_CONFIGURATIONS, add_client_arguments,
+                                   resolve_client_options, registry_error,
+                                   load_context_tokenizer, check_context)
 
 PROXY_URL = "http://localhost:10001"
+API_MODEL_NAME = os.environ.get("API_MODEL_NAME", MODEL_PATH)
+EXTERNAL_SERVICES = False
+EXPECTED_CONFIG = None
+CONTEXT_TOKENIZER = None
+CONTEXT_LIMIT = None
 
 # All 17 GPU configurations
 GPU_CONFIGURATIONS = [
@@ -66,6 +74,9 @@ GPU_CONFIGURATIONS = [
     "1R_1P_2D", "1R_1P_1D_1pD", "1R_1P_2pD", "1R_2P_1D", "1R_2P_1pD",
     "2R_1P_1D", "2R_1P_1pD",
 ]
+
+LEGACY_GPU_CONFIGURATIONS = GPU_CONFIGURATIONS.copy()
+GPU_CONFIGURATIONS += list(TWO_NODE_CONFIGURATIONS)
 
 # T1 configurations (first turn context setup)
 T1_CONFIGS = {
@@ -257,14 +268,9 @@ def generate_prompt(num_tokens: int, prefix: str = "", seed: str = "") -> str:
 
     content = ' '.join(content_parts)
 
-    # Vary prompt format
-    formats = [
-        f"User: {prefix}{content}\nAssistant:",
-        f"Question: {prefix}{content}\nAnswer:",
-        f"<|user|>{prefix}{content}<|assistant|>",
-    ]
-
-    return rng.choice(formats)
+    # The proxy identifies a conversation by its first User:/Assistant: pair.
+    # Keep this format stable when a subsequent turn appends another user input.
+    return f"User: {prefix}{content}\nAssistant:"
 
 
 # ============================================================================
@@ -273,6 +279,8 @@ def generate_prompt(num_tokens: int, prefix: str = "", seed: str = "") -> str:
 
 def run_cleanup() -> bool:
     """Run comprehensive cleanup"""
+    if EXTERNAL_SERVICES:
+        return False
     cleanup_script = Path(PROJECT_DIR) / "scripts" / "server" / "cleanup_all.sh"
     if cleanup_script.exists():
         try:
@@ -289,6 +297,8 @@ def run_cleanup() -> bool:
 
 def start_config(config: str) -> bool:
     """Start a specific configuration"""
+    if EXTERNAL_SERVICES:
+        return False
     script = Path(PROJECT_DIR) / "scripts" / "server" / f"start_{config}.sh"
     if not script.exists():
         print(f"  ERROR: Script not found: {script}")
@@ -324,6 +334,8 @@ def start_config(config: str) -> bool:
 
 def stop_config(config: str) -> bool:
     """Stop a specific configuration"""
+    if EXTERNAL_SERVICES:
+        return False
     return run_cleanup()
 
 
@@ -340,12 +352,8 @@ async def check_server_health() -> Tuple[bool, Optional[str]]:
                 if resp.status != 200:
                     return False, f"Proxy returned status {resp.status}"
                 data = await resp.json()
-                # Check if we have registered instances
-                instances = data.get("instances", {})
-                total_instances = sum(len(v) for v in instances.values())
-                if total_instances == 0:
-                    return False, "No backend instances registered"
-                return True, None
+                error = registry_error(data, EXPECTED_CONFIG)
+                return error is None, error
     except asyncio.TimeoutError:
         return False, "Health check timed out"
     except aiohttp.ClientError as e:
@@ -371,14 +379,16 @@ async def warmup_servers() -> bool:
                     async with session.post(
                         f"{PROXY_URL}/v1/completions",
                         json={
-                            "model": MODEL_PATH,
+                            "model": API_MODEL_NAME,
                             "prompt": f"User: Warmup {i}\nAssistant:",
                             "max_tokens": 10,
                             "temperature": 0.7,
                         }
                     ) as resp:
-                        await resp.read()
-                        if resp.status == 200:
+                        payload = await resp.json()
+                        if (resp.status == 200 and not payload.get("error")
+                                and payload.get("choices")
+                                and payload["choices"][0].get("text")):
                             success_count += 1
                 except Exception as e:
                     print(f"    Warmup {i}: {e}")
@@ -417,7 +427,7 @@ async def run_single_turn(
         prompt = history + "\n" + new_input
 
     request_data = {
-        "model": MODEL_PATH,
+        "model": API_MODEL_NAME,
         "prompt": prompt,
         "max_tokens": output_tokens,
         "temperature": 0.8,
@@ -435,6 +445,7 @@ async def run_single_turn(
     response_text = ""
 
     try:
+        check_context(prompt, output_tokens, CONTEXT_TOKENIZER, CONTEXT_LIMIT)
         async with session.post(
             f"{PROXY_URL}/v1/completions",
             json=request_data,
@@ -484,6 +495,8 @@ async def run_single_turn(
                         except json.JSONDecodeError:
                             continue
 
+            if not first_token or completion_tokens <= 0:
+                raise ValueError("No generated tokens/usage received; response is not a successful inference")
             end_time = time.perf_counter()
             e2e_ms = (end_time - start_time) * 1000
 
@@ -778,6 +791,8 @@ def save_result(result: BenchmarkResult, output_dir: Path):
     # Convert to dict
     result_dict = {
         "config": result.config,
+        "proxy_url": PROXY_URL,
+        "api_model_name": API_MODEL_NAME,
         "workload": result.workload,
         "qps": result.qps,
         "turn1": asdict(result.turn1),
@@ -802,6 +817,8 @@ def save_result(result: BenchmarkResult, output_dir: Path):
 
 async def restart_server(config: str) -> bool:
     """Restart server after failure."""
+    if EXTERNAL_SERVICES:
+        return False
     print(f"\n  Attempting server restart...")
 
     # Cleanup first
@@ -832,6 +849,12 @@ async def run_config_benchmark(
     print(f"Configuration: {config}")
     print(f"{'='*60}")
 
+    global EXTERNAL_SERVICES, EXPECTED_CONFIG
+    if config in TWO_NODE_CONFIGURATIONS and not skip_startup:
+        raise ValueError("Two-node benchmark requires skip_startup=True")
+    EXTERNAL_SERVICES = skip_startup
+    EXPECTED_CONFIG = config
+
     # Load checkpoint
     completed = load_checkpoint(checkpoint_file)
 
@@ -845,11 +868,15 @@ async def run_config_benchmark(
     # Check proxy readiness
     healthy, error = await check_server_health()
     if not healthy:
+        if skip_startup:
+            raise RuntimeError(f"External services not ready: {error}")
         print(f"  ERROR: Server not healthy: {error}")
         return
 
     # Warmup
     if not await warmup_servers():
+        if skip_startup:
+            raise RuntimeError("External-service warmup failed; repair servers before benchmarking")
         print("  WARNING: Warmup had issues, continuing anyway...")
 
     # Track failures for recovery logic
@@ -880,8 +907,9 @@ async def run_config_benchmark(
             save_result(result, output_dir / config)
 
             # Update checkpoint
-            completed.add(key)
-            save_checkpoint(checkpoint_file, completed)
+            if result.failed_requests == 0 and result.success_rate > 0:
+                completed.add(key)
+                save_checkpoint(checkpoint_file, completed)
 
             # Print result
             if result.success_rate > 0:
@@ -894,16 +922,11 @@ async def run_config_benchmark(
 
             # Check if server needs restart
             if not server_healthy or consecutive_failures >= MAX_CONSECUTIVE_FAILURES:
+                if skip_startup:
+                    raise RuntimeError("External services failed; results saved, no cleanup or restart attempted")
                 if server_restarts >= MAX_SERVER_RESTARTS:
                     print(f"\n  ERROR: Max server restarts ({MAX_SERVER_RESTARTS}) exceeded")
                     print(f"  Skipping remaining tests for {config}")
-                    # Mark remaining as completed to avoid retry loops
-                    for w in workloads[workloads.index(workload):]:
-                        for q in qps_points:
-                            remaining_key = get_test_point_key(config, w, q)
-                            if remaining_key not in completed:
-                                completed.add(remaining_key)
-                    save_checkpoint(checkpoint_file, completed)
                     break
 
                 print(f"\n  Server unhealthy or too many failures, restarting...")
@@ -929,6 +952,8 @@ async def run_config_benchmark(
                 healthy, error = await check_server_health()
                 if not healthy:
                     print(f"  [Health] Server unhealthy after workload: {error}")
+                    if skip_startup:
+                        raise RuntimeError(f"External services failed: {error}; no restart attempted")
                     if server_restarts >= MAX_SERVER_RESTARTS:
                         print(f"  ERROR: Max server restarts exceeded, stopping")
                         break
@@ -963,18 +988,19 @@ def build_workload_list() -> List[str]:
 
 
 async def main():
-    global TEST_POINT_TIMEOUT_SEC
+    global TEST_POINT_TIMEOUT_SEC, PROXY_URL, API_MODEL_NAME, CONTEXT_TOKENIZER, CONTEXT_LIMIT
 
     parser = argparse.ArgumentParser(description="Comprehensive GPU Configuration Benchmark")
     parser.add_argument("--config", type=str, nargs="+", help="Configs to test (or 'all')")
     parser.add_argument("--workload", type=str, nargs="+", help="Workloads to test (or 'all')")
     parser.add_argument("--qps", type=float, nargs="+", help="QPS points to test")
     parser.add_argument("--output-dir", type=str, default="results/comprehensive")
-    parser.add_argument("--skip-startup", action="store_true", help="Skip server startup (assume already running)")
+    parser.add_argument("--skip-startup", action="store_true", help="Use external services; never start, stop, clean up or restart any server")
     parser.add_argument("--list-configs", action="store_true", help="List all configurations")
     parser.add_argument("--list-workloads", action="store_true", help="List all workloads")
     parser.add_argument("--test-timeout", type=int, default=TEST_POINT_TIMEOUT_SEC,
                         help=f"Timeout per test point in seconds (default: {TEST_POINT_TIMEOUT_SEC})")
+    add_client_arguments(parser)
     args = parser.parse_args()
 
     # Apply configurable timeout
@@ -996,13 +1022,19 @@ async def main():
     if args.config and args.config != ["all"]:
         configs = args.config
     else:
-        configs = GPU_CONFIGURATIONS
+        configs = LEGACY_GPU_CONFIGURATIONS
 
     if args.workload and args.workload != ["all"]:
         workloads = args.workload
     else:
         workloads = build_workload_list()
 
+    if any(c not in GPU_CONFIGURATIONS for c in configs):
+        parser.error("unknown --config; see --list-configs")
+    if any(w not in build_workload_list() for w in workloads):
+        parser.error("unknown --workload; see --list-workloads")
+    PROXY_URL, API_MODEL_NAME = resolve_client_options(parser, args, configs, MODEL_PATH)
+    CONTEXT_TOKENIZER, CONTEXT_LIMIT = load_context_tokenizer(parser, args, configs)
     qps_points = args.qps if args.qps else QPS_POINTS
 
     output_dir = Path(args.output_dir)
@@ -1012,6 +1044,7 @@ async def main():
     print("COMPREHENSIVE BENCHMARK (OOM-Resilient)")
     print("="*60)
     print(f"Time: {datetime.now().strftime('%Y-%m-%d %H:%M:%S')}")
+    print(f"Proxy: {PROXY_URL}; API model: {API_MODEL_NAME}; external services: {args.skip_startup}")
     print(f"Configurations: {len(configs)}")
     print(f"Workloads: {len(workloads)}")
     print(f"QPS points: {qps_points}")

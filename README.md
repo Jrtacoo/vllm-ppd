@@ -1,5 +1,24 @@
 # PPD: Not All Prefills Are Equal
 
+Current two-server Socket PD/static PPD latency baseline, with per-request TTFT/TPOT:
+[two-node phase five](docs/TWO_NODE_PHASE5.md).
+Static PPD routing and prefix-cache validation:
+[two-node phase four](docs/TWO_NODE_PHASE4.md).
+Socket PD inference and KV-transfer validation:
+[two-node phase three](docs/TWO_NODE_PHASE3.md).
+Source runtime build and local preflight checks:
+[two-node phase two](docs/TWO_NODE_PHASE2.md).
+Source/model preparation and the container recipe are recorded in
+[two-node phase one](docs/TWO_NODE_PHASE1.md).
+
+For the two-server RTX 4090 launchers, see
+[dcn10 deployment](docs/DCN10_DEPLOYMENT.md),
+[dcn9 deployment](docs/DCN9_DEPLOYMENT.md) and the
+[dcn9 handoff](HANDOFF_DCN9.md). Socket 1P_1D inference and cross-node KV
+transfer, static PPD routing and local prefix-cache reuse have passed small smoke
+checks. A small Socket latency baseline is available; RDMA, dynamic routing and
+sustained-load performance remain unverified.
+
 **Dynamic Append-Prefill Routing for Disaggregated Multi-turn LLM Serving**
 
 > 🎉 **Accepted at ICML 2026** — [\[Paper\]](https://arxiv.org/abs/2603.13358)
@@ -343,6 +362,8 @@ The engine always returns PD for Turn 1 requests (no prefix cache available). Fo
 | `PPD_BYPASS_THRESHOLD` | `512` | Input token threshold for short-input PPD bypass |
 | `SIMULATED_KV_BW_GBps` | `0` (disabled) | Target KV transfer bandwidth in GB/s for network simulation |
 | `MAX_WAIT` | `300` | Server startup timeout (seconds) |
+
+Two-node RTX 4090 deployment: [dcn9 Proxy/P and benchmark](docs/DCN9_DEPLOYMENT.md), [dcn10 consumer](docs/DCN10_DEPLOYMENT.md). Real inference and RDMA validation are pending.
 
 ## Hardware Requirements
 

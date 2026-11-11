@@ -214,6 +214,9 @@ class cmake_build_ext(build_ext):
         )
 
     def build_extensions(self) -> None:
+        # Keep native build outputs across interrupted two-node image builds.
+        if build_dir := os.environ.get("VLLM_BUILD_DIR"):
+            self.build_temp = os.path.abspath(build_dir)
         # Ensure that CMake is present and working
         try:
             subprocess.check_output(["cmake", "--version"])
@@ -747,7 +750,9 @@ if _is_cuda():
     ext_modules.append(CMakeExtension(name="vllm.vllm_flash_attn._vllm_fa2_C"))
     if envs.VLLM_USE_PRECOMPILED or get_nvcc_cuda_version() >= Version("12.3"):
         # FA3 requires CUDA 12.3 or later
-        ext_modules.append(CMakeExtension(name="vllm.vllm_flash_attn._vllm_fa3_C"))
+        # Ada deployments use FA2; avoid compiling Hopper-only kernels there.
+        if os.environ.get("VLLM_SKIP_FA3_BUILD") != "1":
+            ext_modules.append(CMakeExtension(name="vllm.vllm_flash_attn._vllm_fa3_C"))
         # Optional since this doesn't get built (produce an .so file) when
         # not targeting a hopper system
         ext_modules.append(CMakeExtension(name="vllm._flashmla_C", optional=True))

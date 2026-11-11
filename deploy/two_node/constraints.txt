@@ -1,0 +1,4 @@
+# numba 0.61.2 requires NumPy < 2.3. Keep this for subsequent pip commands too.
+numpy==2.2.6
+# Keep the CMake API used by this checkout's external projects.
+cmake==3.31.6

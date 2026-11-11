@@ -41,13 +41,20 @@ from datetime import datetime
 from dataclasses import dataclass, asdict, field
 from typing import List, Dict, Optional, Tuple
 from pathlib import Path
-from transformers import AutoTokenizer
 
 from ppd.config import MODEL_PATH
+from ppd.benchmark_options import (TWO_NODE_CONFIGURATIONS, add_client_arguments,
+                                   resolve_client_options, registry_error,
+                                   load_context_tokenizer, check_context)
 
 
 # Configuration
 PROXY_URL = "http://localhost:10001"
+API_MODEL_NAME = os.environ.get("API_MODEL_NAME", MODEL_PATH)
+EXTERNAL_SERVICES = False
+EXPECTED_CONFIG = None
+CONTEXT_TOKENIZER = None
+CONTEXT_LIMIT = None
 SHAREGPT_PATH = Path(PROJECT_DIR) / "data" / "ShareGPT_V3_unfiltered_cleaned_split.json"
 
 # Benchmark parameters
@@ -143,19 +150,22 @@ class LatencyStats:
 class ShareGPTDataLoader:
     """Loads and processes ShareGPT dataset."""
 
-    def __init__(self, data_path: str, tokenizer_path: str = None):
+    def __init__(self, data_path: str, tokenizer_path: str = None, tokenizer=None):
         self.data_path = Path(data_path)
-        self.tokenizer = None
+        self.tokenizer = tokenizer
         self.conversations = []
 
         # Load tokenizer
-        if tokenizer_path:
+        if tokenizer is not None:
+            pass
+        elif tokenizer_path:
+            from transformers import AutoTokenizer
             self.tokenizer = AutoTokenizer.from_pretrained(tokenizer_path)
         else:
             # Try to load from model path
             try:
-                model_dir = Path(MODEL_PATH).parent if "/" in MODEL_PATH else Path(MODEL_PATH)
-                self.tokenizer = AutoTokenizer.from_pretrained(str(model_dir))
+                from transformers import AutoTokenizer
+                self.tokenizer = AutoTokenizer.from_pretrained(MODEL_PATH)
             except Exception:
                 print("Warning: Could not load tokenizer, using character-based estimation")
 
@@ -249,7 +259,7 @@ class ShareGPTDataLoader:
                     valid = False
                     break
 
-                if context_tokens + input_tokens > MAX_CONTEXT_TOKENS:
+                if context_tokens + input_tokens + output_tokens + 32 * (len(turns) + 1) > MAX_CONTEXT_TOKENS:
                     # Stop adding more turns but keep existing ones
                     break
 
@@ -341,11 +351,8 @@ async def check_server_health() -> Tuple[bool, Optional[str]]:
                 if resp.status != 200:
                     return False, f"Proxy returned status {resp.status}"
                 data = await resp.json()
-                instances = data.get("instances", {})
-                total_instances = sum(len(v) for v in instances.values())
-                if total_instances == 0:
-                    return False, "No backend instances registered"
-                return True, None
+                error = registry_error(data, EXPECTED_CONFIG)
+                return error is None, error
     except asyncio.TimeoutError:
         return False, "Health check timed out"
     except aiohttp.ClientError as e:
@@ -367,14 +374,16 @@ async def warmup_servers() -> bool:
                     async with session.post(
                         f"{PROXY_URL}/v1/completions",
                         json={
-                            "model": MODEL_PATH,
+                            "model": API_MODEL_NAME,
                             "prompt": f"User: Warmup {i}\nAssistant:",
                             "max_tokens": 10,
                             "temperature": 0.7,
                         }
                     ) as resp:
-                        await resp.read()
-                        if resp.status == 200:
+                        payload = await resp.json()
+                        if (resp.status == 200 and not payload.get("error")
+                                and payload.get("choices")
+                                and payload["choices"][0].get("text")):
                             success_count += 1
                 except Exception as e:
                     print(f"    Warmup {i}: {e}")
@@ -407,7 +416,7 @@ async def run_single_turn(
         prompt = f"{history}\nUser: {human_text}\nAssistant:"
 
     request_data = {
-        "model": MODEL_PATH,
+        "model": API_MODEL_NAME,
         "prompt": prompt,
         "max_tokens": output_tokens,
         "temperature": 0.8,
@@ -425,6 +434,7 @@ async def run_single_turn(
     response_text = ""
 
     try:
+        check_context(prompt, output_tokens, CONTEXT_TOKENIZER, CONTEXT_LIMIT)
         async with session.post(
             f"{PROXY_URL}/v1/completions",
             json=request_data,
@@ -473,6 +483,8 @@ async def run_single_turn(
                         except json.JSONDecodeError:
                             continue
 
+            if not first_token or completion_tokens <= 0:
+                raise ValueError("No generated tokens/usage received; response is not a successful inference")
             end_time = time.perf_counter()
             e2e_ms = (end_time - start_time) * 1000
 
@@ -707,6 +719,8 @@ def start_config(config: str, enable_ppd: bool = False, ppd_benchmark_path: str 
         w_ttft: Weight for TTFT improvement in PPD decision
         w_tpot: Weight for TPOT degradation penalty in PPD decision
     """
+    if EXTERNAL_SERVICES:
+        return False
     script = Path(PROJECT_DIR) / "scripts" / "server" / f"start_{config}.sh"
     if not script.exists():
         print(f"  ERROR: Script not found: {script}")
@@ -751,6 +765,8 @@ def start_config(config: str, enable_ppd: bool = False, ppd_benchmark_path: str 
 
 def stop_config() -> bool:
     """Stop all servers."""
+    if EXTERNAL_SERVICES:
+        return False
     cleanup_script = Path(PROJECT_DIR) / "scripts" / "server" / "cleanup_all.sh"
     if cleanup_script.exists():
         try:
@@ -778,6 +794,8 @@ async def restart_server(config: str, enable_ppd: bool = False,
     Returns:
         True if restart successful
     """
+    if EXTERNAL_SERVICES:
+        return False
     print(f"\n  Attempting server restart for {config}...")
 
     # Cleanup first
@@ -837,9 +855,15 @@ async def run_full_benchmark(
         print(f"PPD Weights: w_ttft={w_ttft}, w_tpot={w_tpot}")
     print(f"{'='*60}")
 
+    global EXTERNAL_SERVICES, EXPECTED_CONFIG
+    if config in TWO_NODE_CONFIGURATIONS and not skip_startup:
+        raise ValueError("Two-node benchmark requires skip_startup=True")
+    EXTERNAL_SERVICES = skip_startup
+    EXPECTED_CONFIG = config
+
     # Load ShareGPT data
     data_path = sharegpt_path or SHAREGPT_PATH
-    loader = ShareGPTDataLoader(str(data_path))
+    loader = ShareGPTDataLoader(str(data_path), tokenizer=CONTEXT_TOKENIZER)
     all_conversations = loader.load_data(min_turns=2, max_turns=10)
 
     if len(all_conversations) < num_conversations:
@@ -848,6 +872,8 @@ async def run_full_benchmark(
 
     conversations = loader.sample_conversations(num_conversations)
     print(f"Sampled {len(conversations)} conversations for testing")
+    if not conversations:
+        raise ValueError("No conversations fit the selected context/token limits")
 
     # Start servers if needed
     if not skip_startup:
@@ -859,11 +885,15 @@ async def run_full_benchmark(
     # Check health
     healthy, error = await check_server_health()
     if not healthy:
+        if skip_startup:
+            raise RuntimeError(f"External services not ready: {error}")
         print(f"ERROR: Server not healthy: {error}")
         return
 
     # Warmup
     if not await warmup_servers():
+        if skip_startup:
+            raise RuntimeError("External-service warmup failed; repair servers before benchmarking")
         print("WARNING: Warmup had issues, continuing anyway...")
 
     # Run benchmarks for each QPS with recovery logic
@@ -905,6 +935,8 @@ async def run_full_benchmark(
             # Save results
             result_data = {
                 "config": config,
+                "proxy_url": PROXY_URL,
+                "api_model_name": API_MODEL_NAME,
                 "ppd_enabled": enable_ppd,
                 "qps": qps,
                 "num_conversations": len(conversations),
@@ -953,6 +985,8 @@ async def run_full_benchmark(
 
         # Check if server needs restart
         if consecutive_failures >= MAX_CONSECUTIVE_FAILURES:
+            if skip_startup:
+                raise RuntimeError("External services failed; no cleanup or restart attempted")
             if server_restarts >= MAX_SERVER_RESTARTS:
                 print(f"\n  ERROR: Max server restarts ({MAX_SERVER_RESTARTS}) exceeded")
                 print(f"  Skipping remaining QPS points for {config}")
@@ -973,6 +1007,8 @@ async def run_full_benchmark(
             healthy, error = await check_server_health()
             if not healthy:
                 print(f"  [Health] Server unhealthy after QPS={qps}: {error}")
+                if skip_startup:
+                    raise RuntimeError(f"External services failed: {error}; no restart attempted")
                 if server_restarts >= MAX_SERVER_RESTARTS:
                     print(f"  ERROR: Max server restarts exceeded, stopping")
                     break
@@ -996,6 +1032,7 @@ async def run_full_benchmark(
 
 
 async def main():
+    global PROXY_URL, API_MODEL_NAME, MODEL_PATH, CONTEXT_TOKENIZER, CONTEXT_LIMIT, MAX_CONTEXT_TOKENS
     parser = argparse.ArgumentParser(description="ShareGPT Multi-turn Benchmark")
     parser.add_argument("--config", type=str, required=True,
                         help="GPU configuration (e.g., 2P_2D, 2P_2pD)")
@@ -1012,11 +1049,19 @@ async def main():
     parser.add_argument("--output-dir", type=str, default="results/sharegpt",
                         help="Output directory")
     parser.add_argument("--skip-startup", action="store_true",
-                        help="Skip server startup (assume already running)")
+                        help="Use external services; never start, stop, clean up or restart any server")
     parser.add_argument("--sharegpt-path", type=str, default=None,
                         help="Path to ShareGPT dataset")
 
+    add_client_arguments(parser)
     args = parser.parse_args()
+
+    PROXY_URL, API_MODEL_NAME = resolve_client_options(parser, args, [args.config], MODEL_PATH)
+    CONTEXT_TOKENIZER, CONTEXT_LIMIT = load_context_tokenizer(parser, args, [args.config])
+    if CONTEXT_LIMIT:
+        MAX_CONTEXT_TOKENS = CONTEXT_LIMIT
+    if args.tokenizer_path:
+        MODEL_PATH = args.tokenizer_path
 
     # Use provided path or default
     sharegpt_path = Path(args.sharegpt_path) if args.sharegpt_path else SHAREGPT_PATH
@@ -1031,6 +1076,7 @@ async def main():
     print("SHAREGPT MULTI-TURN BENCHMARK")
     print("="*60)
     print(f"Time: {datetime.now().strftime('%Y-%m-%d %H:%M:%S')}")
+    print(f"Proxy: {PROXY_URL}; API model: {API_MODEL_NAME}; external services: {args.skip_startup}")
     print(f"Configuration: {args.config}")
     print(f"PPD Mode: {'ENABLED' if args.enable_ppd else 'DISABLED'}")
     if args.enable_ppd:

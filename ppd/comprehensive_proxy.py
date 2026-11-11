@@ -101,6 +101,8 @@ REPLICA_PORTS_BY_CONFIG = {
 # Explicit decode port mapping: config_name -> {"D": [ports], "pD": [ports]}
 # This ensures precise D vs pD distinction for mixed configurations
 DECODE_PORTS_BY_CONFIG = {
+    "1P_1D": {"D": [8200], "pD": []},
+    "1P_1pD": {"D": [], "pD": [8200]},
     # Pure PD mode (all decode servers are D)
     "1P_3D": {"D": [8200, 8201, 8202], "pD": []},
     "2P_2D": {"D": [8200, 8201], "pD": []},
@@ -444,12 +446,16 @@ def select_servers(
 
     # Check available instances
     with prefill_cv:
+        _remove_oldest_instances(prefill_instances)
         prefill_list = list(prefill_instances.keys())
     with decode_cv:
+        _remove_oldest_instances(decode_instances)
         decode_list = list(decode_instances.keys())
     with ppd_decode_cv:
+        _remove_oldest_instances(ppd_decode_instances)
         ppd_list = list(ppd_decode_instances.keys())
     with replica_cv:
+        _remove_oldest_instances(replica_instances, is_replica=True)
         replica_list = list(replica_instances.keys())
 
     has_prefill = len(prefill_list) > 0
@@ -744,12 +750,16 @@ async def handle_request():
 async def get_status():
     """Get proxy status."""
     with prefill_cv:
+        _remove_oldest_instances(prefill_instances)
         p_list = list(prefill_instances.keys())
     with decode_cv:
+        _remove_oldest_instances(decode_instances)
         d_list = list(decode_instances.keys())
     with ppd_decode_cv:
+        _remove_oldest_instances(ppd_decode_instances)
         pd_list = list(ppd_decode_instances.keys())
     with replica_cv:
+        _remove_oldest_instances(replica_instances, is_replica=True)
         r_list = list(replica_instances.keys())
 
     with stats_lock:
@@ -757,6 +767,7 @@ async def get_status():
 
     return {
         "config": CONFIG_NAME,
+        "ppd_mode_enabled": ENABLE_PPD_MODE,
         "instances": {
             "prefill": p_list,
             "decode": d_list,

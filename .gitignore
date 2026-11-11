@@ -6,6 +6,7 @@
 logs/
 data/
 results/
+/artifacts/
 
 # SLURM batch scripts
 sbatch*
