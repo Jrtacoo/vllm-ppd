@@ -1,6 +1,8 @@
 # dcn9 Codex CLI 接续说明
 
-最新状态见 [双机阶段五](docs/TWO_NODE_PHASE5.md)：Socket PD/静态 PPD 小样本基线完成，192 条正式请求全部成功，每请求 TTFT/TPOT、token 数和原始 SSE 保存在 `artifacts/two-node-phase5-evidence/`，入口为 `all-requests.csv`。39 对第二轮输入完全一致的子集另有比较；9 对第二轮历史不同，已明确标记。28 项本地测试通过，两端镜像一致，最终服务健康。三个服务保持运行，Proxy 当前为静态 `1P_1pD`，本阶段结束后暂停。此前缓存验证见 [阶段四](docs/TWO_NODE_PHASE4.md)，跨机 KV 验证见 [阶段三](docs/TWO_NODE_PHASE3.md)，运行环境见 [阶段二](docs/TWO_NODE_PHASE2.md)，准备记录见 [阶段一](docs/TWO_NODE_PHASE1.md)。RDMA、动态路由和持续负载性能仍未验证。以下保留前期交接快照，不代表当前状态。
+最新状态见 [双机阶段七](docs/TWO_NODE_PHASE7.md)：真实模型 KV 已切到主机内存中转的 RoCE v2，PD/静态 PPD 两轮功能、全部 28 层 KV、路由和缓存验收通过；192 条正式请求全部成功并保存每请求 TTFT/TPOT、usage 和原始 SSE。与阶段五 Socket 的对比未显示一致的请求延迟改善。两端使用原镜像，无新镜像或模型推理源码改动，最终三个服务保持 RDMA 静态 `1P_1pD`，本阶段完成后暂停。入口为 `artifacts/two-node-phase7-evidence/README.md` 和 `stage-verification.json`；具体 RDMA 启动参数在该目录 `*-command.json`，节点 JSON 仍默认 Socket。动态路由和持续负载尚未验证。以下为先前阶段快照。
+
+最新状态见 [双机阶段六](docs/TWO_NODE_PHASE6.md)：RDMA 设备/容器检查、双向主机内存 RoCE 微测试、同镜像 GPU NCCL 强制 IB/自动选择测试均通过，主机内存带宽约 91–94 Gbit/s。两端 CUDA GDR/DMA-BUF 查询均为 0，NCCL 日志确认主机内存中转的 IB/RoCE 数据通道，无 Socket 数据回退。证据在 `artifacts/two-node-phase6-evidence/`。独立测试容器已删除，原 Proxy/P/D 未重启，仍为 Socket 静态 `1P_1pD`，最终健康检查通过，本阶段已暂停。RDMA 下的模型 KV 推理、动态路由和持续负载性能仍未验证。[阶段五](docs/TWO_NODE_PHASE5.md) 保存 192 条正式请求及每请求 TTFT/TPOT；[阶段四](docs/TWO_NODE_PHASE4.md) 为本地缓存验证，[阶段三](docs/TWO_NODE_PHASE3.md) 为 Socket KV 推理，[阶段二](docs/TWO_NODE_PHASE2.md) 为运行环境，[阶段一](docs/TWO_NODE_PHASE1.md) 为准备记录。以下保留前期交接快照，不代表当前状态。
 
 > 2026-11-10 dcn9 接续：本机 Proxy/P、双卡静态路由与 benchmark 外部服务适配已实现。当前环境和启动协调详见 [docs/DCN9_DEPLOYMENT.md](docs/DCN9_DEPLOYMENT.md)。下文保留原始交接快照；其中 dcn9 待办部分已由该文更新。dcn9 当前缺少目标模型与推理运行环境，未进行真实推理、KV/cache 或 RDMA 验证。
 

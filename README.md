@@ -1,6 +1,10 @@
 # PPD: Not All Prefills Are Equal
 
-Current two-server Socket PD/static PPD latency baseline, with per-request TTFT/TPOT:
+Current two-server RoCE model KV inference and per-request TTFT/TPOT comparison:
+[two-node phase seven](docs/TWO_NODE_PHASE7.md).
+RoCE and host-staged GPU NCCL preflight:
+[two-node phase six](docs/TWO_NODE_PHASE6.md).
+Socket PD/static PPD latency baseline, with per-request TTFT/TPOT:
 [two-node phase five](docs/TWO_NODE_PHASE5.md).
 Static PPD routing and prefix-cache validation:
 [two-node phase four](docs/TWO_NODE_PHASE4.md).
@@ -16,8 +20,10 @@ For the two-server RTX 4090 launchers, see
 [dcn9 deployment](docs/DCN9_DEPLOYMENT.md) and the
 [dcn9 handoff](HANDOFF_DCN9.md). Socket 1P_1D inference and cross-node KV
 transfer, static PPD routing and local prefix-cache reuse have passed small smoke
-checks. A small Socket latency baseline is available; RDMA, dynamic routing and
-sustained-load performance remain unverified.
+checks. Model KV transfer over host-staged RoCE and a 192-request latency run
+have also passed, with Socket/RoCE comparisons saved. Services currently run
+static PPD over RoCE; dynamic routing and sustained-load performance remain
+unverified.
 
 **Dynamic Append-Prefill Routing for Disaggregated Multi-turn LLM Serving**
 
