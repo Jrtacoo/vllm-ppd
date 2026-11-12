@@ -96,3 +96,9 @@ htmlcov/
 *.csv
 *.pkl
 *.hip
+
+# Track published experiment figures while ignoring other runtime results.
+!/results/
+/results/*
+!/results/figures/
+!/results/figures/**/*.png
