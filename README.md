@@ -1,5 +1,10 @@
 # PPD: Not All Prefills Are Equal
 
+Single-RTX-4090 adaptation of the paper's Figure 2 (prefill/decode interference):
+[phase eight report](docs/TWO_NODE_PHASE8.md) and
+[results and figure](results/figures/phase8/README.md).
+Larger decode batches, including 250 sequences with shared history KV, are
+documented separately in the [large-batch supplement](docs/TWO_NODE_PHASE8_LARGE_BATCH.md).
 Current two-server RoCE model KV inference and per-request TTFT/TPOT comparison:
 [two-node phase seven](docs/TWO_NODE_PHASE7.md).
 RoCE and host-staged GPU NCCL preflight:
@@ -21,9 +26,10 @@ For the two-server RTX 4090 launchers, see
 [dcn9 handoff](HANDOFF_DCN9.md). Socket 1P_1D inference and cross-node KV
 transfer, static PPD routing and local prefix-cache reuse have passed small smoke
 checks. Model KV transfer over host-staged RoCE and a 192-request latency run
-have also passed, with Socket/RoCE comparisons saved. Services currently run
-static PPD over RoCE; dynamic routing and sustained-load performance remain
-unverified.
+have also passed, with Socket/RoCE comparisons saved. The last Phase 7 deployment
+used static PPD over RoCE. At the Phase 8 health check, Proxy was running and
+the original P/D containers were stopped; Phase 8 preserves those states.
+Dynamic routing and sustained-load performance remain unverified.
 
 **Dynamic Append-Prefill Routing for Disaggregated Multi-turn LLM Serving**
 
@@ -369,7 +375,7 @@ The engine always returns PD for Turn 1 requests (no prefix cache available). Fo
 | `SIMULATED_KV_BW_GBps` | `0` (disabled) | Target KV transfer bandwidth in GB/s for network simulation |
 | `MAX_WAIT` | `300` | Server startup timeout (seconds) |
 
-Two-node RTX 4090 deployment: [dcn9 Proxy/P and benchmark](docs/DCN9_DEPLOYMENT.md), [dcn10 consumer](docs/DCN10_DEPLOYMENT.md). Real inference and RDMA validation are pending.
+Two-node RTX 4090 deployment: [dcn9 Proxy/P and benchmark](docs/DCN9_DEPLOYMENT.md), [dcn10 consumer](docs/DCN10_DEPLOYMENT.md). Real model KV inference over host-staged RoCE passed [Phase 7](docs/TWO_NODE_PHASE7.md).
 
 ## Hardware Requirements
 

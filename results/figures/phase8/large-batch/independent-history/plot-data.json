@@ -1,0 +1,190 @@
+{
+  "source": "artifacts/two-node-phase8-figure2-large-batch-evidence/formal-independent/verification.json",
+  "source_sha256": "57443df70657e96c14b4226472bffb8c99f5792bfe14ccf6a42cc441e593a1b5",
+  "groups": [
+    {
+      "batch_size": 32,
+      "scenario": "decode_only",
+      "decode_tpot_ms": {
+        "mean": 23.655352900049213,
+        "std": 0.015964472863047682,
+        "min": 23.634956080462597,
+        "max": 23.674046783956694,
+        "n": 5
+      },
+      "slowdown_percent_vs_same_repeat_baseline": {
+        "mean": 0.0,
+        "std": 0.0,
+        "min": 0.0,
+        "max": 0.0,
+        "n": 5
+      },
+      "mixed_step_wall_ms": null,
+      "steady_decode_step_wall_ms": {
+        "mean": 23.17610750894888,
+        "std": 0.018735985514950777,
+        "min": 23.149242555555556,
+        "max": 23.196676362204723,
+        "n": 5
+      },
+      "trial_values_ms": [
+        23.668644821358267,
+        23.674046783956694,
+        23.651809913877955,
+        23.634956080462597,
+        23.64730690059055
+      ],
+      "observer_us": {
+        "mean": 25.07357608695652,
+        "std": 2.919396615600293,
+        "min": 16.345000000000002,
+        "max": 38.75,
+        "n": 644,
+        "p50": 24.766,
+        "p95": 29.7335,
+        "p99": 33.32780000000001,
+        "over_1000us_steps": 0
+      }
+    },
+    {
+      "batch_size": 32,
+      "scenario": "full_prefill",
+      "decode_tpot_ms": {
+        "mean": 24.365233205364174,
+        "std": 0.023181239773828043,
+        "min": 24.341104155019686,
+        "max": 24.39393367199803,
+        "n": 5
+      },
+      "slowdown_percent_vs_same_repeat_baseline": {
+        "mean": 3.000966161232368,
+        "std": 0.11998821880292557,
+        "min": 2.914340355565259,
+        "max": 3.211250272484434,
+        "n": 5
+      },
+      "mixed_step_wall_ms": {
+        "mean": 115.4507486,
+        "std": 0.7562470214184634,
+        "min": 114.327124,
+        "max": 116.370477,
+        "n": 5
+      },
+      "steady_decode_step_wall_ms": {
+        "mean": 23.157829328,
+        "std": 0.020763841348321085,
+        "min": 23.13207248,
+        "max": 23.175121248,
+        "n": 5
+      },
+      "trial_values_ms": [
+        24.37071199655512,
+        24.37841567101378,
+        24.341104155019686,
+        24.39393367199803,
+        24.342000532234252
+      ],
+      "observer_us": {
+        "mean": 25.268770542635657,
+        "std": 4.805954893780879,
+        "min": 16.201,
+        "max": 119.189,
+        "n": 645,
+        "p50": 24.848000000000003,
+        "p95": 30.1928,
+        "p99": 34.71643999999997,
+        "over_1000us_steps": 0
+      }
+    },
+    {
+      "batch_size": 32,
+      "scenario": "append_prefill",
+      "decode_tpot_ms": {
+        "mean": 24.407795435334645,
+        "std": 0.029613766836228524,
+        "min": 24.371616156496064,
+        "max": 24.45242531102362,
+        "n": 5
+      },
+      "slowdown_percent_vs_same_repeat_baseline": {
+        "mean": 3.180887080763757,
+        "std": 0.13788253108667198,
+        "min": 2.9465573795017352,
+        "max": 3.3114717618225376,
+        "n": 5
+      },
+      "mixed_step_wall_ms": {
+        "mean": 122.417827,
+        "std": 0.8216740231429999,
+        "min": 121.715857,
+        "max": 123.429737,
+        "n": 5
+      },
+      "steady_decode_step_wall_ms": {
+        "mean": 23.1405950208,
+        "std": 0.032773928616136976,
+        "min": 23.110699776,
+        "max": 23.186927432,
+        "n": 5
+      },
+      "trial_values_ms": [
+        24.45242531102362,
+        24.371616156496064,
+        24.40913659128937,
+        24.394028346702758,
+        24.411770771161418
+      ],
+      "observer_us": {
+        "mean": 26.05787596899225,
+        "std": 3.432434796256901,
+        "min": 19.878,
+        "max": 42.142,
+        "n": 645,
+        "p50": 25.651,
+        "p95": 32.8998,
+        "p99": 37.588239999999985,
+        "over_1000us_steps": 0
+      }
+    }
+  ],
+  "checks": {
+    "all_expected_trials_finished": true,
+    "exact_trial_id_set": true,
+    "unique_request_ids": true,
+    "exact_request_role_counts": true,
+    "all_requests_successful": true,
+    "raw_files_complete": true,
+    "raw_usage_and_exact_prompts": true,
+    "token_event_timings_recomputed": true,
+    "identical_decode_prompts_across_scenarios": true,
+    "identical_new_prefill_across_scenarios": true,
+    "background_prefix_isolation_or_sharing": true,
+    "shared_mode_unique_new_suffixes": true,
+    "all_trial_checks": true
+  },
+  "formal_trials": 15,
+  "request_roles": {
+    "warmup": 495,
+    "interferer": 10,
+    "decode": 480
+  },
+  "limitations": [
+    "RTX 4090/Qwen 7B adaptation; original Figure 2 uses H100/Llama 8B.",
+    "One injected prefill, 128 output tokens per background decode; full-trace average dilutes a one-step disturbance.",
+    "Both prefill types compute 1024 new tokens; append additionally attends 2048 cached tokens.",
+    "Error bars are sample standard deviations across independent repeated trials, not confidence intervals.",
+    "Scheduler observer uses the default scheduler unchanged; observed engine-step wall time is not CUDA kernel time."
+  ],
+  "prefix_mode": "independent",
+  "observer_us": {
+    "mean": 23.545857925993605,
+    "std": 6.618858335185155,
+    "min": 5.73,
+    "max": 119.189,
+    "n": 2189,
+    "p50": 24.677,
+    "p95": 30.703,
+    "p99": 35.61692,
+    "over_1000us_steps": 0
+  }
+}
