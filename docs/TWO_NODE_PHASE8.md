@@ -38,7 +38,9 @@ BF16、FA2、eager、prefix caching、block 16、context 4096、max sequences 33
 python scripts/benchmark/figure2_interference.py \
   --server http://192.168.1.11:8300 \
   --output artifacts/figure2-new-run/formal --trial-prefix formal-new-run \
-  --batches 1 2 4 8 16 --repeats 5
+  --batches 1 2 4 8 16 --repeats 5 \
+  --decode-history-tokens 2048 --prefill-history-tokens 2048 \
+  --new-input-tokens 1024 --full-prefill-mode new-only
 ```
 
 实际执行前先按相同方法运行 batch 1、16、repeats=1 的先导。每个 run 所有请求结束后，在 trace 所在目录写入 `export-request`（内容为新的唯一标识），等待 `scheduler-trace.exported` 内容与其相同，再运行 `figure2_analyze.py --evidence <evidence目录> --run formal`。测量期间不能触发导出。`generate.py --evidence-dir <evidence目录>` 只接受通过验收的正式数据；客户端遇失败保留证据并停止，不重试。

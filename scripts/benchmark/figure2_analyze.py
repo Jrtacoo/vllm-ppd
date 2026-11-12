@@ -39,6 +39,13 @@ def analyze(evidence, run):
     trials = read_jsonl(folder / "trials.jsonl")
     requests = read_jsonl(folder / "requests.jsonl")
     runmeta = json.loads((folder / "run.json").read_text())
+    decode_history = runmeta["decode_cached_tokens"]
+    prefill_history = runmeta["append_prefill_cached_tokens"]
+    new_tokens = runmeta["append_prefill_new_tokens"]
+    full_tokens = runmeta.get("full_prefill_computed_tokens", runmeta["full_prefill_new_tokens"])
+    full_prompt_tokens = runmeta.get("full_prefill_prompt_tokens", full_tokens)
+    append_prompt_tokens = prefill_history + new_tokens
+    max_chunks = runmeta.get("max_prefill_chunks", 1)
     request_ids = {r["request_id"] for r in requests}
     by_trial = {t["trial"]: t for t in trials}
     observations = {k: {"decode_batch_counts": Counter(), "mixed_steps": [], "decode_step_ms": [],
@@ -90,6 +97,7 @@ def analyze(evidence, run):
     raw_usage_ok, event_timings_ok = True, True
     prompt_groups = defaultdict(set)
     new_prefill_groups = defaultdict(set)
+    complete_prefill_groups = defaultdict(set)
     background_histories = defaultdict(set)
     background_suffixes = defaultdict(set)
     for r in requests:
@@ -100,15 +108,22 @@ def analyze(evidence, run):
         response = json.loads(Path(str(stem) + '.response.json').read_text())
         raw_usage_ok &= (response["success"] and response["usage"]["prompt_tokens"] == len(payload["prompt"])
                          and response["usage"]["completion_tokens"] == payload["max_tokens"])
-        expected_prompt = 2048 if r["role"] == "warmup" else 2052 if r["role"] == "decode" else 1024 if r["scenario"] == "full_prefill" else 3072
+        if r["role"] == "warmup":
+            expected_prompt = prefill_history if int(r["request_id"].rsplit("_", 1)[1]) == r["batch_size"] else decode_history
+        elif r["role"] == "decode":
+            expected_prompt = decode_history + runmeta["decode_new_tokens"]
+        else:
+            expected_prompt = full_prompt_tokens if r["scenario"] == "full_prefill" else append_prompt_tokens
         raw_usage_ok &= len(payload["prompt"]) == expected_prompt
         raw_usage_ok &= payload["max_tokens"] == (runmeta["decode_output_tokens"] if r["role"] == "decode" else 1)
         if r["role"] == "interferer":
             new_prefill_groups[(r["batch_size"], r["repeat"])].add(
-                hashlib.sha256(json.dumps(payload["prompt"][-1024:]).encode()).hexdigest())
+                hashlib.sha256(json.dumps(payload["prompt"][-new_tokens:]).encode()).hexdigest())
+            complete_prefill_groups[(r["batch_size"], r["repeat"])].add(
+                hashlib.sha256(json.dumps(payload["prompt"]).encode()).hexdigest())
         if r["role"] == "decode":
-            background_histories[r["trial"]].add((payload["cache_salt"], tuple(payload["prompt"][:2048])))
-            background_suffixes[r["trial"]].add(tuple(payload["prompt"][2048:]))
+            background_histories[r["trial"]].add((payload["cache_salt"], tuple(payload["prompt"][:decode_history])))
+            background_suffixes[r["trial"]].add(tuple(payload["prompt"][decode_history:]))
             events = json.loads(Path(str(stem) + '.events.json').read_text())
             token_events = [(e["elapsed_ms"], c["token_ids"]) for e in events if isinstance(e["data"], dict)
                             for c in e["data"].get("choices", []) if c.get("token_ids")]
@@ -124,20 +139,20 @@ def analyze(evidence, run):
         decode_rows = [r for r in requests if r["trial"] == trial and r["role"] == "decode"]
         checks = dict(t["checks"])
         checks.update({
-            "observed_full_decode_batch": t["batch_size"] in o["decode_batch_counts"],
+            "observed_full_decode_batch": t["batch_size"] == 0 or t["batch_size"] in o["decode_batch_counts"],
             "no_preemptions": o["preemptions"] == 0,
-            "client_mean_recomputed": bool(decode_rows) and math.isclose(
-                statistics.mean(r["token_tpot_ms"] for r in decode_rows), t["decode_avg_tpot_ms"], abs_tol=1e-12),
+            "client_mean_recomputed": (t["batch_size"] == 0 and t["decode_avg_tpot_ms"] is None) or (bool(decode_rows) and math.isclose(
+                statistics.mean(r["token_tpot_ms"] for r in decode_rows), t["decode_avg_tpot_ms"], abs_tol=1e-12)),
         })
         if baseline:
             checks["no_interferer"] = not o["mixed_steps"]
         else:
             checks.update({
-                "exactly_1024_new_prefill_tokens": o["interferer_tokens"] == 1024,
-                "single_prefill_step": len(o["mixed_steps"]) == 1,
+                "exact_computed_prefill_tokens": o["interferer_tokens"] == (full_tokens if t["scenario"] == "full_prefill" else new_tokens),
+                "prefill_chunk_budget": 1 <= len(o["mixed_steps"]) <= (max_chunks if t["scenario"] == "full_prefill" else 1),
                 "actual_mixed_batch": bool(o["mixed_steps"]) and all(s["decode_count"] == t["batch_size"] for s in o["mixed_steps"]),
                 "decode_already_generating": bool(o["mixed_steps"]) and all(n >= 8 for s in o["mixed_steps"] for n in s["decode_output_tokens_before"]),
-                "prefill_actual_cache": all(r["cached_tokens"] == (2048 if t["scenario"] == "append_prefill" else 0)
+                "prefill_actual_cache": all(r["cached_tokens"] == (prefill_history if t["scenario"] == "append_prefill" else 0)
                     for s in o["mixed_steps"] for r in s["interferers"]),
             })
         audits.append({"trial": trial, "scenario": t["scenario"], "batch_size": t["batch_size"],
@@ -146,8 +161,18 @@ def analyze(evidence, run):
             "mixed_steps": o["mixed_steps"], "decode_only_step_wall_ms": describe(o["decode_step_ms"])})
         audits[-1]["observer_us"] = observer_summary(o["observer_us"])
     groups = []
+    prefill_only_groups = []
     lookup = {(t["batch_size"], t["repeat"], t["scenario"]): t for t in trials}
     for batch in sorted({t["batch_size"] for t in trials}):
+        if batch == 0:
+            for scenario in SCENARIOS[1:]:
+                rs = [r for r in requests if r["batch_size"] == 0 and r["scenario"] == scenario and r["role"] == "interferer"]
+                aa = [a for a in audits if a["batch_size"] == 0 and a["scenario"] == scenario]
+                prefill_only_groups.append({"batch_size": 0, "scenario": scenario,
+                    "ttft_ms": describe([r["ttft_ms"] for r in rs]),
+                    "model_wall_ms": describe([sum(s["model_wall_ms"] for s in a["mixed_steps"]) for a in aa]),
+                    "note": "No background decode; decode TPOT and slowdown are undefined"})
+            continue
         for scenario in SCENARIOS:
             ts = [t for t in trials if t["batch_size"] == batch and t["scenario"] == scenario]
             values = [t["decode_avg_tpot_ms"] for t in ts]
@@ -177,20 +202,21 @@ def analyze(evidence, run):
                    "token_event_timings_recomputed": bool(event_timings_ok),
                    "identical_decode_prompts_across_scenarios": all(len(v) == 1 for v in prompt_groups.values()),
                    "identical_new_prefill_across_scenarios": all(len(v) == 1 for v in new_prefill_groups.values()),
+                   "identical_complete_prefill_prompts": runmeta.get("full_prefill_mode") != "same-context" or all(len(v) == 1 for v in complete_prefill_groups.values()),
                    "background_prefix_isolation_or_sharing": all(
                        len(background_histories[t["trial"]]) == (1 if runmeta.get("prefix_mode") == "shared" else t["batch_size"])
                        for t in trials),
                    "shared_mode_unique_new_suffixes": runmeta.get("prefix_mode") != "shared" or all(
                        len(background_suffixes[t["trial"]]) == t["batch_size"] for t in trials),
                    "all_trial_checks": all(a["passed"] for a in audits)},
-        "trial_audits": audits, "groups": groups,
+        "trial_audits": audits, "groups": groups, "prefill_only_groups": prefill_only_groups,
         "observer": {"trace_sha256": hashlib.sha256(trace.read_bytes()).hexdigest(),
                      "total_steps_so_far": step_count, "steps_for_this_run": run_step_count,
                      "cost_scope": "steps containing this run's request IDs, including warmup",
                      "capture_store_us": observer_summary(observer_costs)},
         "limitations": ["RTX 4090/Qwen 7B adaptation; original Figure 2 uses H100/Llama 8B.",
             f"One injected prefill, {runmeta['decode_output_tokens']} output tokens per background decode; full-trace average dilutes a one-step disturbance.",
-            "Both prefill types compute 1024 new tokens; append additionally attends 2048 cached tokens.",
+            f"Full computes {full_tokens} tokens; append computes {new_tokens} tokens and reuses {prefill_history} cached tokens. Mode: {runmeta.get('full_prefill_mode', 'new-only')}.",
             "Error bars are sample standard deviations across independent repeated trials, not confidence intervals.",
             "Scheduler observer uses the default scheduler unchanged; observed engine-step wall time is not CUDA kernel time."]}
     if runmeta.get("prefix_mode") == "shared":

@@ -134,16 +134,22 @@ async def run(args):
         batches = args.batches.copy()
         rng.shuffle(batches)
         for batch in batches:
-            scenarios = list(SCENARIOS)
+            scenarios = list(SCENARIOS[1:] if batch == 0 else SCENARIOS)
             rng.shuffle(scenarios)
             for scenario in scenarios:
                 schedule.append({"scenario": scenario, "batch_size": batch, "repeat": repeat})
     write_json(args.output / "run.json", {
         "model": MODEL, "server": args.server, "seed": args.seed, "schedule": schedule,
         "client_sha256": hashlib.sha256(Path(__file__).read_bytes()).hexdigest(),
-        "decode_cached_tokens": 2048, "decode_new_tokens": 4, "decode_output_tokens": args.output_tokens,
-        "full_prefill_cached_tokens": 0, "full_prefill_new_tokens": 1024,
-        "append_prefill_cached_tokens": 2048, "append_prefill_new_tokens": 1024,
+        "decode_cached_tokens": args.decode_history_tokens, "decode_new_tokens": 4, "decode_output_tokens": args.output_tokens,
+        "full_prefill_cached_tokens": 0, "full_prefill_new_tokens": args.new_input_tokens,
+        "full_prefill_computed_tokens": args.new_input_tokens + (args.prefill_history_tokens if args.full_prefill_mode == "same-context" else 0),
+        "full_prefill_mode": args.full_prefill_mode,
+        "append_prefill_cached_tokens": args.prefill_history_tokens, "append_prefill_new_tokens": args.new_input_tokens,
+        "full_prefill_prompt_tokens": args.new_input_tokens + (args.prefill_history_tokens if args.full_prefill_mode == "same-context" else 0),
+        "append_prefill_prompt_tokens": args.prefill_history_tokens + args.new_input_tokens,
+        "max_prefill_chunks": args.max_prefill_chunks,
+        "batch_zero_policy": "prefill-only full/append; no decode baseline or decode TPOT",
         "interferer_output_tokens": 1, "inject_after_each_decode_output_tokens": 8,
         "primary_tpot": "(last token-ID event - first token-ID event) / (completion_tokens - 1)",
         "replicate_aggregation": "mean TPOT across background decode requests within each trial",
@@ -176,10 +182,11 @@ async def run(args):
                 trial = f"{args.trial_prefix or args.output.name}-b{meta['batch_size']}-r{meta['repeat']}-{meta['scenario']}"
                 batch = meta["batch_size"]
                 inputs_rng = random.Random(f"figure2/{args.seed}/{meta['repeat']}/{batch}")
-                prefixes = [[inputs_rng.choice(pool) for _ in range(2048)] for _ in range(batch + 1)]
+                prefixes = [[inputs_rng.choice(pool) for _ in range(args.decode_history_tokens)] for _ in range(batch)]
+                prefixes.append([inputs_rng.choice(pool) for _ in range(args.prefill_history_tokens)])
                 # Identical new input token IDs for the cold and cached interference paths.
-                extra = [inputs_rng.choice(pool) for _ in range(1024)]
-                if args.prefix_mode == "shared":
+                extra = [inputs_rng.choice(pool) for _ in range(args.new_input_tokens)]
+                if args.prefix_mode == "shared" and batch:
                     prefixes = [prefixes[0]] * batch + [prefixes[-1]]
                     vocabulary = sorted(set(pool))
                     if batch > len(vocabulary) ** 4:
@@ -232,7 +239,7 @@ async def run(args):
                     return row
 
                 salts = [trial + f"/prefix/{i}" for i in range(batch + 1)]
-                if args.prefix_mode == "shared":
+                if args.prefix_mode == "shared" and batch:
                     salts = [trial + "/shared-background"] * batch + [salts[-1]]
                 semaphore = asyncio.Semaphore(4)
 
@@ -240,7 +247,7 @@ async def run(args):
                     async with semaphore:
                         return await request(prefixes[i], "warmup", str(i), 1, salts[i])
 
-                warm_indices = (0, batch) if args.prefix_mode == "shared" else range(batch + 1)
+                warm_indices = (0, batch) if args.prefix_mode == "shared" and batch else range(batch + 1)
                 warmups = await asyncio.gather(*(warm(i) for i in warm_indices))
                 flush_artifacts()
                 if not all(r["success"] for r in warmups):
@@ -249,6 +256,8 @@ async def run(args):
                     r.raise_for_status()
                     (args.output / f"{trial}-before-metrics.txt").write_text(await r.text())
                 gate = asyncio.Event()
+                if batch == 0:
+                    gate.set()
                 progress = [0] * batch
 
                 def callback(i, n):
@@ -266,7 +275,8 @@ async def run(args):
                     injection = time.perf_counter_ns()
                     if meta["scenario"] != "decode_only":
                         if meta["scenario"] == "full_prefill":
-                            prompt, salt = extra, trial + "/cold"
+                            prompt = prefixes[-1] + extra if args.full_prefill_mode == "same-context" else extra
+                            salt = trial + "/cold"
                         else:
                             prompt, salt = prefixes[-1] + extra, salts[-1]
                         tasks.append(asyncio.create_task(request(prompt, "interferer", "0", 1, salt)))
@@ -282,12 +292,12 @@ async def run(args):
                 checks = {
                     "all_requests_succeeded": all(isinstance(r, dict) and r["success"] for r in results),
                     "decode_count": len(decoded) == batch,
-                    "decode_cached_2048": all(r["cached_tokens"] == 2048 for r in decoded),
-                    "injected_after_decode_started": injection is not None and min(progress) >= 8,
+                    "decode_cached_expected": all(r["cached_tokens"] == args.decode_history_tokens for r in decoded),
+                    "injected_after_decode_started": injection is not None and (not progress or min(progress) >= 8),
                     "interferer_count": len(interferers) == int(meta["scenario"] != "decode_only"),
                 }
                 if interferers:
-                    checks["interferer_cache"] = interferers[0]["cached_tokens"] == (2048 if meta["scenario"] == "append_prefill" else 0)
+                    checks["interferer_cache"] = interferers[0]["cached_tokens"] == (args.prefill_history_tokens if meta["scenario"] == "append_prefill" else 0)
                     checks["client_overlap"] = all(r["start_ns"] < interferers[0]["start_ns"] < r["end_ns"] for r in decoded)
                 good = [r["token_tpot_ms"] for r in decoded if r["success"]]
                 summary = dict(meta, trial=trial, sequence=seq, start_ns=trial_start,
@@ -313,11 +323,21 @@ def main():
     parser.add_argument("--output-tokens", type=int, default=128)
     parser.add_argument("--seed", type=int, default=42)
     parser.add_argument("--prefix-mode", choices=("independent", "shared"), default="independent")
+    parser.add_argument("--decode-history-tokens", type=int, default=128)
+    parser.add_argument("--prefill-history-tokens", type=int, default=16384)
+    parser.add_argument("--new-input-tokens", type=int, default=1024)
+    parser.add_argument("--full-prefill-mode", choices=("same-context", "new-only"), default="same-context",
+                        help="same-context recomputes history+new; new-only is the legacy workload")
+    parser.add_argument("--max-prefill-chunks", type=int, default=1)
     parser.add_argument("--defer-artifacts", action="store_true",
                         help="Write raw evidence only after all in-flight requests finish")
     args = parser.parse_args()
-    if min(args.batches) < 1 or args.repeats < 1 or args.output_tokens < 32:
-        parser.error("Positive batches/repeats and at least 32 output tokens required")
+    if min(args.batches) < 0 or args.repeats < 1 or args.output_tokens < 32:
+        parser.error("Nonnegative batches, positive repeats and at least 32 output tokens required")
+    if min(args.decode_history_tokens, args.prefill_history_tokens, args.new_input_tokens) < 16 or args.max_prefill_chunks < 1:
+        parser.error("At least 16 history/new tokens and positive max-prefill-chunks required")
+    if args.decode_history_tokens % 16 or args.prefill_history_tokens % 16:
+        parser.error("History token lengths must align to 16-token KV blocks")
     asyncio.run(run(args))
 
 

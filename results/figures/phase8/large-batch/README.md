@@ -53,3 +53,5 @@ python results/figures/phase8/large-batch/generate.py --from-snapshot
 
 
 本轮没有复现论文中 full/append 干扰相差一个数量级的趋势。共享组部分大 batch 的误差棒较大；observer P99 约 0.20 ms、最大约 229.30 ms，偶发停顿全部保留，不能把接近曲线的小差别视为显著收益。单次混合步骤与整段 TPOT 的区别及统计表见补充报告。
+
+针对整段平均稀释问题，新增 [插入窗口诊断图](../event-window/README.md)：直接重用本批原始 trace/SSE，比较逐步耗时、固定窗口及累计额外延迟。

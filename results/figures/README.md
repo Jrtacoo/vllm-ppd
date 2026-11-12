@@ -30,3 +30,5 @@ Figure 2 的单 RTX 4090 / Qwen2.5-7B 干扰适配实验见 [phase8/README.md](p
 扩大 decode batch 到 250 的共享历史适配曲线，以及独立历史 batch 32 对照，见 [phase8/large-batch/README.md](phase8/large-batch/README.md)。
 
 原始请求、SSE、服务日志及完整实验数据继续保存在项目 `artifacts/` 下。此目录中的图片及说明可由 Git 跟踪，其他运行结果仍按现有规则忽略。
+
+插入前后逐步耗时、不同平均窗口与累计额外延迟的后分析，见 [phase8/event-window/README.md](phase8/event-window/README.md)。
