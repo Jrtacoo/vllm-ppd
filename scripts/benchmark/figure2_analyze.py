@@ -100,6 +100,7 @@ def analyze(evidence, run):
     complete_prefill_groups = defaultdict(set)
     background_histories = defaultdict(set)
     background_suffixes = defaultdict(set)
+    warmup_prefixes, prefix_references = {}, []
     for r in requests:
         stem = folder / r["raw_stem"]
         raw_ok &= all(Path(str(stem) + s).is_file() for s in (".request.json", ".response.json", ".events.json", ".sse"))
@@ -116,6 +117,19 @@ def analyze(evidence, run):
             expected_prompt = full_prompt_tokens if r["scenario"] == "full_prefill" else append_prompt_tokens
         raw_usage_ok &= len(payload["prompt"]) == expected_prompt
         raw_usage_ok &= payload["max_tokens"] == (runmeta["decode_output_tokens"] if r["role"] == "decode" else 1)
+        if r["role"] == "warmup":
+            warmup_prefixes[(r["trial"], int(r["request_id"].rsplit("_", 1)[1]))] = (
+                hashlib.sha256(json.dumps(payload["prompt"]).encode()).hexdigest(), payload["cache_salt"])
+        elif r["role"] == "decode":
+            seq = int(r["request_id"].rsplit("_", 1)[1])
+            warm_index = 0 if runmeta.get("prefix_mode") == "shared" else seq
+            prefix_references.append((r["trial"], warm_index,
+                hashlib.sha256(json.dumps(payload["prompt"][:decode_history]).encode()).hexdigest(),
+                payload["cache_salt"], True))
+        elif r["role"] == "interferer" and (r["scenario"] == "append_prefill" or runmeta.get("full_prefill_mode") == "same-context"):
+            prefix_references.append((r["trial"], r["batch_size"],
+                hashlib.sha256(json.dumps(payload["prompt"][:prefill_history]).encode()).hexdigest(),
+                payload["cache_salt"], r["scenario"] == "append_prefill"))
         if r["role"] == "interferer":
             new_prefill_groups[(r["batch_size"], r["repeat"])].add(
                 hashlib.sha256(json.dumps(payload["prompt"][-new_tokens:]).encode()).hexdigest())
@@ -132,6 +146,10 @@ def analyze(evidence, run):
                 (token_events[-1][0] - token_events[0][0]) / (n - 1), r["token_tpot_ms"], abs_tol=1e-12)
             suffix = payload["request_id"].rsplit("_decode_", 1)[1]
             prompt_groups[(r["batch_size"], r["repeat"], suffix)].add(hashlib.sha256(json.dumps(payload["prompt"]).encode()).hexdigest())
+    prefix_links_ok = all(
+        warmup_prefixes[(trial, index)][0] == prompt_hash and
+        ((warmup_prefixes[(trial, index)][1] == salt) == reuse)
+        for trial, index, prompt_hash, salt, reuse in prefix_references)
     audits = []
     for trial, t in by_trial.items():
         o = observations[trial]
@@ -188,7 +206,7 @@ def analyze(evidence, run):
     expected_ids = {f"{prefix}-b{t['batch_size']}-r{t['repeat']}-{t['scenario']}" for t in runmeta["schedule"]}
     expected_roles = Counter()
     for t in runmeta["schedule"]:
-        expected_roles.update(warmup=2 if runmeta.get("prefix_mode") == "shared" else t["batch_size"] + 1, decode=t["batch_size"],
+        expected_roles.update(warmup=2 if runmeta.get("prefix_mode") == "shared" and t["batch_size"] else t["batch_size"] + 1, decode=t["batch_size"],
                               interferer=int(t["scenario"] != "decode_only"))
     report = {"run": run, "requests": len(requests), "request_roles": dict(Counter(r["role"] for r in requests)),
         "trials": len(trials), "expected_trials": len(runmeta["schedule"]),
@@ -203,8 +221,9 @@ def analyze(evidence, run):
                    "identical_decode_prompts_across_scenarios": all(len(v) == 1 for v in prompt_groups.values()),
                    "identical_new_prefill_across_scenarios": all(len(v) == 1 for v in new_prefill_groups.values()),
                    "identical_complete_prefill_prompts": runmeta.get("full_prefill_mode") != "same-context" or all(len(v) == 1 for v in complete_prefill_groups.values()),
+                   "histories_match_warmups_and_cache_salts_control_reuse": prefix_links_ok,
                    "background_prefix_isolation_or_sharing": all(
-                       len(background_histories[t["trial"]]) == (1 if runmeta.get("prefix_mode") == "shared" else t["batch_size"])
+                       len(background_histories[t["trial"]]) == (1 if runmeta.get("prefix_mode") == "shared" and t["batch_size"] else t["batch_size"])
                        for t in trials),
                    "shared_mode_unique_new_suffixes": runmeta.get("prefix_mode") != "shared" or all(
                        len(background_suffixes[t["trial"]]) == t["batch_size"] for t in trials),

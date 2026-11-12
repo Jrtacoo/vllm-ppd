@@ -77,3 +77,5 @@ python results/figures/phase8/event-window/generate.py \
 ```
 
 派生数据在 `artifacts/phase8-figure2-window-analysis/`：`aligned-iterations.csv` 保存逐 trial/步骤配对数据，`window-trials.csv` 保存各窗口的统计，`recovery-trials.csv` 保存阈值与敏感性，`excluded-partial-steps.csv` 保存部分 batch，`source-manifest.json` 与 `verification.json` 保存输入 SHA256 和验收。所有实际读取的原始证据文件均与上一阶段的 `evidence.sha256` 一致。原始证据及旧图未改写。
+
+后续按相同完整输入重新进行的 16K 历史实验见 [context16k/](../context16k/README.md)。本目录继续保存旧负载的后分析结果。

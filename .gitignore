@@ -102,3 +102,4 @@ htmlcov/
 /results/*
 !/results/figures/
 !/results/figures/**/*.png
+!/results/figures/phase8/context16k/amortized-128-token-trials.csv

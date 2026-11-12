@@ -85,3 +85,6 @@ QPS 选本机扫描确定的两档压力，样本预期按论文 500 会话规�
 - 论文：[PPD.pdf](../PPD.pdf)。
 - 文本提取及部分 Figure 所在页渲染：`artifacts/paper-review/`。
 - PDF 阅读器使用独立 `/workspace/ppd-paper-tools` 环境；运行镜像、模型服务和阶段七证据未改动。
+
+
+Figure 2 后续按用户确认的同一完整上下文对照重测：Full 重算 16K 历史 + 1K 新输入，Append 复用 16K 历史。独立背景历史 128 token，B0～200 的 event-window 结果见 [16K 实验报告](TWO_NODE_PHASE8_CONTEXT16K.md)。此为明确负载定义后的本机机制实验，不宣称恢复了论文未完全公开的全部参数。

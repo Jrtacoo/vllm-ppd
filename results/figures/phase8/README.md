@@ -51,3 +51,5 @@ python results/figures/phase8/generate.py
 这是论文 H100 / Llama-8B Figure 2 的硬件和模型适配，范围仅到 batch 16；不能与原论文 batch 200 的约 48% / 2% 退化直接比较，也不用于证明动态路由收益。
 
 已有大 batch 数据的插入窗口后分析见 [event-window/](event-window/README.md)，用于区分瞬时停顿与整段 TPOT 的平均稀释。
+
+同一完整上下文的 Full/Append 对照已另行采集：见 [context16k/](context16k/README.md)，16K 干扰历史、128-token 独立背景历史、B0～200。
