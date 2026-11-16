@@ -234,7 +234,7 @@ def analyze(evidence, run):
                      "cost_scope": "steps containing this run's request IDs, including warmup",
                      "capture_store_us": observer_summary(observer_costs)},
         "limitations": ["RTX 4090/Qwen 7B adaptation; original Figure 2 uses H100/Llama 8B.",
-            f"One injected prefill, {runmeta['decode_output_tokens']} output tokens per background decode; full-trace average dilutes a one-step disturbance.",
+            f"One injected prefill, {runmeta['decode_output_tokens']} output tokens per background decode; whole-request averaging dilutes localized interference, which can span multiple prefill chunks.",
             f"Full computes {full_tokens} tokens; append computes {new_tokens} tokens and reuses {prefill_history} cached tokens. Mode: {runmeta.get('full_prefill_mode', 'new-only')}.",
             "Error bars are sample standard deviations across independent repeated trials, not confidence intervals.",
             "Scheduler observer uses the default scheduler unchanged; observed engine-step wall time is not CUDA kernel time."]}

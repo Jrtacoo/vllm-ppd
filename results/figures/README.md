@@ -1,6 +1,6 @@
 # 各阶段实验结果图
 
-从 Phase 7 开始，按阶段保存可上传到 GitHub 的结果图及说明：
+从 Phase 7 开始，按阶段保存可上传到 GitHub 的结果图、数据快照和重画代码：
 
 ```text
 results/figures/
@@ -10,27 +10,23 @@ results/figures/
 │   ├── generate.py
 │   ├── plot-data.json
 │   ├── requirements.txt
-│   ├── all-requests-latency.{png,svg,pdf}
-│   ├── matched-turn2-comparison.{png,svg,pdf}
-│   └── socket-roce-comparison.{png,svg,pdf}
+│   └── 三组结果图（PNG / SVG / PDF）
 └── phase8/
     ├── README.md
-    ├── generate.py
-    ├── plot-data.json
     ├── requirements.txt
-    └── figure2-interference.{png,svg,pdf}
+    ├── history-budget-diagnostic/  # 2×2 因子诊断与图注字面条件对照
+    └── context16k/
+        ├── README.md
+        ├── generate.py
+        ├── generate-decode-tpot.py
+        ├── generate-amortized.py
+        ├── plot-data.json
+        └── 六组结果图及补充数据
 ```
 
-后续阶段使用 `phase9/` 等同级目录。每个阶段的 README 记录图的用途、数据来源、统计口径、生成方法和结论边界。
+- [Phase 7](phase7/README.md)：真实 KV 经 RoCE 传输、PD / 静态 PPD 的请求延迟对照。
+- [Phase 8](phase8/README.md)：16K 历史的 Figure 2 适配实验，以及新增的历史长度／调度预算诊断。比较背景平均 TPOT、瞬时峰值与累计干扰，保留原始统计口径。
 
-优先提供 PNG 供 GitHub 直接展示，可同时保存 SVG 或 PDF。文件名使用能表达内容的英文小写名称。Phase 7 的三张汇总图、预览与复现方法见 [phase7/README.md](phase7/README.md)。
+后续阶段使用 `phase9/` 等同级目录。每个阶段的 README 记录数据来源、统计口径、重画方法与结论边界。PNG 用于 GitHub 预览，SVG / PDF 用于缩放和导出。
 
-Figure 2 的单 RTX 4090 / Qwen2.5-7B 干扰适配实验见 [phase8/README.md](phase8/README.md)，包括一张双面板汇总图及独立重画所需的数据快照。
-
-扩大 decode batch 到 250 的共享历史适配曲线，以及独立历史 batch 32 对照，见 [phase8/large-batch/README.md](phase8/large-batch/README.md)。
-
-原始请求、SSE、服务日志及完整实验数据继续保存在项目 `artifacts/` 下。此目录中的图片及说明可由 Git 跟踪，其他运行结果仍按现有规则忽略。
-
-插入前后逐步耗时、不同平均窗口与累计额外延迟的后分析，见 [phase8/event-window/README.md](phase8/event-window/README.md)。
-
-Full/append 提交相同 16K 历史加 1K 新输入、独立背景 KV 到 batch 200 的新实验见 [phase8/context16k/](phase8/context16k/README.md)。
+原始请求、SSE、服务日志及完整实验数据保存在项目 `artifacts/` 下。此处的结果图、数据快照和说明可由 Git 跟踪。

@@ -159,6 +159,7 @@ async def run(args):
         "http_connections": "force_close=True; a fresh TCP connection for every request avoids stale keep-alive reuse",
         "trial_prefix": args.trial_prefix or args.output.name,
         "prefix_mode": args.prefix_mode,
+        "input_rng_mode": args.input_rng_mode,
         "warmup_policy": "two prefixes (shared background + separate interferer)" if args.prefix_mode == "shared" else "batch+1 independent prefixes",
         "connection_limit": max(100, max(args.batches) + 16),
         "shared_prefix_caveat": "Background histories share physical KV; new 4-token suffixes differ per sequence. Not independent-KV scaling." if args.prefix_mode == "shared" else None,
@@ -183,9 +184,11 @@ async def run(args):
                 batch = meta["batch_size"]
                 inputs_rng = random.Random(f"figure2/{args.seed}/{meta['repeat']}/{batch}")
                 prefixes = [[inputs_rng.choice(pool) for _ in range(args.decode_history_tokens)] for _ in range(batch)]
-                prefixes.append([inputs_rng.choice(pool) for _ in range(args.prefill_history_tokens)])
+                history_rng = inputs_rng if args.input_rng_mode == "legacy" else random.Random(f"figure2/history/{args.seed}/{meta['repeat']}/{batch}")
+                suffix_rng = inputs_rng if args.input_rng_mode == "legacy" else random.Random(f"figure2/suffix/{args.seed}/{meta['repeat']}/{batch}")
+                prefixes.append([history_rng.choice(pool) for _ in range(args.prefill_history_tokens)])
                 # Identical new input token IDs for the cold and cached interference paths.
-                extra = [inputs_rng.choice(pool) for _ in range(args.new_input_tokens)]
+                extra = [suffix_rng.choice(pool) for _ in range(args.new_input_tokens)]
                 if args.prefix_mode == "shared" and batch:
                     prefixes = [prefixes[0]] * batch + [prefixes[-1]]
                     vocabulary = sorted(set(pool))
@@ -323,6 +326,8 @@ def main():
     parser.add_argument("--output-tokens", type=int, default=128)
     parser.add_argument("--seed", type=int, default=42)
     parser.add_argument("--prefix-mode", choices=("independent", "shared"), default="independent")
+    parser.add_argument("--input-rng-mode", choices=("legacy", "separate-streams"), default="legacy",
+                        help="Separate streams keep background prompts and new input identical when varying prefill history length")
     parser.add_argument("--decode-history-tokens", type=int, default=128)
     parser.add_argument("--prefill-history-tokens", type=int, default=16384)
     parser.add_argument("--new-input-tokens", type=int, default=1024)

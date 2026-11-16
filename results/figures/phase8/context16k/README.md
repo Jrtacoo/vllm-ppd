@@ -4,7 +4,7 @@
 
 B=0/10/20/.../200，每点五次重复。B0 没有背景 decode，仅测独立 prefill，不赋予 decode TPOT 或 slowdown 数值。单次干扰在所有背景请求至少生成 8 token 后插入，actual batch、缓存命中和计算 token 数由 scheduler trace 验收。
 
-方法、容量与异常记录见[实验报告](../../../../docs/TWO_NODE_PHASE8_CONTEXT16K.md)。历史语义说明与旧实验分开，不改写旧图。
+方法、容量与异常记录见[实验报告](../../../../docs/TWO_NODE_PHASE8_CONTEXT16K.md)。本目录保留 16K 同上下文实验；后续的[历史长度／调度预算诊断](../history-budget-diagnostic/README.md)单独保存，不与本轮数据混合。
 
 ## 图表
 
@@ -82,7 +82,7 @@ Batch 0 独立 prefill 的 TTFT：Full 1953.57 ± 2.32 ms；Append 190.72 ± 1.6
 
 B200：Full 为 **15.17 ± 1.10 ms/token**，Append 为 **0.72 ± 0.98 ms/token**。Append 的标准差大于均值，应结合误差线理解。这张图使用整段生成跨度；与从插入点开始、仅保留完整 batch 配对步骤的 `cumulative-delay` 图末值覆盖范围不同。
 
-本图复用已验收的数据快照，不重新运行模型；此前四张图及实验原始证据保持原样。
+本图复用同轮已验收的数据快照；本轮其他图及实验原始证据保持原样。
 
 ## 三种条件下背景 decode 的平均 TPOT
 

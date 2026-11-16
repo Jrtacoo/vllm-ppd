@@ -1,10 +1,12 @@
 # PPD: Not All Prefills Are Equal
 
 Single-RTX-4090 adaptation of the paper's Figure 2 (prefill/decode interference):
-[phase eight report](docs/TWO_NODE_PHASE8.md) and
-[results and figure](results/figures/phase8/README.md).
-Larger decode batches, including 250 sequences with shared history KV, are
-documented separately in the [large-batch supplement](docs/TWO_NODE_PHASE8_LARGE_BATCH.md).
+[phase eight report](docs/TWO_NODE_PHASE8_CONTEXT16K.md) and
+[results and figures](results/figures/phase8/README.md).
+Phase 8 includes a [history/budget diagnostic](docs/TWO_NODE_PHASE8_DIAGNOSTIC.md)
+at decode batches 10/100/200, alongside the same-context experiment: independent background KV,
+decode batches 0–200, full recomputation of 16K history + 1K new input versus append
+with 16K cached history and 1K new input.
 Current two-server RoCE model KV inference and per-request TTFT/TPOT comparison:
 [two-node phase seven](docs/TWO_NODE_PHASE7.md).
 RoCE and host-staged GPU NCCL preflight:
