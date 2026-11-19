@@ -1,0 +1,20 @@
+{
+  "input_tokens": 24576,
+  "completion_tokens": 32,
+  "repeats_per_transport": 5,
+  "expected_payload_bytes": 1409286144,
+  "routing": "1P_1D",
+  "concurrency": 1,
+  "max_model_len": 25600,
+  "max_num_batched_tokens": 24576,
+  "gpu_memory_utilization": 0.85,
+  "kv_buffer_size": 2147483648,
+  "mem_pool_size_gb": 2,
+  "warmup": "one independent 24K request per deployment, followed by P/D prefix cache reset",
+  "source_before": {
+    "configs/two_node/dcn9.json": "e1a3aedf0e8568e5c655ed68c2c48cd3d8aee6c39d3fbb8449f8fc93e741466b",
+    "configs/two_node/dcn10.json": "740869b8826a297afaf00063974f0061bd32778d01590183950b94a74b4b46fe",
+    "vllm-source/vllm/distributed/kv_transfer/kv_connector/v1/p2p/p2p_nccl_engine.py": "81d1d8c39e509b5cfc733e5c5a8abbeac888f2d2fab5ec3362575cc4d086dace"
+  },
+  "client_sha256": "e7ddb752a91126d57c6fbcb1fa5283d6fad23dfd13d5b0a3b5515baed0622b6c"
+}
