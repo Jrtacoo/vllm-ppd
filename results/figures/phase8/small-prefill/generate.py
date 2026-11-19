@@ -15,11 +15,28 @@ def save(fig,out,name,title,note):
 def line(ax,rows,scenario,metric, label=None):
  c,m,l=SC[scenario];rs=sorted([r for r in rows if r['scenario']==scenario],key=lambda x:x['batch']);ax.errorbar([r['batch'] for r in rs],[r[metric]['mean'] for r in rs],yerr=[r[metric]['std'] for r in rs],color=c,marker=m,lw=2,ms=5,capsize=3,label=label or l)
 def main():
- p=argparse.ArgumentParser();p.add_argument('--snapshot',type=Path,default=Path('artifacts/phase8-small-prefill-analysis/plot-data.json'));p.add_argument('--out',type=Path,default=Path('results/figures/phase8/small-prefill'));a=p.parse_args();a.out.mkdir(parents=True,exist_ok=True);d=json.loads(a.snapshot.read_text());assert d['validation']['passed'];setup()
+ p=argparse.ArgumentParser();p.add_argument('--snapshot',type=Path,default=Path('artifacts/phase8-small-prefill-analysis-event5/plot-data.json'));p.add_argument('--out',type=Path,default=Path('results/figures/phase8/small-prefill'));a=p.parse_args();a.out.mkdir(parents=True,exist_ok=True);d=json.loads(a.snapshot.read_text());assert d['validation']['passed'];setup()
  fig,ax=plt.subplots(figsize=(10,6));
  for s in SC:line(ax,d['groups'],s,'tpot_ms')
  ax.set_xlabel('Background decode batch size');ax.set_ylabel('Mean background TPOT (ms/token)');ax.set_xticks([10,50,100,150,200,250]);ax.legend(frameon=False,ncol=3,loc='upper left');ax.set_ylim(bottom=0)
  save(fig,a.out,'background-tpot','Background decode TPOT under a 256+32 interference request','Each point averages all 127 token gaps per background request, then requests, then three repeats. Error bars: sample SD across repeats. Interferer TTFT is excluded.')
+ fig,ax=plt.subplots(figsize=(10,6))
+ for s in ('append_prefill','full_prefill'):
+  c,m,label=SC[s];rs=sorted([r for r in d['first5_groups'] if r['scenario']==s],key=lambda x:x['batch'])
+  ax.errorbar([r['batch'] for r in rs],[r['tpot_ms']['mean'] for r in rs],
+      yerr=[r['tpot_ms']['std'] for r in rs],color=c,marker=m,lw=2,ms=5,capsize=3,label=label)
+ # Matched decode-only output positions are recorded separately for each treatment.
+ baselines=[]
+ for batch in sorted({r['batch'] for r in d['first5_groups']}):
+  by_repeat=[]
+  for repeat in range(3):
+   paired=[r['baseline_tpot_ms'] for r in d['first5_trials'] if r['batch']==batch and r['repeat']==repeat]
+   if len(paired)==2:by_repeat.append(sum(paired)/len(paired))
+  if len(by_repeat)==3:baselines.append((batch,by_repeat))
+ ax.errorbar([x for x,_ in baselines],[sum(ys)/len(ys) for _,ys in baselines],
+     yerr=[__import__('statistics').stdev(ys) for _,ys in baselines],color=SC['decode_only'][0],marker=SC['decode_only'][1],lw=2,capsize=3,label='Decode only (matched output positions)')
+ ax.set_xlabel('Background decode batch size');ax.set_ylabel('Mean background TPOT over first 5 post-injection steps (ms/token)');ax.set_xticks([10,50,100,150,200,250]);ax.legend(frameon=False,fontsize=9);ax.set_ylim(bottom=0)
+ save(fig,a.out,'background-tpot-first5','Background decode TPOT over five steps after interference','Includes offsets 0–4: the first mixed step and the next four decode steps. Per step, average matched background token gaps across requests, then average the five steps and three repeats. Baseline uses the same output-token ordinals; treatment error bars are sample SD across repeats.')
  fig,axes=plt.subplots(1,2,figsize=(13,5.8),sharex=True)
  for s in ('append_prefill','full_prefill'):line(axes[0],d['groups'],s,'excess_tpot_ms');line(axes[1],d['groups'],s,'slowdown_pct')
  axes[0].axhline(0,color='#8795A1',lw=.8);axes[1].axhline(0,color='#8795A1',lw=.8);axes[0].set_ylabel('Extra TPOT vs decode-only (ms/token)');axes[1].set_ylabel('Slowdown vs decode-only (%)');

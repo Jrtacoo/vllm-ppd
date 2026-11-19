@@ -191,7 +191,7 @@ def main():
     for row in trial_rows:
         if row['scenario'] == 'decode_only':
             continue
-        for width in (1,4,8,16):
+        for width in (1,4,5,8,16):
             rr = [x for x in profiles if x['trial']==row['trial'] and 0<=x['offset']<width]
             complete = len(rr)==width and {x['offset'] for x in rr}==set(range(width))
             windows.append(dict(trial=row['trial'],batch=row['batch'],repeat=row['repeat'],scenario=row['scenario'],width=width,complete=complete,observed_steps=len(rr),
@@ -199,11 +199,27 @@ def main():
     window_groups = []
     for batch in sorted({r['batch'] for r in trial_rows}):
         for scenario in ('append_prefill','full_prefill'):
-            for width in (1,4,8,16):
+            for width in (1,4,5,8,16):
                 rr=[r for r in windows if r['batch']==batch and r['scenario']==scenario and r['width']==width and r['complete']]
                 window_groups.append(dict(batch=batch,scenario=scenario,width=width,n=len(rr),**({k:describe([r[k] for r in rr]) for k in ('client_ms','baseline_client_ms','client_delta_ms','model_ms')} if rr else {})))
     comparisons = []
     row_index = {(r['case'],r['batch'],r['scenario'],r['repeat']): r for r in trial_rows}
+    first5_trials = []
+    first5_groups = []
+    for batch in sorted({r['batch'] for r in trial_rows}):
+        for scenario in ('append_prefill','full_prefill'):
+            paired = [r for r in windows if r['batch']==batch and r['scenario']==scenario and r['width']==5]
+            for r in paired:
+                if r['complete']:
+                    first5_trials.append(dict(batch=batch, repeat=r['repeat'], scenario=scenario,
+                        trial=r['trial'], steps=5, tpot_ms=r['client_ms'],
+                        baseline_tpot_ms=r['baseline_client_ms'],
+                        excess_tpot_ms=r['client_delta_ms']))
+            valid = [r for r in paired if r['complete']]
+            first5_groups.append(dict(batch=batch, scenario=scenario, n=len(valid),
+                **({out:describe([r[src] for r in valid]) for out,src in
+                    (('tpot_ms','client_ms'),('baseline_tpot_ms','baseline_client_ms'),('excess_tpot_ms','client_delta_ms'))}
+                   if valid else {})))
     out = dict(validation={'passed': True, 'trials': len(trial_rows), 'cross_case_background_and_suffix_identical': True,
                'interference_history_identical': True, 'raw_sse_tpot_recomputed': True, 'scheduler_token_budgets_checked': True,
                'excluded_local_steps': len(exclusions),
@@ -213,10 +229,11 @@ def main():
         method={'primary': 'All 127 client token gaps per background request, then requests, then 3 repeats; SD across repeats.',
                 'event': 'Offset zero is first prefill chunk. Exact background output-token ordinal matched to same-repeat decode-only. Exclude local client intervals touching bundled SSE; retain all chunks in model metrics and all requests in whole-request TPOT.',
                 'max_client_gap': 'Mean across requests of the largest observed SSE token-event arrival interval; bundled events do not resolve individual model-step gaps.',
-                'limitations': 'Fixed budget 2048; 3 repeats; single RTX 4090/Qwen; one 256+32 interference per 128-output background request. Windows [0,0], [0,3], [0,7], [0,15] fixed before collection; report missing intervals without imputation. GPU sampling cannot resolve individual short steps.'},
+                'limitations': 'Fixed budget 2048; 3 repeats; single RTX 4090/Qwen; one 256+32 interference per 128-output background request. Event windows [0,1), [0,4), [0,5), [0,8), [0,16) report missing intervals without imputation. GPU sampling cannot resolve individual short steps.'},
         metadata=metadata, groups=groups, trial_rows=trial_rows, profile_groups=profile_groups,
-        window_groups=window_groups, window_trials=windows, source_hashes=source_hashes)
-    for name, data in [('plot-data.json',out), ('event-trials.json',profiles), ('excluded-local-steps.json',exclusions), ('bundled-sse-events.json',bundled_events), ('window-trials.json',windows)]:
+        window_groups=window_groups, window_trials=windows, first5_groups=first5_groups,
+        first5_trials=first5_trials, source_hashes=source_hashes)
+    for name, data in [('plot-data.json',out), ('event-trials.json',profiles), ('excluded-local-steps.json',exclusions), ('bundled-sse-events.json',bundled_events), ('window-trials.json',windows), ('first5-trials.json',first5_trials)]:
         (args.output/name).write_text(json.dumps(data,indent=2,ensure_ascii=False)+'\n')
     print(json.dumps(out['validation'],indent=2))
 
