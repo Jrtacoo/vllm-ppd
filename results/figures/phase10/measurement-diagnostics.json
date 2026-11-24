@@ -1,0 +1,114 @@
+{
+  "observer_all_steps": {
+    "n": 27693,
+    "mean_us": 99.71231870869894,
+    "max_us": 109880.464,
+    "over_1ms": 24,
+    "over_10ms": 10,
+    "over_50ms": 10
+  },
+  "observer_formal_background_steps": {
+    "n": 17014,
+    "mean_us": 154.39649753144468,
+    "max_us": 109880.464,
+    "over_1ms": 24,
+    "over_10ms": 10,
+    "over_50ms": 10
+  },
+  "observer_over_10ms_steps": [
+    {
+      "step": 8522,
+      "observer_ms": 72.196772,
+      "example_request": "cmpl-phase10-v1-formal-b150-r2-scaled-full_prefill_decode_1-0"
+    },
+    {
+      "step": 12782,
+      "observer_ms": 82.09562,
+      "example_request": "cmpl-phase10-v1-formal-b200-r3-scaled-full_prefill_decode_3-0"
+    },
+    {
+      "step": 14993,
+      "observer_ms": 89.31641,
+      "example_request": "cmpl-phase10-v1-formal-b250-r3-scaled-append_prefill_decode_0-0"
+    },
+    {
+      "step": 16297,
+      "observer_ms": 100.34359699999999,
+      "example_request": "cmpl-phase10-v1-formal-b250-r3-single-append_prefill_decode_0-0"
+    },
+    {
+      "step": 18623,
+      "observer_ms": 104.69673399999999,
+      "example_request": "cmpl-phase10-v1-formal-b200-r4-scaled-append_prefill_decode_0-0"
+    },
+    {
+      "step": 20546,
+      "observer_ms": 72.66530399999999,
+      "example_request": "cmpl-phase10-v1-formal-b200-r4-baseline-decode_only_decode_3-0"
+    },
+    {
+      "step": 21501,
+      "observer_ms": 109.880464,
+      "example_request": "cmpl-phase10-v1-formal-b200-r4-single-full_prefill_decode_0-0"
+    },
+    {
+      "step": 22191,
+      "observer_ms": 79.384653,
+      "example_request": "cmpl-phase10-v1-formal-b250-r4-single-append_prefill_decode_1-0"
+    },
+    {
+      "step": 22889,
+      "observer_ms": 97.796826,
+      "example_request": "cmpl-phase10-v1-formal-b200-r5-scaled-append_prefill_decode_0-0"
+    },
+    {
+      "step": 27310,
+      "observer_ms": 96.755229,
+      "example_request": "cmpl-phase10-v1-formal-b200-r5-single-append_prefill_decode_0-0"
+    }
+  ],
+  "measured_trial_gpu_samples": {
+    "util_pct": {
+      "min": 0.0,
+      "max": 100.0,
+      "trial_mean_range": [
+        55.0,
+        96.5
+      ]
+    },
+    "memory_used_mib": {
+      "min": 23215.0,
+      "max": 23215.0,
+      "trial_mean_range": [
+        23215.0,
+        23215.0
+      ]
+    },
+    "power_w": {
+      "min": 213.41,
+      "max": 433.31,
+      "trial_mean_range": [
+        293.462,
+        408.728
+      ]
+    },
+    "temperature_c": {
+      "min": 59.0,
+      "max": 76.0,
+      "trial_mean_range": [
+        63.25,
+        73.4
+      ]
+    }
+  },
+  "paired_background_text_equality": {
+    "equal": 9641,
+    "total_treatment_backgrounds": 14600,
+    "equal_fraction": 0.6603424657534247,
+    "interpretation": "Identical input tokens and fixed 128 output tokens; generated text is not constrained to be bit-identical across different dynamic batch schedules."
+  },
+  "limitations": [
+    "Rare observer pauses remain in whole-request client timings; do not interpret small signed differences as guaranteed speedups.",
+    "0.5-second GPU sampling cannot resolve individual prefill chunks."
+  ]
+}

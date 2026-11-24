@@ -37,3 +37,5 @@ results/figures/
 后续阶段使用 `phase10/` 等同级目录。每个阶段的 README 记录数据来源、统计口径、重画方法与结论边界。PNG 用于 GitHub 预览，SVG / PDF 用于缩放和导出。
 
 原始请求、SSE、服务日志及完整实验数据保存在项目 `artifacts/` 下。此处的结果图、数据快照和说明可由 Git 跟踪。
+
+- [Phase 10](phase10/README.md)：dcn9 单卡多次 prefill 干扰；全输出 TPOT、单次/多次对照、五步窗口和逐步轨迹。

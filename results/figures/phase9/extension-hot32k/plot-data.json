@@ -1,0 +1,2505 @@
+{
+  "method": "P-hot/D-cold 32768-token PD; output=1; NCCL IB uses host-staged RoCE; application transfer spans are not pure wire latency",
+  "formal": [
+    {
+      "block": 1,
+      "transport": "socket",
+      "kind": "formal",
+      "index": 1,
+      "prompt_sha256": "6e99464b60dca386e0989c1b677df1418debdd53705d8652146e81c61dbf054b",
+      "success": true,
+      "ttft_ms": 870.1494869310409,
+      "e2e_ms": 871.4267490431666,
+      "response_id": "cmpl-___prefill_addr_192.168.1.9:14579___decode_addr_192.168.1.11:14580_4d3b93abf1f1403680ea8b8ab6ca8eed",
+      "error": null,
+      "http_status": 200,
+      "usage": {
+        "prompt_tokens": 32768,
+        "total_tokens": 32769,
+        "completion_tokens": 1,
+        "prompt_tokens_details": {
+          "cached_tokens": 32767
+        }
+      },
+      "finish_reason": "length",
+      "engine_id": "cmpl-___prefill_addr_192.168.1.9:14579___decode_addr_192.168.1.11:14580_4d3b93abf1f1403680ea8b8ab6ca8eed-0",
+      "tx_bytes": 1879048192,
+      "rx_bytes": 1879048192,
+      "tx_layers": 28,
+      "rx_layers": 28,
+      "tx_nccl_sync_sum_ms": 416.2419147323817,
+      "rx_nccl_sync_sum_ms": 572.1504481043667,
+      "tx_send_span_ms": 569.9880728498101,
+      "rx_receive_span_ms": 574.8883238993585,
+      "p_scheduled_tokens": 16,
+      "p_cached_tokens": 32752,
+      "d_scheduled_tokens": 1,
+      "p_steps": 1,
+      "d_steps": 1,
+      "source": "artifacts/two-node-phase9-kv-transport-evidence/extension-hot32k/block1-socket/raw/formal-1.response.json",
+      "e2e_minus_rx_span_ms": 296.5384251438081,
+      "rx_span_fraction_of_e2e": 0.6597092922963294
+    },
+    {
+      "block": 1,
+      "transport": "socket",
+      "kind": "formal",
+      "index": 2,
+      "prompt_sha256": "6e99464b60dca386e0989c1b677df1418debdd53705d8652146e81c61dbf054b",
+      "success": true,
+      "ttft_ms": 804.2157329618931,
+      "e2e_ms": 805.5671469774097,
+      "response_id": "cmpl-___prefill_addr_192.168.1.9:14579___decode_addr_192.168.1.11:14580_3979311f54104915bbc9a400f75abef7",
+      "error": null,
+      "http_status": 200,
+      "usage": {
+        "prompt_tokens": 32768,
+        "total_tokens": 32769,
+        "completion_tokens": 1,
+        "prompt_tokens_details": {
+          "cached_tokens": 32767
+        }
+      },
+      "finish_reason": "length",
+      "engine_id": "cmpl-___prefill_addr_192.168.1.9:14579___decode_addr_192.168.1.11:14580_3979311f54104915bbc9a400f75abef7-0",
+      "tx_bytes": 1879048192,
+      "rx_bytes": 1879048192,
+      "tx_layers": 28,
+      "rx_layers": 28,
+      "tx_nccl_sync_sum_ms": 402.75970101356506,
+      "rx_nccl_sync_sum_ms": 509.53142042271793,
+      "tx_send_span_ms": 507.88733595982194,
+      "rx_receive_span_ms": 511.935971211642,
+      "p_scheduled_tokens": 16,
+      "p_cached_tokens": 32752,
+      "d_scheduled_tokens": 1,
+      "p_steps": 1,
+      "d_steps": 1,
+      "source": "artifacts/two-node-phase9-kv-transport-evidence/extension-hot32k/block1-socket/raw/formal-2.response.json",
+      "e2e_minus_rx_span_ms": 293.6311757657677,
+      "rx_span_fraction_of_e2e": 0.6354975784855313
+    },
+    {
+      "block": 1,
+      "transport": "socket",
+      "kind": "formal",
+      "index": 3,
+      "prompt_sha256": "6e99464b60dca386e0989c1b677df1418debdd53705d8652146e81c61dbf054b",
+      "success": true,
+      "ttft_ms": 849.466129206121,
+      "e2e_ms": 850.7519091945142,
+      "response_id": "cmpl-___prefill_addr_192.168.1.9:14579___decode_addr_192.168.1.11:14580_792aa5cd6b9348c9abbb58ec7224b838",
+      "error": null,
+      "http_status": 200,
+      "usage": {
+        "prompt_tokens": 32768,
+        "total_tokens": 32769,
+        "completion_tokens": 1,
+        "prompt_tokens_details": {
+          "cached_tokens": 32767
+        }
+      },
+      "finish_reason": "length",
+      "engine_id": "cmpl-___prefill_addr_192.168.1.9:14579___decode_addr_192.168.1.11:14580_792aa5cd6b9348c9abbb58ec7224b838-0",
+      "tx_bytes": 1879048192,
+      "rx_bytes": 1879048192,
+      "tx_layers": 28,
+      "rx_layers": 28,
+      "tx_nccl_sync_sum_ms": 410.324432188645,
+      "rx_nccl_sync_sum_ms": 560.1783446036279,
+      "tx_send_span_ms": 558.1956580281258,
+      "rx_receive_span_ms": 562.7959331031889,
+      "p_scheduled_tokens": 16,
+      "p_cached_tokens": 32752,
+      "d_scheduled_tokens": 1,
+      "p_steps": 1,
+      "d_steps": 1,
+      "source": "artifacts/two-node-phase9-kv-transport-evidence/extension-hot32k/block1-socket/raw/formal-3.response.json",
+      "e2e_minus_rx_span_ms": 287.9559760913253,
+      "rx_span_fraction_of_e2e": 0.6615276757192823
+    },
+    {
+      "block": 1,
+      "transport": "socket",
+      "kind": "formal",
+      "index": 4,
+      "prompt_sha256": "6e99464b60dca386e0989c1b677df1418debdd53705d8652146e81c61dbf054b",
+      "success": true,
+      "ttft_ms": 842.0941750518978,
+      "e2e_ms": 843.5755919199437,
+      "response_id": "cmpl-___prefill_addr_192.168.1.9:14579___decode_addr_192.168.1.11:14580_1fe163520f664980bd657092ab5f2242",
+      "error": null,
+      "http_status": 200,
+      "usage": {
+        "prompt_tokens": 32768,
+        "total_tokens": 32769,
+        "completion_tokens": 1,
+        "prompt_tokens_details": {
+          "cached_tokens": 32767
+        }
+      },
+      "finish_reason": "length",
+      "engine_id": "cmpl-___prefill_addr_192.168.1.9:14579___decode_addr_192.168.1.11:14580_1fe163520f664980bd657092ab5f2242-0",
+      "tx_bytes": 1879048192,
+      "rx_bytes": 1879048192,
+      "tx_layers": 28,
+      "rx_layers": 28,
+      "tx_nccl_sync_sum_ms": 404.19274428859353,
+      "rx_nccl_sync_sum_ms": 547.2660912200809,
+      "tx_send_span_ms": 544.2237770184875,
+      "rx_receive_span_ms": 549.5853689499199,
+      "p_scheduled_tokens": 16,
+      "p_cached_tokens": 32752,
+      "d_scheduled_tokens": 1,
+      "p_steps": 1,
+      "d_steps": 1,
+      "source": "artifacts/two-node-phase9-kv-transport-evidence/extension-hot32k/block1-socket/raw/formal-4.response.json",
+      "e2e_minus_rx_span_ms": 293.99022297002375,
+      "rx_span_fraction_of_e2e": 0.6514951051382201
+    },
+    {
+      "block": 1,
+      "transport": "socket",
+      "kind": "formal",
+      "index": 5,
+      "prompt_sha256": "6e99464b60dca386e0989c1b677df1418debdd53705d8652146e81c61dbf054b",
+      "success": true,
+      "ttft_ms": 866.773942951113,
+      "e2e_ms": 868.2132640387863,
+      "response_id": "cmpl-___prefill_addr_192.168.1.9:14579___decode_addr_192.168.1.11:14580_45ecec998a244121b3a794f961ddf820",
+      "error": null,
+      "http_status": 200,
+      "usage": {
+        "prompt_tokens": 32768,
+        "total_tokens": 32769,
+        "completion_tokens": 1,
+        "prompt_tokens_details": {
+          "cached_tokens": 32767
+        }
+      },
+      "finish_reason": "length",
+      "engine_id": "cmpl-___prefill_addr_192.168.1.9:14579___decode_addr_192.168.1.11:14580_45ecec998a244121b3a794f961ddf820-0",
+      "tx_bytes": 1879048192,
+      "rx_bytes": 1879048192,
+      "tx_layers": 28,
+      "rx_layers": 28,
+      "tx_nccl_sync_sum_ms": 418.1886257138103,
+      "rx_nccl_sync_sum_ms": 574.6551232878119,
+      "tx_send_span_ms": 571.3902970310301,
+      "rx_receive_span_ms": 577.1785690449178,
+      "p_scheduled_tokens": 16,
+      "p_cached_tokens": 32752,
+      "d_scheduled_tokens": 1,
+      "p_steps": 1,
+      "d_steps": 1,
+      "source": "artifacts/two-node-phase9-kv-transport-evidence/extension-hot32k/block1-socket/raw/formal-5.response.json",
+      "e2e_minus_rx_span_ms": 291.03469499386847,
+      "rx_span_fraction_of_e2e": 0.6647889325716787
+    },
+    {
+      "block": 2,
+      "transport": "rdma",
+      "kind": "formal",
+      "index": 1,
+      "prompt_sha256": "6e99464b60dca386e0989c1b677df1418debdd53705d8652146e81c61dbf054b",
+      "success": true,
+      "ttft_ms": 476.6464219428599,
+      "e2e_ms": 477.7554711326957,
+      "response_id": "cmpl-___prefill_addr_192.168.1.9:14579___decode_addr_192.168.1.11:14580_af4cdee961554993839b3b46ff6c4426",
+      "error": null,
+      "http_status": 200,
+      "usage": {
+        "prompt_tokens": 32768,
+        "total_tokens": 32769,
+        "completion_tokens": 1,
+        "prompt_tokens_details": {
+          "cached_tokens": 32767
+        }
+      },
+      "finish_reason": "length",
+      "engine_id": "cmpl-___prefill_addr_192.168.1.9:14579___decode_addr_192.168.1.11:14580_af4cdee961554993839b3b46ff6c4426-0",
+      "tx_bytes": 1879048192,
+      "rx_bytes": 1879048192,
+      "tx_layers": 28,
+      "rx_layers": 28,
+      "tx_nccl_sync_sum_ms": 162.14231075719,
+      "rx_nccl_sync_sum_ms": 171.15043313242495,
+      "tx_send_span_ms": 177.20987391658127,
+      "rx_receive_span_ms": 176.30290612578392,
+      "p_scheduled_tokens": 16,
+      "p_cached_tokens": 32752,
+      "d_scheduled_tokens": 1,
+      "p_steps": 1,
+      "d_steps": 1,
+      "source": "artifacts/two-node-phase9-kv-transport-evidence/extension-hot32k/block2-rdma/raw/formal-1.response.json",
+      "e2e_minus_rx_span_ms": 301.45256500691175,
+      "rx_span_fraction_of_e2e": 0.36902331166986496
+    },
+    {
+      "block": 2,
+      "transport": "rdma",
+      "kind": "formal",
+      "index": 2,
+      "prompt_sha256": "6e99464b60dca386e0989c1b677df1418debdd53705d8652146e81c61dbf054b",
+      "success": true,
+      "ttft_ms": 460.94609913416207,
+      "e2e_ms": 461.9830520823598,
+      "response_id": "cmpl-___prefill_addr_192.168.1.9:14579___decode_addr_192.168.1.11:14580_20b84b70c8544061b05e597e56da5ae5",
+      "error": null,
+      "http_status": 200,
+      "usage": {
+        "prompt_tokens": 32768,
+        "total_tokens": 32769,
+        "completion_tokens": 1,
+        "prompt_tokens_details": {
+          "cached_tokens": 32767
+        }
+      },
+      "finish_reason": "length",
+      "engine_id": "cmpl-___prefill_addr_192.168.1.9:14579___decode_addr_192.168.1.11:14580_20b84b70c8544061b05e597e56da5ae5-0",
+      "tx_bytes": 1879048192,
+      "rx_bytes": 1879048192,
+      "tx_layers": 28,
+      "rx_layers": 28,
+      "tx_nccl_sync_sum_ms": 161.410667700693,
+      "rx_nccl_sync_sum_ms": 170.6031619105488,
+      "tx_send_span_ms": 176.5864419285208,
+      "rx_receive_span_ms": 175.938970874995,
+      "p_scheduled_tokens": 16,
+      "p_cached_tokens": 32752,
+      "d_scheduled_tokens": 1,
+      "p_steps": 1,
+      "d_steps": 1,
+      "source": "artifacts/two-node-phase9-kv-transport-evidence/extension-hot32k/block2-rdma/raw/formal-2.response.json",
+      "e2e_minus_rx_span_ms": 286.0440812073648,
+      "rx_span_fraction_of_e2e": 0.38083425372848867
+    },
+    {
+      "block": 2,
+      "transport": "rdma",
+      "kind": "formal",
+      "index": 3,
+      "prompt_sha256": "6e99464b60dca386e0989c1b677df1418debdd53705d8652146e81c61dbf054b",
+      "success": true,
+      "ttft_ms": 469.0621930640191,
+      "e2e_ms": 470.22730694152415,
+      "response_id": "cmpl-___prefill_addr_192.168.1.9:14579___decode_addr_192.168.1.11:14580_acc911a77d9e4e798038471bf3aa0a7b",
+      "error": null,
+      "http_status": 200,
+      "usage": {
+        "prompt_tokens": 32768,
+        "total_tokens": 32769,
+        "completion_tokens": 1,
+        "prompt_tokens_details": {
+          "cached_tokens": 32767
+        }
+      },
+      "finish_reason": "length",
+      "engine_id": "cmpl-___prefill_addr_192.168.1.9:14579___decode_addr_192.168.1.11:14580_acc911a77d9e4e798038471bf3aa0a7b-0",
+      "tx_bytes": 1879048192,
+      "rx_bytes": 1879048192,
+      "tx_layers": 28,
+      "rx_layers": 28,
+      "tx_nccl_sync_sum_ms": 161.7999051231891,
+      "rx_nccl_sync_sum_ms": 171.7487785499543,
+      "tx_send_span_ms": 176.90623691305518,
+      "rx_receive_span_ms": 176.27882305532694,
+      "p_scheduled_tokens": 16,
+      "p_cached_tokens": 32752,
+      "d_scheduled_tokens": 1,
+      "p_steps": 1,
+      "d_steps": 1,
+      "source": "artifacts/two-node-phase9-kv-transport-evidence/extension-hot32k/block2-rdma/raw/formal-3.response.json",
+      "e2e_minus_rx_span_ms": 293.9484838861972,
+      "rx_span_fraction_of_e2e": 0.3748800217534971
+    },
+    {
+      "block": 2,
+      "transport": "rdma",
+      "kind": "formal",
+      "index": 4,
+      "prompt_sha256": "6e99464b60dca386e0989c1b677df1418debdd53705d8652146e81c61dbf054b",
+      "success": true,
+      "ttft_ms": 468.7262380030006,
+      "e2e_ms": 469.81806796975434,
+      "response_id": "cmpl-___prefill_addr_192.168.1.9:14579___decode_addr_192.168.1.11:14580_9a63d125b241427abc83a2e1ef3810e5",
+      "error": null,
+      "http_status": 200,
+      "usage": {
+        "prompt_tokens": 32768,
+        "total_tokens": 32769,
+        "completion_tokens": 1,
+        "prompt_tokens_details": {
+          "cached_tokens": 32767
+        }
+      },
+      "finish_reason": "length",
+      "engine_id": "cmpl-___prefill_addr_192.168.1.9:14579___decode_addr_192.168.1.11:14580_9a63d125b241427abc83a2e1ef3810e5-0",
+      "tx_bytes": 1879048192,
+      "rx_bytes": 1879048192,
+      "tx_layers": 28,
+      "rx_layers": 28,
+      "tx_nccl_sync_sum_ms": 162.10228367708623,
+      "rx_nccl_sync_sum_ms": 171.49903066456318,
+      "tx_send_span_ms": 177.02160612680018,
+      "rx_receive_span_ms": 176.00336577743292,
+      "p_scheduled_tokens": 16,
+      "p_cached_tokens": 32752,
+      "d_scheduled_tokens": 1,
+      "p_steps": 1,
+      "d_steps": 1,
+      "source": "artifacts/two-node-phase9-kv-transport-evidence/extension-hot32k/block2-rdma/raw/formal-4.response.json",
+      "e2e_minus_rx_span_ms": 293.8147021923214,
+      "rx_span_fraction_of_e2e": 0.3746202578755731
+    },
+    {
+      "block": 2,
+      "transport": "rdma",
+      "kind": "formal",
+      "index": 5,
+      "prompt_sha256": "6e99464b60dca386e0989c1b677df1418debdd53705d8652146e81c61dbf054b",
+      "success": true,
+      "ttft_ms": 464.24381504766643,
+      "e2e_ms": 465.33068688586354,
+      "response_id": "cmpl-___prefill_addr_192.168.1.9:14579___decode_addr_192.168.1.11:14580_6b4ef4ecefe74058a1e610f728445c9c",
+      "error": null,
+      "http_status": 200,
+      "usage": {
+        "prompt_tokens": 32768,
+        "total_tokens": 32769,
+        "completion_tokens": 1,
+        "prompt_tokens_details": {
+          "cached_tokens": 32767
+        }
+      },
+      "finish_reason": "length",
+      "engine_id": "cmpl-___prefill_addr_192.168.1.9:14579___decode_addr_192.168.1.11:14580_6b4ef4ecefe74058a1e610f728445c9c-0",
+      "tx_bytes": 1879048192,
+      "rx_bytes": 1879048192,
+      "tx_layers": 28,
+      "rx_layers": 28,
+      "tx_nccl_sync_sum_ms": 162.1427065692842,
+      "rx_nccl_sync_sum_ms": 172.27636906318367,
+      "tx_send_span_ms": 177.77193011716008,
+      "rx_receive_span_ms": 176.7964819446206,
+      "p_scheduled_tokens": 16,
+      "p_cached_tokens": 32752,
+      "d_scheduled_tokens": 1,
+      "p_steps": 1,
+      "d_steps": 1,
+      "source": "artifacts/two-node-phase9-kv-transport-evidence/extension-hot32k/block2-rdma/raw/formal-5.response.json",
+      "e2e_minus_rx_span_ms": 288.53420494124293,
+      "rx_span_fraction_of_e2e": 0.3799372939012408
+    },
+    {
+      "block": 3,
+      "transport": "rdma",
+      "kind": "formal",
+      "index": 1,
+      "prompt_sha256": "6e99464b60dca386e0989c1b677df1418debdd53705d8652146e81c61dbf054b",
+      "success": true,
+      "ttft_ms": 479.122577002272,
+      "e2e_ms": 480.3614909760654,
+      "response_id": "cmpl-___prefill_addr_192.168.1.9:14579___decode_addr_192.168.1.11:14580_d14786a306324800bc6a2d129e5f7a28",
+      "error": null,
+      "http_status": 200,
+      "usage": {
+        "prompt_tokens": 32768,
+        "total_tokens": 32769,
+        "completion_tokens": 1,
+        "prompt_tokens_details": {
+          "cached_tokens": 32767
+        }
+      },
+      "finish_reason": "length",
+      "engine_id": "cmpl-___prefill_addr_192.168.1.9:14579___decode_addr_192.168.1.11:14580_d14786a306324800bc6a2d129e5f7a28-0",
+      "tx_bytes": 1879048192,
+      "rx_bytes": 1879048192,
+      "tx_layers": 28,
+      "rx_layers": 28,
+      "tx_nccl_sync_sum_ms": 161.54011455364525,
+      "rx_nccl_sync_sum_ms": 171.8429911416024,
+      "tx_send_span_ms": 178.54771297425032,
+      "rx_receive_span_ms": 177.96441516838968,
+      "p_scheduled_tokens": 16,
+      "p_cached_tokens": 32752,
+      "d_scheduled_tokens": 1,
+      "p_steps": 1,
+      "d_steps": 1,
+      "source": "artifacts/two-node-phase9-kv-transport-evidence/extension-hot32k/block3-rdma/raw/formal-1.response.json",
+      "e2e_minus_rx_span_ms": 302.3970758076757,
+      "rx_span_fraction_of_e2e": 0.37048018734136406
+    },
+    {
+      "block": 3,
+      "transport": "rdma",
+      "kind": "formal",
+      "index": 2,
+      "prompt_sha256": "6e99464b60dca386e0989c1b677df1418debdd53705d8652146e81c61dbf054b",
+      "success": true,
+      "ttft_ms": 471.1844502016902,
+      "e2e_ms": 472.5151441525668,
+      "response_id": "cmpl-___prefill_addr_192.168.1.9:14579___decode_addr_192.168.1.11:14580_0694f1fc5e5843e0857300f03c6a66cf",
+      "error": null,
+      "http_status": 200,
+      "usage": {
+        "prompt_tokens": 32768,
+        "total_tokens": 32769,
+        "completion_tokens": 1,
+        "prompt_tokens_details": {
+          "cached_tokens": 32767
+        }
+      },
+      "finish_reason": "length",
+      "engine_id": "cmpl-___prefill_addr_192.168.1.9:14579___decode_addr_192.168.1.11:14580_0694f1fc5e5843e0857300f03c6a66cf-0",
+      "tx_bytes": 1879048192,
+      "rx_bytes": 1879048192,
+      "tx_layers": 28,
+      "rx_layers": 28,
+      "tx_nccl_sync_sum_ms": 161.1174347344786,
+      "rx_nccl_sync_sum_ms": 170.65925151109695,
+      "tx_send_span_ms": 177.93101212009788,
+      "rx_receive_span_ms": 177.11533489637077,
+      "p_scheduled_tokens": 16,
+      "p_cached_tokens": 32752,
+      "d_scheduled_tokens": 1,
+      "p_steps": 1,
+      "d_steps": 1,
+      "source": "artifacts/two-node-phase9-kv-transport-evidence/extension-hot32k/block3-rdma/raw/formal-2.response.json",
+      "e2e_minus_rx_span_ms": 295.399809256196,
+      "rx_span_fraction_of_e2e": 0.3748352557334826
+    },
+    {
+      "block": 3,
+      "transport": "rdma",
+      "kind": "formal",
+      "index": 3,
+      "prompt_sha256": "6e99464b60dca386e0989c1b677df1418debdd53705d8652146e81c61dbf054b",
+      "success": true,
+      "ttft_ms": 470.9229860454798,
+      "e2e_ms": 472.21114998683333,
+      "response_id": "cmpl-___prefill_addr_192.168.1.9:14579___decode_addr_192.168.1.11:14580_1b136fabee7740a58709a4e923ec5f4c",
+      "error": null,
+      "http_status": 200,
+      "usage": {
+        "prompt_tokens": 32768,
+        "total_tokens": 32769,
+        "completion_tokens": 1,
+        "prompt_tokens_details": {
+          "cached_tokens": 32767
+        }
+      },
+      "finish_reason": "length",
+      "engine_id": "cmpl-___prefill_addr_192.168.1.9:14579___decode_addr_192.168.1.11:14580_1b136fabee7740a58709a4e923ec5f4c-0",
+      "tx_bytes": 1879048192,
+      "rx_bytes": 1879048192,
+      "tx_layers": 28,
+      "rx_layers": 28,
+      "tx_nccl_sync_sum_ms": 161.0644361935556,
+      "rx_nccl_sync_sum_ms": 170.3803176060319,
+      "tx_send_span_ms": 177.5147640146315,
+      "rx_receive_span_ms": 176.57302203588188,
+      "p_scheduled_tokens": 16,
+      "p_cached_tokens": 32752,
+      "d_scheduled_tokens": 1,
+      "p_steps": 1,
+      "d_steps": 1,
+      "source": "artifacts/two-node-phase9-kv-transport-evidence/extension-hot32k/block3-rdma/raw/formal-3.response.json",
+      "e2e_minus_rx_span_ms": 295.63812795095146,
+      "rx_span_fraction_of_e2e": 0.37392810830664475
+    },
+    {
+      "block": 3,
+      "transport": "rdma",
+      "kind": "formal",
+      "index": 4,
+      "prompt_sha256": "6e99464b60dca386e0989c1b677df1418debdd53705d8652146e81c61dbf054b",
+      "success": true,
+      "ttft_ms": 474.0454428829253,
+      "e2e_ms": 475.37056100554764,
+      "response_id": "cmpl-___prefill_addr_192.168.1.9:14579___decode_addr_192.168.1.11:14580_bf1297f8dd8943549037102765e33812",
+      "error": null,
+      "http_status": 200,
+      "usage": {
+        "prompt_tokens": 32768,
+        "total_tokens": 32769,
+        "completion_tokens": 1,
+        "prompt_tokens_details": {
+          "cached_tokens": 32767
+        }
+      },
+      "finish_reason": "length",
+      "engine_id": "cmpl-___prefill_addr_192.168.1.9:14579___decode_addr_192.168.1.11:14580_bf1297f8dd8943549037102765e33812-0",
+      "tx_bytes": 1879048192,
+      "rx_bytes": 1879048192,
+      "tx_layers": 28,
+      "rx_layers": 28,
+      "tx_nccl_sync_sum_ms": 161.34474659338593,
+      "rx_nccl_sync_sum_ms": 170.6572666298598,
+      "tx_send_span_ms": 176.56101798638701,
+      "rx_receive_span_ms": 175.73703709058464,
+      "p_scheduled_tokens": 16,
+      "p_cached_tokens": 32752,
+      "d_scheduled_tokens": 1,
+      "p_steps": 1,
+      "d_steps": 1,
+      "source": "artifacts/two-node-phase9-kv-transport-evidence/extension-hot32k/block3-rdma/raw/formal-4.response.json",
+      "e2e_minus_rx_span_ms": 299.633523914963,
+      "rx_span_fraction_of_e2e": 0.36968430842425215
+    },
+    {
+      "block": 3,
+      "transport": "rdma",
+      "kind": "formal",
+      "index": 5,
+      "prompt_sha256": "6e99464b60dca386e0989c1b677df1418debdd53705d8652146e81c61dbf054b",
+      "success": true,
+      "ttft_ms": 476.3401539530605,
+      "e2e_ms": 477.61304397135973,
+      "response_id": "cmpl-___prefill_addr_192.168.1.9:14579___decode_addr_192.168.1.11:14580_b96781a37716418eae69c6225f14cef2",
+      "error": null,
+      "http_status": 200,
+      "usage": {
+        "prompt_tokens": 32768,
+        "total_tokens": 32769,
+        "completion_tokens": 1,
+        "prompt_tokens_details": {
+          "cached_tokens": 32767
+        }
+      },
+      "finish_reason": "length",
+      "engine_id": "cmpl-___prefill_addr_192.168.1.9:14579___decode_addr_192.168.1.11:14580_b96781a37716418eae69c6225f14cef2-0",
+      "tx_bytes": 1879048192,
+      "rx_bytes": 1879048192,
+      "tx_layers": 28,
+      "rx_layers": 28,
+      "tx_nccl_sync_sum_ms": 163.05444482713938,
+      "rx_nccl_sync_sum_ms": 172.0185715239495,
+      "tx_send_span_ms": 178.38148609735072,
+      "rx_receive_span_ms": 177.13339300826192,
+      "p_scheduled_tokens": 16,
+      "p_cached_tokens": 32752,
+      "d_scheduled_tokens": 1,
+      "p_steps": 1,
+      "d_steps": 1,
+      "source": "artifacts/two-node-phase9-kv-transport-evidence/extension-hot32k/block3-rdma/raw/formal-5.response.json",
+      "e2e_minus_rx_span_ms": 300.4796509630978,
+      "rx_span_fraction_of_e2e": 0.3708721845940284
+    },
+    {
+      "block": 4,
+      "transport": "socket",
+      "kind": "formal",
+      "index": 1,
+      "prompt_sha256": "6e99464b60dca386e0989c1b677df1418debdd53705d8652146e81c61dbf054b",
+      "success": true,
+      "ttft_ms": 890.0682530365884,
+      "e2e_ms": 890.990569954738,
+      "response_id": "cmpl-___prefill_addr_192.168.1.9:14579___decode_addr_192.168.1.11:14580_abfe74709a4a42739d6ff593c4e8ee4d",
+      "error": null,
+      "http_status": 200,
+      "usage": {
+        "prompt_tokens": 32768,
+        "total_tokens": 32769,
+        "completion_tokens": 1,
+        "prompt_tokens_details": {
+          "cached_tokens": 32767
+        }
+      },
+      "finish_reason": "length",
+      "engine_id": "cmpl-___prefill_addr_192.168.1.9:14579___decode_addr_192.168.1.11:14580_abfe74709a4a42739d6ff593c4e8ee4d-0",
+      "tx_bytes": 1879048192,
+      "rx_bytes": 1879048192,
+      "tx_layers": 28,
+      "rx_layers": 28,
+      "tx_nccl_sync_sum_ms": 426.07633536681533,
+      "rx_nccl_sync_sum_ms": 588.907320285216,
+      "tx_send_span_ms": 588.6510401032865,
+      "rx_receive_span_ms": 593.555920990184,
+      "p_scheduled_tokens": 16,
+      "p_cached_tokens": 32752,
+      "d_scheduled_tokens": 1,
+      "p_steps": 1,
+      "d_steps": 1,
+      "source": "artifacts/two-node-phase9-kv-transport-evidence/extension-hot32k/block4-socket/raw/formal-1.response.json",
+      "e2e_minus_rx_span_ms": 297.43464896455407,
+      "rx_span_fraction_of_e2e": 0.6661753120690563
+    },
+    {
+      "block": 4,
+      "transport": "socket",
+      "kind": "formal",
+      "index": 2,
+      "prompt_sha256": "6e99464b60dca386e0989c1b677df1418debdd53705d8652146e81c61dbf054b",
+      "success": true,
+      "ttft_ms": 881.9895931519568,
+      "e2e_ms": 883.3213851321489,
+      "response_id": "cmpl-___prefill_addr_192.168.1.9:14579___decode_addr_192.168.1.11:14580_6dffd74296834b1bb07ddcf77b847ce1",
+      "error": null,
+      "http_status": 200,
+      "usage": {
+        "prompt_tokens": 32768,
+        "total_tokens": 32769,
+        "completion_tokens": 1,
+        "prompt_tokens_details": {
+          "cached_tokens": 32767
+        }
+      },
+      "finish_reason": "length",
+      "engine_id": "cmpl-___prefill_addr_192.168.1.9:14579___decode_addr_192.168.1.11:14580_6dffd74296834b1bb07ddcf77b847ce1-0",
+      "tx_bytes": 1879048192,
+      "rx_bytes": 1879048192,
+      "tx_layers": 28,
+      "rx_layers": 28,
+      "tx_nccl_sync_sum_ms": 421.9275373034179,
+      "rx_nccl_sync_sum_ms": 581.9366285577416,
+      "tx_send_span_ms": 581.0016090981662,
+      "rx_receive_span_ms": 585.1613730192184,
+      "p_scheduled_tokens": 16,
+      "p_cached_tokens": 32752,
+      "d_scheduled_tokens": 1,
+      "p_steps": 1,
+      "d_steps": 1,
+      "source": "artifacts/two-node-phase9-kv-transport-evidence/extension-hot32k/block4-socket/raw/formal-2.response.json",
+      "e2e_minus_rx_span_ms": 298.1600121129304,
+      "rx_span_fraction_of_e2e": 0.6624557979332467
+    },
+    {
+      "block": 4,
+      "transport": "socket",
+      "kind": "formal",
+      "index": 3,
+      "prompt_sha256": "6e99464b60dca386e0989c1b677df1418debdd53705d8652146e81c61dbf054b",
+      "success": true,
+      "ttft_ms": 893.5467060655355,
+      "e2e_ms": 894.8968760669231,
+      "response_id": "cmpl-___prefill_addr_192.168.1.9:14579___decode_addr_192.168.1.11:14580_657fa9794c6a45c1bf740a81b6b92a57",
+      "error": null,
+      "http_status": 200,
+      "usage": {
+        "prompt_tokens": 32768,
+        "total_tokens": 32769,
+        "completion_tokens": 1,
+        "prompt_tokens_details": {
+          "cached_tokens": 32767
+        }
+      },
+      "finish_reason": "length",
+      "engine_id": "cmpl-___prefill_addr_192.168.1.9:14579___decode_addr_192.168.1.11:14580_657fa9794c6a45c1bf740a81b6b92a57-0",
+      "tx_bytes": 1879048192,
+      "rx_bytes": 1879048192,
+      "tx_layers": 28,
+      "rx_layers": 28,
+      "tx_nccl_sync_sum_ms": 426.88050284050405,
+      "rx_nccl_sync_sum_ms": 588.256160961464,
+      "tx_send_span_ms": 586.9962989818305,
+      "rx_receive_span_ms": 591.5939859114587,
+      "p_scheduled_tokens": 16,
+      "p_cached_tokens": 32752,
+      "d_scheduled_tokens": 1,
+      "p_steps": 1,
+      "d_steps": 1,
+      "source": "artifacts/two-node-phase9-kv-transport-evidence/extension-hot32k/block4-socket/raw/formal-3.response.json",
+      "e2e_minus_rx_span_ms": 303.3028901554644,
+      "rx_span_fraction_of_e2e": 0.6610750375076933
+    },
+    {
+      "block": 4,
+      "transport": "socket",
+      "kind": "formal",
+      "index": 4,
+      "prompt_sha256": "6e99464b60dca386e0989c1b677df1418debdd53705d8652146e81c61dbf054b",
+      "success": true,
+      "ttft_ms": 884.4990860670805,
+      "e2e_ms": 885.6341510545462,
+      "response_id": "cmpl-___prefill_addr_192.168.1.9:14579___decode_addr_192.168.1.11:14580_9e58568cf0a841cf973e9e5725743475",
+      "error": null,
+      "http_status": 200,
+      "usage": {
+        "prompt_tokens": 32768,
+        "total_tokens": 32769,
+        "completion_tokens": 1,
+        "prompt_tokens_details": {
+          "cached_tokens": 32767
+        }
+      },
+      "finish_reason": "length",
+      "engine_id": "cmpl-___prefill_addr_192.168.1.9:14579___decode_addr_192.168.1.11:14580_9e58568cf0a841cf973e9e5725743475-0",
+      "tx_bytes": 1879048192,
+      "rx_bytes": 1879048192,
+      "tx_layers": 28,
+      "rx_layers": 28,
+      "tx_nccl_sync_sum_ms": 423.2897979672998,
+      "rx_nccl_sync_sum_ms": 585.1467989850789,
+      "tx_send_span_ms": 582.7731650788337,
+      "rx_receive_span_ms": 587.4467932153493,
+      "p_scheduled_tokens": 16,
+      "p_cached_tokens": 32752,
+      "d_scheduled_tokens": 1,
+      "p_steps": 1,
+      "d_steps": 1,
+      "source": "artifacts/two-node-phase9-kv-transport-evidence/extension-hot32k/block4-socket/raw/formal-4.response.json",
+      "e2e_minus_rx_span_ms": 298.1873578391969,
+      "rx_span_fraction_of_e2e": 0.6633063918276662
+    },
+    {
+      "block": 4,
+      "transport": "socket",
+      "kind": "formal",
+      "index": 5,
+      "prompt_sha256": "6e99464b60dca386e0989c1b677df1418debdd53705d8652146e81c61dbf054b",
+      "success": true,
+      "ttft_ms": 905.595026910305,
+      "e2e_ms": 906.7268220242113,
+      "response_id": "cmpl-___prefill_addr_192.168.1.9:14579___decode_addr_192.168.1.11:14580_632ade44405f4044acbb208941cfb4ef",
+      "error": null,
+      "http_status": 200,
+      "usage": {
+        "prompt_tokens": 32768,
+        "total_tokens": 32769,
+        "completion_tokens": 1,
+        "prompt_tokens_details": {
+          "cached_tokens": 32767
+        }
+      },
+      "finish_reason": "length",
+      "engine_id": "cmpl-___prefill_addr_192.168.1.9:14579___decode_addr_192.168.1.11:14580_632ade44405f4044acbb208941cfb4ef-0",
+      "tx_bytes": 1879048192,
+      "rx_bytes": 1879048192,
+      "tx_layers": 28,
+      "rx_layers": 28,
+      "tx_nccl_sync_sum_ms": 428.8081065751612,
+      "rx_nccl_sync_sum_ms": 591.2351433653384,
+      "tx_send_span_ms": 590.9094209782779,
+      "rx_receive_span_ms": 595.3490391839296,
+      "p_scheduled_tokens": 16,
+      "p_cached_tokens": 32752,
+      "d_scheduled_tokens": 1,
+      "p_steps": 1,
+      "d_steps": 1,
+      "source": "artifacts/two-node-phase9-kv-transport-evidence/extension-hot32k/block4-socket/raw/formal-5.response.json",
+      "e2e_minus_rx_span_ms": 311.3777828402817,
+      "rx_span_fraction_of_e2e": 0.656591406279181
+    }
+  ],
+  "warmup": [
+    {
+      "block": 1,
+      "transport": "socket",
+      "kind": "cold-warmup",
+      "index": 1,
+      "prompt_sha256": "6e99464b60dca386e0989c1b677df1418debdd53705d8652146e81c61dbf054b",
+      "success": true,
+      "ttft_ms": 6572.757356800139,
+      "e2e_ms": 6574.641613988206,
+      "response_id": "cmpl-___prefill_addr_192.168.1.9:14579___decode_addr_192.168.1.11:14580_c9abb664fd2d4f169bdffb124907b24d",
+      "error": null,
+      "http_status": 200,
+      "usage": {
+        "prompt_tokens": 32768,
+        "total_tokens": 32769,
+        "completion_tokens": 1,
+        "prompt_tokens_details": {
+          "cached_tokens": 32767
+        }
+      },
+      "finish_reason": "length",
+      "engine_id": "cmpl-___prefill_addr_192.168.1.9:14579___decode_addr_192.168.1.11:14580_c9abb664fd2d4f169bdffb124907b24d-0",
+      "tx_bytes": 1879048192,
+      "rx_bytes": 1879048192,
+      "tx_layers": 28,
+      "rx_layers": 28,
+      "tx_nccl_sync_sum_ms": 488.5524401906878,
+      "rx_nccl_sync_sum_ms": 641.3163195829839,
+      "tx_send_span_ms": 1323.3864910434932,
+      "rx_receive_span_ms": 651.986044133082,
+      "p_scheduled_tokens": 32768,
+      "p_cached_tokens": 0,
+      "d_scheduled_tokens": 1,
+      "p_steps": 16,
+      "d_steps": 1,
+      "source": "artifacts/two-node-phase9-kv-transport-evidence/extension-hot32k/block1-socket/raw/cold-warmup-1.response.json",
+      "e2e_minus_rx_span_ms": 5922.655569855124,
+      "rx_span_fraction_of_e2e": 0.09916678085477948
+    },
+    {
+      "block": 1,
+      "transport": "socket",
+      "kind": "hot-warmup",
+      "index": 1,
+      "prompt_sha256": "6e99464b60dca386e0989c1b677df1418debdd53705d8652146e81c61dbf054b",
+      "success": true,
+      "ttft_ms": 916.0014670342207,
+      "e2e_ms": 917.4987091682851,
+      "response_id": "cmpl-___prefill_addr_192.168.1.9:14579___decode_addr_192.168.1.11:14580_dcf59da55a8745df85f7c02128692099",
+      "error": null,
+      "http_status": 200,
+      "usage": {
+        "prompt_tokens": 32768,
+        "total_tokens": 32769,
+        "completion_tokens": 1,
+        "prompt_tokens_details": {
+          "cached_tokens": 32767
+        }
+      },
+      "finish_reason": "length",
+      "engine_id": "cmpl-___prefill_addr_192.168.1.9:14579___decode_addr_192.168.1.11:14580_dcf59da55a8745df85f7c02128692099-0",
+      "tx_bytes": 1879048192,
+      "rx_bytes": 1879048192,
+      "tx_layers": 28,
+      "rx_layers": 28,
+      "tx_nccl_sync_sum_ms": 434.90347918123007,
+      "rx_nccl_sync_sum_ms": 589.6847627591342,
+      "tx_send_span_ms": 586.8613580241799,
+      "rx_receive_span_ms": 592.4332810100168,
+      "p_scheduled_tokens": 16,
+      "p_cached_tokens": 32752,
+      "d_scheduled_tokens": 1,
+      "p_steps": 1,
+      "d_steps": 1,
+      "source": "artifacts/two-node-phase9-kv-transport-evidence/extension-hot32k/block1-socket/raw/hot-warmup-1.response.json",
+      "e2e_minus_rx_span_ms": 325.06542815826833,
+      "rx_span_fraction_of_e2e": 0.6457047569549815
+    },
+    {
+      "block": 2,
+      "transport": "rdma",
+      "kind": "cold-warmup",
+      "index": 1,
+      "prompt_sha256": "6e99464b60dca386e0989c1b677df1418debdd53705d8652146e81c61dbf054b",
+      "success": true,
+      "ttft_ms": 6321.566064842045,
+      "e2e_ms": 6322.788322810084,
+      "response_id": "cmpl-___prefill_addr_192.168.1.9:14579___decode_addr_192.168.1.11:14580_6436deadd083467ba038a55f9285af17",
+      "error": null,
+      "http_status": 200,
+      "usage": {
+        "prompt_tokens": 32768,
+        "total_tokens": 32769,
+        "completion_tokens": 1,
+        "prompt_tokens_details": {
+          "cached_tokens": 32767
+        }
+      },
+      "finish_reason": "length",
+      "engine_id": "cmpl-___prefill_addr_192.168.1.9:14579___decode_addr_192.168.1.11:14580_6436deadd083467ba038a55f9285af17-0",
+      "tx_bytes": 1879048192,
+      "rx_bytes": 1879048192,
+      "tx_layers": 28,
+      "rx_layers": 28,
+      "tx_nccl_sync_sum_ms": 241.46188492886722,
+      "rx_nccl_sync_sum_ms": 250.51644211634994,
+      "tx_send_span_ms": 1542.6775561645627,
+      "rx_receive_span_ms": 259.0948580764234,
+      "p_scheduled_tokens": 32768,
+      "p_cached_tokens": 0,
+      "d_scheduled_tokens": 1,
+      "p_steps": 16,
+      "d_steps": 1,
+      "source": "artifacts/two-node-phase9-kv-transport-evidence/extension-hot32k/block2-rdma/raw/cold-warmup-1.response.json",
+      "e2e_minus_rx_span_ms": 6063.69346473366,
+      "rx_span_fraction_of_e2e": 0.040977942775928956
+    },
+    {
+      "block": 2,
+      "transport": "rdma",
+      "kind": "hot-warmup",
+      "index": 1,
+      "prompt_sha256": "6e99464b60dca386e0989c1b677df1418debdd53705d8652146e81c61dbf054b",
+      "success": true,
+      "ttft_ms": 484.4970549456775,
+      "e2e_ms": 485.51660496741533,
+      "response_id": "cmpl-___prefill_addr_192.168.1.9:14579___decode_addr_192.168.1.11:14580_d97bc74c213a4e21bc25bd3eb6de2f21",
+      "error": null,
+      "http_status": 200,
+      "usage": {
+        "prompt_tokens": 32768,
+        "total_tokens": 32769,
+        "completion_tokens": 1,
+        "prompt_tokens_details": {
+          "cached_tokens": 32767
+        }
+      },
+      "finish_reason": "length",
+      "engine_id": "cmpl-___prefill_addr_192.168.1.9:14579___decode_addr_192.168.1.11:14580_d97bc74c213a4e21bc25bd3eb6de2f21-0",
+      "tx_bytes": 1879048192,
+      "rx_bytes": 1879048192,
+      "tx_layers": 28,
+      "rx_layers": 28,
+      "tx_nccl_sync_sum_ms": 162.13110298849642,
+      "rx_nccl_sync_sum_ms": 171.2052768561989,
+      "tx_send_span_ms": 178.20084188133478,
+      "rx_receive_span_ms": 177.07528499886394,
+      "p_scheduled_tokens": 16,
+      "p_cached_tokens": 32752,
+      "d_scheduled_tokens": 1,
+      "p_steps": 1,
+      "d_steps": 1,
+      "source": "artifacts/two-node-phase9-kv-transport-evidence/extension-hot32k/block2-rdma/raw/hot-warmup-1.response.json",
+      "e2e_minus_rx_span_ms": 308.4413199685514,
+      "rx_span_fraction_of_e2e": 0.36471519858882695
+    },
+    {
+      "block": 3,
+      "transport": "rdma",
+      "kind": "cold-warmup",
+      "index": 1,
+      "prompt_sha256": "6e99464b60dca386e0989c1b677df1418debdd53705d8652146e81c61dbf054b",
+      "success": true,
+      "ttft_ms": 6012.501677963883,
+      "e2e_ms": 6014.0101769939065,
+      "response_id": "cmpl-___prefill_addr_192.168.1.9:14579___decode_addr_192.168.1.11:14580_95ddd8bf473e4a6c95f076a21273fa17",
+      "error": null,
+      "http_status": 200,
+      "usage": {
+        "prompt_tokens": 32768,
+        "total_tokens": 32769,
+        "completion_tokens": 1,
+        "prompt_tokens_details": {
+          "cached_tokens": 32767
+        }
+      },
+      "finish_reason": "length",
+      "engine_id": "cmpl-___prefill_addr_192.168.1.9:14579___decode_addr_192.168.1.11:14580_95ddd8bf473e4a6c95f076a21273fa17-0",
+      "tx_bytes": 1879048192,
+      "rx_bytes": 1879048192,
+      "tx_layers": 28,
+      "rx_layers": 28,
+      "tx_nccl_sync_sum_ms": 237.79076850041747,
+      "rx_nccl_sync_sum_ms": 246.36641144752502,
+      "tx_send_span_ms": 751.5180199407041,
+      "rx_receive_span_ms": 254.6850680373609,
+      "p_scheduled_tokens": 32768,
+      "p_cached_tokens": 0,
+      "d_scheduled_tokens": 1,
+      "p_steps": 16,
+      "d_steps": 1,
+      "source": "artifacts/two-node-phase9-kv-transport-evidence/extension-hot32k/block3-rdma/raw/cold-warmup-1.response.json",
+      "e2e_minus_rx_span_ms": 5759.325108956546,
+      "rx_span_fraction_of_e2e": 0.04234862604849545
+    },
+    {
+      "block": 3,
+      "transport": "rdma",
+      "kind": "hot-warmup",
+      "index": 1,
+      "prompt_sha256": "6e99464b60dca386e0989c1b677df1418debdd53705d8652146e81c61dbf054b",
+      "success": true,
+      "ttft_ms": 469.30753788910806,
+      "e2e_ms": 470.4291080124676,
+      "response_id": "cmpl-___prefill_addr_192.168.1.9:14579___decode_addr_192.168.1.11:14580_04e35cd2b60e4be29d8f23cd69067e34",
+      "error": null,
+      "http_status": 200,
+      "usage": {
+        "prompt_tokens": 32768,
+        "total_tokens": 32769,
+        "completion_tokens": 1,
+        "prompt_tokens_details": {
+          "cached_tokens": 32767
+        }
+      },
+      "finish_reason": "length",
+      "engine_id": "cmpl-___prefill_addr_192.168.1.9:14579___decode_addr_192.168.1.11:14580_04e35cd2b60e4be29d8f23cd69067e34-0",
+      "tx_bytes": 1879048192,
+      "rx_bytes": 1879048192,
+      "tx_layers": 28,
+      "rx_layers": 28,
+      "tx_nccl_sync_sum_ms": 161.23991087079048,
+      "rx_nccl_sync_sum_ms": 170.85911589674652,
+      "tx_send_span_ms": 178.48822800442576,
+      "rx_receive_span_ms": 177.90386686101556,
+      "p_scheduled_tokens": 16,
+      "p_cached_tokens": 32752,
+      "d_scheduled_tokens": 1,
+      "p_steps": 1,
+      "d_steps": 1,
+      "source": "artifacts/two-node-phase9-kv-transport-evidence/extension-hot32k/block3-rdma/raw/hot-warmup-1.response.json",
+      "e2e_minus_rx_span_ms": 292.52524115145206,
+      "rx_span_fraction_of_e2e": 0.37817359476892876
+    },
+    {
+      "block": 4,
+      "transport": "socket",
+      "kind": "cold-warmup",
+      "index": 1,
+      "prompt_sha256": "6e99464b60dca386e0989c1b677df1418debdd53705d8652146e81c61dbf054b",
+      "success": true,
+      "ttft_ms": 6067.440100945532,
+      "e2e_ms": 6069.064546842128,
+      "response_id": "cmpl-___prefill_addr_192.168.1.9:14579___decode_addr_192.168.1.11:14580_2f6144108a2040abb994c85e4f6ec3a4",
+      "error": null,
+      "http_status": 200,
+      "usage": {
+        "prompt_tokens": 32768,
+        "total_tokens": 32769,
+        "completion_tokens": 1,
+        "prompt_tokens_details": {
+          "cached_tokens": 32767
+        }
+      },
+      "finish_reason": "length",
+      "engine_id": "cmpl-___prefill_addr_192.168.1.9:14579___decode_addr_192.168.1.11:14580_2f6144108a2040abb994c85e4f6ec3a4-0",
+      "tx_bytes": 1879048192,
+      "rx_bytes": 1879048192,
+      "tx_layers": 28,
+      "rx_layers": 28,
+      "tx_nccl_sync_sum_ms": 481.8163849413395,
+      "rx_nccl_sync_sum_ms": 634.9600080866367,
+      "tx_send_span_ms": 950.9793571196496,
+      "rx_receive_span_ms": 645.3068060800433,
+      "p_scheduled_tokens": 32768,
+      "p_cached_tokens": 0,
+      "d_scheduled_tokens": 1,
+      "p_steps": 16,
+      "d_steps": 1,
+      "source": "artifacts/two-node-phase9-kv-transport-evidence/extension-hot32k/block4-socket/raw/cold-warmup-1.response.json",
+      "e2e_minus_rx_span_ms": 5423.757740762085,
+      "rx_span_fraction_of_e2e": 0.10632722738396498
+    },
+    {
+      "block": 4,
+      "transport": "socket",
+      "kind": "hot-warmup",
+      "index": 1,
+      "prompt_sha256": "6e99464b60dca386e0989c1b677df1418debdd53705d8652146e81c61dbf054b",
+      "success": true,
+      "ttft_ms": 873.9333949051797,
+      "e2e_ms": 875.1241259742528,
+      "response_id": "cmpl-___prefill_addr_192.168.1.9:14579___decode_addr_192.168.1.11:14580_adaee42f97cf4abf9ef8a05cf485ccca",
+      "error": null,
+      "http_status": 200,
+      "usage": {
+        "prompt_tokens": 32768,
+        "total_tokens": 32769,
+        "completion_tokens": 1,
+        "prompt_tokens_details": {
+          "cached_tokens": 32767
+        }
+      },
+      "finish_reason": "length",
+      "engine_id": "cmpl-___prefill_addr_192.168.1.9:14579___decode_addr_192.168.1.11:14580_adaee42f97cf4abf9ef8a05cf485ccca-0",
+      "tx_bytes": 1879048192,
+      "rx_bytes": 1879048192,
+      "tx_layers": 28,
+      "rx_layers": 28,
+      "tx_nccl_sync_sum_ms": 414.3011048436165,
+      "rx_nccl_sync_sum_ms": 569.7312147822231,
+      "tx_send_span_ms": 567.8673409856856,
+      "rx_receive_span_ms": 571.9814458861947,
+      "p_scheduled_tokens": 16,
+      "p_cached_tokens": 32752,
+      "d_scheduled_tokens": 1,
+      "p_steps": 1,
+      "d_steps": 1,
+      "source": "artifacts/two-node-phase9-kv-transport-evidence/extension-hot32k/block4-socket/raw/hot-warmup-1.response.json",
+      "e2e_minus_rx_span_ms": 303.1426800880581,
+      "rx_span_fraction_of_e2e": 0.6536003624050734
+    }
+  ],
+  "summary": [
+    {
+      "transport": "socket",
+      "requests": 10,
+      "metrics": {
+        "ttft_ms": {
+          "median": 876.0695400414988,
+          "mean": 868.8398132333532,
+          "min": 804.2157329618931,
+          "max": 905.595026910305
+        },
+        "e2e_ms": {
+          "median": 877.3740670876577,
+          "mean": 870.1104465406388,
+          "min": 805.5671469774097,
+          "max": 906.7268220242113
+        },
+        "tx_nccl_sync_sum_ms": {
+          "median": 420.0580815086141,
+          "mean": 417.8689697990194,
+          "min": 402.75970101356506,
+          "max": 428.8081065751612
+        },
+        "rx_nccl_sync_sum_ms": {
+          "median": 578.2958759227768,
+          "mean": 569.9263479793444,
+          "min": 509.53142042271793,
+          "max": 591.2351433653384
+        },
+        "tx_send_span_ms": {
+          "median": 576.1959530645981,
+          "mean": 568.201667512767,
+          "min": 507.88733595982194,
+          "max": 590.9094209782779
+        },
+        "rx_receive_span_ms": {
+          "median": 581.1699710320681,
+          "mean": 572.9491278529167,
+          "min": 511.935971211642,
+          "max": 595.3490391839296
+        },
+        "e2e_minus_rx_span_ms": {
+          "median": 296.9865370541811,
+          "mean": 297.1613186877221,
+          "min": 287.9559760913253,
+          "max": 311.3777828402817
+        },
+        "rx_span_fraction_of_e2e": {
+          "median": 0.6613013566134878,
+          "mean": 0.6582622529827885,
+          "min": 0.6354975784855313,
+          "max": 0.6661753120690563
+        }
+      }
+    },
+    {
+      "transport": "rdma",
+      "requests": 10,
+      "metrics": {
+        "ttft_ms": {
+          "median": 471.053718123585,
+          "mean": 471.1240377277136,
+          "min": 460.94609913416207,
+          "max": 479.122577002272
+        },
+        "e2e_ms": {
+          "median": 472.36314706970006,
+          "mean": 472.31859751045704,
+          "min": 461.9830520823598,
+          "max": 480.3614909760654
+        },
+        "tx_nccl_sync_sum_ms": {
+          "median": 161.67000983841717,
+          "mean": 161.77190507296473,
+          "min": 161.0644361935556,
+          "max": 163.05444482713938
+        },
+        "rx_nccl_sync_sum_ms": {
+          "median": 171.32473189849406,
+          "mean": 171.28361717332155,
+          "min": 170.3803176060319,
+          "max": 172.27636906318367
+        },
+        "tx_send_span_ms": {
+          "median": 177.3623189656064,
+          "mean": 177.4432082194835,
+          "min": 176.56101798638701,
+          "max": 178.54771297425032
+        },
+        "rx_receive_span_ms": {
+          "median": 176.4379640808329,
+          "mean": 176.58437499776483,
+          "min": 175.73703709058464,
+          "max": 177.96441516838968
+        },
+        "e2e_minus_rx_span_ms": {
+          "median": 295.51896860357374,
+          "mean": 295.7342225126922,
+          "min": 286.0440812073648,
+          "max": 302.3970758076757
+        },
+        "rx_span_fraction_of_e2e": {
+          "median": 0.37427418309110894,
+          "mean": 0.37390951833284364,
+          "min": 0.36902331166986496,
+          "max": 0.38083425372848867
+        }
+      }
+    }
+  ],
+  "verification": {
+    "passed": true,
+    "errors": [],
+    "checks": [
+      {
+        "check": "block1: both GPUs idle before deployment",
+        "passed": true
+      },
+      {
+        "check": "block1: warmup gate passed",
+        "passed": true
+      },
+      {
+        "check": "block1: static PD routing",
+        "passed": true
+      },
+      {
+        "check": "block1: 7 complete TX/RX",
+        "passed": true
+      },
+      {
+        "check": "block1: no scheduler preemption",
+        "passed": true
+      },
+      {
+        "check": "block1: RDMA backend",
+        "passed": true
+      },
+      {
+        "check": "block1: Socket backend",
+        "passed": true
+      },
+      {
+        "check": "block1: D prefix cache explicitly disabled",
+        "passed": true
+      },
+      {
+        "check": "block1: prefill NCCL network configuration",
+        "passed": true
+      },
+      {
+        "check": "block1: prefill GDR explicitly disabled",
+        "passed": true
+      },
+      {
+        "check": "block1: prefill telemetry source unchanged",
+        "passed": true
+      },
+      {
+        "check": "block1: decode NCCL network configuration",
+        "passed": true
+      },
+      {
+        "check": "block1: decode GDR explicitly disabled",
+        "passed": true
+      },
+      {
+        "check": "block1: decode telemetry source unchanged",
+        "passed": true
+      },
+      {
+        "check": "after-formal-prefill.log: no runtime failure",
+        "passed": true
+      },
+      {
+        "check": "after-formal-decode.log: no runtime failure",
+        "passed": true
+      },
+      {
+        "check": "cmpl-___prefill_addr_192.168.1.9:14579___decode_addr_192.168.1.11:14580_c9abb664fd2d4f169bdffb124907b24d-0: response success",
+        "passed": true
+      },
+      {
+        "check": "cmpl-___prefill_addr_192.168.1.9:14579___decode_addr_192.168.1.11:14580_c9abb664fd2d4f169bdffb124907b24d-0: identical prompt and one output token",
+        "passed": true
+      },
+      {
+        "check": "cmpl-___prefill_addr_192.168.1.9:14579___decode_addr_192.168.1.11:14580_c9abb664fd2d4f169bdffb124907b24d-0: complete 32K payload",
+        "passed": true
+      },
+      {
+        "check": "cmpl-___prefill_addr_192.168.1.9:14579___decode_addr_192.168.1.11:14580_c9abb664fd2d4f169bdffb124907b24d-0: D computes only one token",
+        "passed": true
+      },
+      {
+        "check": "cmpl-___prefill_addr_192.168.1.9:14579___decode_addr_192.168.1.11:14580_c9abb664fd2d4f169bdffb124907b24d-0: expected P cache behavior",
+        "passed": true
+      },
+      {
+        "check": "cmpl-___prefill_addr_192.168.1.9:14579___decode_addr_192.168.1.11:14580_4d3b93abf1f1403680ea8b8ab6ca8eed-0: response success",
+        "passed": true
+      },
+      {
+        "check": "cmpl-___prefill_addr_192.168.1.9:14579___decode_addr_192.168.1.11:14580_4d3b93abf1f1403680ea8b8ab6ca8eed-0: identical prompt and one output token",
+        "passed": true
+      },
+      {
+        "check": "cmpl-___prefill_addr_192.168.1.9:14579___decode_addr_192.168.1.11:14580_4d3b93abf1f1403680ea8b8ab6ca8eed-0: complete 32K payload",
+        "passed": true
+      },
+      {
+        "check": "cmpl-___prefill_addr_192.168.1.9:14579___decode_addr_192.168.1.11:14580_4d3b93abf1f1403680ea8b8ab6ca8eed-0: D computes only one token",
+        "passed": true
+      },
+      {
+        "check": "cmpl-___prefill_addr_192.168.1.9:14579___decode_addr_192.168.1.11:14580_4d3b93abf1f1403680ea8b8ab6ca8eed-0: expected P cache behavior",
+        "passed": true
+      },
+      {
+        "check": "cmpl-___prefill_addr_192.168.1.9:14579___decode_addr_192.168.1.11:14580_3979311f54104915bbc9a400f75abef7-0: response success",
+        "passed": true
+      },
+      {
+        "check": "cmpl-___prefill_addr_192.168.1.9:14579___decode_addr_192.168.1.11:14580_3979311f54104915bbc9a400f75abef7-0: identical prompt and one output token",
+        "passed": true
+      },
+      {
+        "check": "cmpl-___prefill_addr_192.168.1.9:14579___decode_addr_192.168.1.11:14580_3979311f54104915bbc9a400f75abef7-0: complete 32K payload",
+        "passed": true
+      },
+      {
+        "check": "cmpl-___prefill_addr_192.168.1.9:14579___decode_addr_192.168.1.11:14580_3979311f54104915bbc9a400f75abef7-0: D computes only one token",
+        "passed": true
+      },
+      {
+        "check": "cmpl-___prefill_addr_192.168.1.9:14579___decode_addr_192.168.1.11:14580_3979311f54104915bbc9a400f75abef7-0: expected P cache behavior",
+        "passed": true
+      },
+      {
+        "check": "cmpl-___prefill_addr_192.168.1.9:14579___decode_addr_192.168.1.11:14580_792aa5cd6b9348c9abbb58ec7224b838-0: response success",
+        "passed": true
+      },
+      {
+        "check": "cmpl-___prefill_addr_192.168.1.9:14579___decode_addr_192.168.1.11:14580_792aa5cd6b9348c9abbb58ec7224b838-0: identical prompt and one output token",
+        "passed": true
+      },
+      {
+        "check": "cmpl-___prefill_addr_192.168.1.9:14579___decode_addr_192.168.1.11:14580_792aa5cd6b9348c9abbb58ec7224b838-0: complete 32K payload",
+        "passed": true
+      },
+      {
+        "check": "cmpl-___prefill_addr_192.168.1.9:14579___decode_addr_192.168.1.11:14580_792aa5cd6b9348c9abbb58ec7224b838-0: D computes only one token",
+        "passed": true
+      },
+      {
+        "check": "cmpl-___prefill_addr_192.168.1.9:14579___decode_addr_192.168.1.11:14580_792aa5cd6b9348c9abbb58ec7224b838-0: expected P cache behavior",
+        "passed": true
+      },
+      {
+        "check": "cmpl-___prefill_addr_192.168.1.9:14579___decode_addr_192.168.1.11:14580_1fe163520f664980bd657092ab5f2242-0: response success",
+        "passed": true
+      },
+      {
+        "check": "cmpl-___prefill_addr_192.168.1.9:14579___decode_addr_192.168.1.11:14580_1fe163520f664980bd657092ab5f2242-0: identical prompt and one output token",
+        "passed": true
+      },
+      {
+        "check": "cmpl-___prefill_addr_192.168.1.9:14579___decode_addr_192.168.1.11:14580_1fe163520f664980bd657092ab5f2242-0: complete 32K payload",
+        "passed": true
+      },
+      {
+        "check": "cmpl-___prefill_addr_192.168.1.9:14579___decode_addr_192.168.1.11:14580_1fe163520f664980bd657092ab5f2242-0: D computes only one token",
+        "passed": true
+      },
+      {
+        "check": "cmpl-___prefill_addr_192.168.1.9:14579___decode_addr_192.168.1.11:14580_1fe163520f664980bd657092ab5f2242-0: expected P cache behavior",
+        "passed": true
+      },
+      {
+        "check": "cmpl-___prefill_addr_192.168.1.9:14579___decode_addr_192.168.1.11:14580_45ecec998a244121b3a794f961ddf820-0: response success",
+        "passed": true
+      },
+      {
+        "check": "cmpl-___prefill_addr_192.168.1.9:14579___decode_addr_192.168.1.11:14580_45ecec998a244121b3a794f961ddf820-0: identical prompt and one output token",
+        "passed": true
+      },
+      {
+        "check": "cmpl-___prefill_addr_192.168.1.9:14579___decode_addr_192.168.1.11:14580_45ecec998a244121b3a794f961ddf820-0: complete 32K payload",
+        "passed": true
+      },
+      {
+        "check": "cmpl-___prefill_addr_192.168.1.9:14579___decode_addr_192.168.1.11:14580_45ecec998a244121b3a794f961ddf820-0: D computes only one token",
+        "passed": true
+      },
+      {
+        "check": "cmpl-___prefill_addr_192.168.1.9:14579___decode_addr_192.168.1.11:14580_45ecec998a244121b3a794f961ddf820-0: expected P cache behavior",
+        "passed": true
+      },
+      {
+        "check": "cmpl-___prefill_addr_192.168.1.9:14579___decode_addr_192.168.1.11:14580_dcf59da55a8745df85f7c02128692099-0: response success",
+        "passed": true
+      },
+      {
+        "check": "cmpl-___prefill_addr_192.168.1.9:14579___decode_addr_192.168.1.11:14580_dcf59da55a8745df85f7c02128692099-0: identical prompt and one output token",
+        "passed": true
+      },
+      {
+        "check": "cmpl-___prefill_addr_192.168.1.9:14579___decode_addr_192.168.1.11:14580_dcf59da55a8745df85f7c02128692099-0: complete 32K payload",
+        "passed": true
+      },
+      {
+        "check": "cmpl-___prefill_addr_192.168.1.9:14579___decode_addr_192.168.1.11:14580_dcf59da55a8745df85f7c02128692099-0: D computes only one token",
+        "passed": true
+      },
+      {
+        "check": "cmpl-___prefill_addr_192.168.1.9:14579___decode_addr_192.168.1.11:14580_dcf59da55a8745df85f7c02128692099-0: expected P cache behavior",
+        "passed": true
+      },
+      {
+        "check": "block1: formal P hit tokens",
+        "passed": true
+      },
+      {
+        "check": "block1: formal D local hit zero",
+        "passed": true
+      },
+      {
+        "check": "block1: formal D external hit tokens",
+        "passed": true
+      },
+      {
+        "check": "block2: both GPUs idle before deployment",
+        "passed": true
+      },
+      {
+        "check": "block2: warmup gate passed",
+        "passed": true
+      },
+      {
+        "check": "block2: static PD routing",
+        "passed": true
+      },
+      {
+        "check": "block2: 7 complete TX/RX",
+        "passed": true
+      },
+      {
+        "check": "block2: no scheduler preemption",
+        "passed": true
+      },
+      {
+        "check": "block2: RDMA backend",
+        "passed": true
+      },
+      {
+        "check": "block2: Socket backend",
+        "passed": true
+      },
+      {
+        "check": "block2: D prefix cache explicitly disabled",
+        "passed": true
+      },
+      {
+        "check": "block2: prefill NCCL network configuration",
+        "passed": true
+      },
+      {
+        "check": "block2: prefill GDR explicitly disabled",
+        "passed": true
+      },
+      {
+        "check": "block2: prefill RoCE HCA/GID",
+        "passed": true
+      },
+      {
+        "check": "block2: prefill telemetry source unchanged",
+        "passed": true
+      },
+      {
+        "check": "block2: decode NCCL network configuration",
+        "passed": true
+      },
+      {
+        "check": "block2: decode GDR explicitly disabled",
+        "passed": true
+      },
+      {
+        "check": "block2: decode RoCE HCA/GID",
+        "passed": true
+      },
+      {
+        "check": "block2: decode telemetry source unchanged",
+        "passed": true
+      },
+      {
+        "check": "after-formal-prefill.log: no runtime failure",
+        "passed": true
+      },
+      {
+        "check": "after-formal-decode.log: no runtime failure",
+        "passed": true
+      },
+      {
+        "check": "cmpl-___prefill_addr_192.168.1.9:14579___decode_addr_192.168.1.11:14580_6436deadd083467ba038a55f9285af17-0: response success",
+        "passed": true
+      },
+      {
+        "check": "cmpl-___prefill_addr_192.168.1.9:14579___decode_addr_192.168.1.11:14580_6436deadd083467ba038a55f9285af17-0: identical prompt and one output token",
+        "passed": true
+      },
+      {
+        "check": "cmpl-___prefill_addr_192.168.1.9:14579___decode_addr_192.168.1.11:14580_6436deadd083467ba038a55f9285af17-0: complete 32K payload",
+        "passed": true
+      },
+      {
+        "check": "cmpl-___prefill_addr_192.168.1.9:14579___decode_addr_192.168.1.11:14580_6436deadd083467ba038a55f9285af17-0: D computes only one token",
+        "passed": true
+      },
+      {
+        "check": "cmpl-___prefill_addr_192.168.1.9:14579___decode_addr_192.168.1.11:14580_6436deadd083467ba038a55f9285af17-0: expected P cache behavior",
+        "passed": true
+      },
+      {
+        "check": "cmpl-___prefill_addr_192.168.1.9:14579___decode_addr_192.168.1.11:14580_af4cdee961554993839b3b46ff6c4426-0: response success",
+        "passed": true
+      },
+      {
+        "check": "cmpl-___prefill_addr_192.168.1.9:14579___decode_addr_192.168.1.11:14580_af4cdee961554993839b3b46ff6c4426-0: identical prompt and one output token",
+        "passed": true
+      },
+      {
+        "check": "cmpl-___prefill_addr_192.168.1.9:14579___decode_addr_192.168.1.11:14580_af4cdee961554993839b3b46ff6c4426-0: complete 32K payload",
+        "passed": true
+      },
+      {
+        "check": "cmpl-___prefill_addr_192.168.1.9:14579___decode_addr_192.168.1.11:14580_af4cdee961554993839b3b46ff6c4426-0: D computes only one token",
+        "passed": true
+      },
+      {
+        "check": "cmpl-___prefill_addr_192.168.1.9:14579___decode_addr_192.168.1.11:14580_af4cdee961554993839b3b46ff6c4426-0: expected P cache behavior",
+        "passed": true
+      },
+      {
+        "check": "cmpl-___prefill_addr_192.168.1.9:14579___decode_addr_192.168.1.11:14580_20b84b70c8544061b05e597e56da5ae5-0: response success",
+        "passed": true
+      },
+      {
+        "check": "cmpl-___prefill_addr_192.168.1.9:14579___decode_addr_192.168.1.11:14580_20b84b70c8544061b05e597e56da5ae5-0: identical prompt and one output token",
+        "passed": true
+      },
+      {
+        "check": "cmpl-___prefill_addr_192.168.1.9:14579___decode_addr_192.168.1.11:14580_20b84b70c8544061b05e597e56da5ae5-0: complete 32K payload",
+        "passed": true
+      },
+      {
+        "check": "cmpl-___prefill_addr_192.168.1.9:14579___decode_addr_192.168.1.11:14580_20b84b70c8544061b05e597e56da5ae5-0: D computes only one token",
+        "passed": true
+      },
+      {
+        "check": "cmpl-___prefill_addr_192.168.1.9:14579___decode_addr_192.168.1.11:14580_20b84b70c8544061b05e597e56da5ae5-0: expected P cache behavior",
+        "passed": true
+      },
+      {
+        "check": "cmpl-___prefill_addr_192.168.1.9:14579___decode_addr_192.168.1.11:14580_acc911a77d9e4e798038471bf3aa0a7b-0: response success",
+        "passed": true
+      },
+      {
+        "check": "cmpl-___prefill_addr_192.168.1.9:14579___decode_addr_192.168.1.11:14580_acc911a77d9e4e798038471bf3aa0a7b-0: identical prompt and one output token",
+        "passed": true
+      },
+      {
+        "check": "cmpl-___prefill_addr_192.168.1.9:14579___decode_addr_192.168.1.11:14580_acc911a77d9e4e798038471bf3aa0a7b-0: complete 32K payload",
+        "passed": true
+      },
+      {
+        "check": "cmpl-___prefill_addr_192.168.1.9:14579___decode_addr_192.168.1.11:14580_acc911a77d9e4e798038471bf3aa0a7b-0: D computes only one token",
+        "passed": true
+      },
+      {
+        "check": "cmpl-___prefill_addr_192.168.1.9:14579___decode_addr_192.168.1.11:14580_acc911a77d9e4e798038471bf3aa0a7b-0: expected P cache behavior",
+        "passed": true
+      },
+      {
+        "check": "cmpl-___prefill_addr_192.168.1.9:14579___decode_addr_192.168.1.11:14580_9a63d125b241427abc83a2e1ef3810e5-0: response success",
+        "passed": true
+      },
+      {
+        "check": "cmpl-___prefill_addr_192.168.1.9:14579___decode_addr_192.168.1.11:14580_9a63d125b241427abc83a2e1ef3810e5-0: identical prompt and one output token",
+        "passed": true
+      },
+      {
+        "check": "cmpl-___prefill_addr_192.168.1.9:14579___decode_addr_192.168.1.11:14580_9a63d125b241427abc83a2e1ef3810e5-0: complete 32K payload",
+        "passed": true
+      },
+      {
+        "check": "cmpl-___prefill_addr_192.168.1.9:14579___decode_addr_192.168.1.11:14580_9a63d125b241427abc83a2e1ef3810e5-0: D computes only one token",
+        "passed": true
+      },
+      {
+        "check": "cmpl-___prefill_addr_192.168.1.9:14579___decode_addr_192.168.1.11:14580_9a63d125b241427abc83a2e1ef3810e5-0: expected P cache behavior",
+        "passed": true
+      },
+      {
+        "check": "cmpl-___prefill_addr_192.168.1.9:14579___decode_addr_192.168.1.11:14580_6b4ef4ecefe74058a1e610f728445c9c-0: response success",
+        "passed": true
+      },
+      {
+        "check": "cmpl-___prefill_addr_192.168.1.9:14579___decode_addr_192.168.1.11:14580_6b4ef4ecefe74058a1e610f728445c9c-0: identical prompt and one output token",
+        "passed": true
+      },
+      {
+        "check": "cmpl-___prefill_addr_192.168.1.9:14579___decode_addr_192.168.1.11:14580_6b4ef4ecefe74058a1e610f728445c9c-0: complete 32K payload",
+        "passed": true
+      },
+      {
+        "check": "cmpl-___prefill_addr_192.168.1.9:14579___decode_addr_192.168.1.11:14580_6b4ef4ecefe74058a1e610f728445c9c-0: D computes only one token",
+        "passed": true
+      },
+      {
+        "check": "cmpl-___prefill_addr_192.168.1.9:14579___decode_addr_192.168.1.11:14580_6b4ef4ecefe74058a1e610f728445c9c-0: expected P cache behavior",
+        "passed": true
+      },
+      {
+        "check": "cmpl-___prefill_addr_192.168.1.9:14579___decode_addr_192.168.1.11:14580_d97bc74c213a4e21bc25bd3eb6de2f21-0: response success",
+        "passed": true
+      },
+      {
+        "check": "cmpl-___prefill_addr_192.168.1.9:14579___decode_addr_192.168.1.11:14580_d97bc74c213a4e21bc25bd3eb6de2f21-0: identical prompt and one output token",
+        "passed": true
+      },
+      {
+        "check": "cmpl-___prefill_addr_192.168.1.9:14579___decode_addr_192.168.1.11:14580_d97bc74c213a4e21bc25bd3eb6de2f21-0: complete 32K payload",
+        "passed": true
+      },
+      {
+        "check": "cmpl-___prefill_addr_192.168.1.9:14579___decode_addr_192.168.1.11:14580_d97bc74c213a4e21bc25bd3eb6de2f21-0: D computes only one token",
+        "passed": true
+      },
+      {
+        "check": "cmpl-___prefill_addr_192.168.1.9:14579___decode_addr_192.168.1.11:14580_d97bc74c213a4e21bc25bd3eb6de2f21-0: expected P cache behavior",
+        "passed": true
+      },
+      {
+        "check": "block2: formal P hit tokens",
+        "passed": true
+      },
+      {
+        "check": "block2: formal D local hit zero",
+        "passed": true
+      },
+      {
+        "check": "block2: formal D external hit tokens",
+        "passed": true
+      },
+      {
+        "check": "block3: both GPUs idle before deployment",
+        "passed": true
+      },
+      {
+        "check": "block3: warmup gate passed",
+        "passed": true
+      },
+      {
+        "check": "block3: static PD routing",
+        "passed": true
+      },
+      {
+        "check": "block3: 7 complete TX/RX",
+        "passed": true
+      },
+      {
+        "check": "block3: no scheduler preemption",
+        "passed": true
+      },
+      {
+        "check": "block3: RDMA backend",
+        "passed": true
+      },
+      {
+        "check": "block3: Socket backend",
+        "passed": true
+      },
+      {
+        "check": "block3: D prefix cache explicitly disabled",
+        "passed": true
+      },
+      {
+        "check": "block3: prefill NCCL network configuration",
+        "passed": true
+      },
+      {
+        "check": "block3: prefill GDR explicitly disabled",
+        "passed": true
+      },
+      {
+        "check": "block3: prefill RoCE HCA/GID",
+        "passed": true
+      },
+      {
+        "check": "block3: prefill telemetry source unchanged",
+        "passed": true
+      },
+      {
+        "check": "block3: decode NCCL network configuration",
+        "passed": true
+      },
+      {
+        "check": "block3: decode GDR explicitly disabled",
+        "passed": true
+      },
+      {
+        "check": "block3: decode RoCE HCA/GID",
+        "passed": true
+      },
+      {
+        "check": "block3: decode telemetry source unchanged",
+        "passed": true
+      },
+      {
+        "check": "after-formal-prefill.log: no runtime failure",
+        "passed": true
+      },
+      {
+        "check": "after-formal-decode.log: no runtime failure",
+        "passed": true
+      },
+      {
+        "check": "cmpl-___prefill_addr_192.168.1.9:14579___decode_addr_192.168.1.11:14580_95ddd8bf473e4a6c95f076a21273fa17-0: response success",
+        "passed": true
+      },
+      {
+        "check": "cmpl-___prefill_addr_192.168.1.9:14579___decode_addr_192.168.1.11:14580_95ddd8bf473e4a6c95f076a21273fa17-0: identical prompt and one output token",
+        "passed": true
+      },
+      {
+        "check": "cmpl-___prefill_addr_192.168.1.9:14579___decode_addr_192.168.1.11:14580_95ddd8bf473e4a6c95f076a21273fa17-0: complete 32K payload",
+        "passed": true
+      },
+      {
+        "check": "cmpl-___prefill_addr_192.168.1.9:14579___decode_addr_192.168.1.11:14580_95ddd8bf473e4a6c95f076a21273fa17-0: D computes only one token",
+        "passed": true
+      },
+      {
+        "check": "cmpl-___prefill_addr_192.168.1.9:14579___decode_addr_192.168.1.11:14580_95ddd8bf473e4a6c95f076a21273fa17-0: expected P cache behavior",
+        "passed": true
+      },
+      {
+        "check": "cmpl-___prefill_addr_192.168.1.9:14579___decode_addr_192.168.1.11:14580_d14786a306324800bc6a2d129e5f7a28-0: response success",
+        "passed": true
+      },
+      {
+        "check": "cmpl-___prefill_addr_192.168.1.9:14579___decode_addr_192.168.1.11:14580_d14786a306324800bc6a2d129e5f7a28-0: identical prompt and one output token",
+        "passed": true
+      },
+      {
+        "check": "cmpl-___prefill_addr_192.168.1.9:14579___decode_addr_192.168.1.11:14580_d14786a306324800bc6a2d129e5f7a28-0: complete 32K payload",
+        "passed": true
+      },
+      {
+        "check": "cmpl-___prefill_addr_192.168.1.9:14579___decode_addr_192.168.1.11:14580_d14786a306324800bc6a2d129e5f7a28-0: D computes only one token",
+        "passed": true
+      },
+      {
+        "check": "cmpl-___prefill_addr_192.168.1.9:14579___decode_addr_192.168.1.11:14580_d14786a306324800bc6a2d129e5f7a28-0: expected P cache behavior",
+        "passed": true
+      },
+      {
+        "check": "cmpl-___prefill_addr_192.168.1.9:14579___decode_addr_192.168.1.11:14580_0694f1fc5e5843e0857300f03c6a66cf-0: response success",
+        "passed": true
+      },
+      {
+        "check": "cmpl-___prefill_addr_192.168.1.9:14579___decode_addr_192.168.1.11:14580_0694f1fc5e5843e0857300f03c6a66cf-0: identical prompt and one output token",
+        "passed": true
+      },
+      {
+        "check": "cmpl-___prefill_addr_192.168.1.9:14579___decode_addr_192.168.1.11:14580_0694f1fc5e5843e0857300f03c6a66cf-0: complete 32K payload",
+        "passed": true
+      },
+      {
+        "check": "cmpl-___prefill_addr_192.168.1.9:14579___decode_addr_192.168.1.11:14580_0694f1fc5e5843e0857300f03c6a66cf-0: D computes only one token",
+        "passed": true
+      },
+      {
+        "check": "cmpl-___prefill_addr_192.168.1.9:14579___decode_addr_192.168.1.11:14580_0694f1fc5e5843e0857300f03c6a66cf-0: expected P cache behavior",
+        "passed": true
+      },
+      {
+        "check": "cmpl-___prefill_addr_192.168.1.9:14579___decode_addr_192.168.1.11:14580_1b136fabee7740a58709a4e923ec5f4c-0: response success",
+        "passed": true
+      },
+      {
+        "check": "cmpl-___prefill_addr_192.168.1.9:14579___decode_addr_192.168.1.11:14580_1b136fabee7740a58709a4e923ec5f4c-0: identical prompt and one output token",
+        "passed": true
+      },
+      {
+        "check": "cmpl-___prefill_addr_192.168.1.9:14579___decode_addr_192.168.1.11:14580_1b136fabee7740a58709a4e923ec5f4c-0: complete 32K payload",
+        "passed": true
+      },
+      {
+        "check": "cmpl-___prefill_addr_192.168.1.9:14579___decode_addr_192.168.1.11:14580_1b136fabee7740a58709a4e923ec5f4c-0: D computes only one token",
+        "passed": true
+      },
+      {
+        "check": "cmpl-___prefill_addr_192.168.1.9:14579___decode_addr_192.168.1.11:14580_1b136fabee7740a58709a4e923ec5f4c-0: expected P cache behavior",
+        "passed": true
+      },
+      {
+        "check": "cmpl-___prefill_addr_192.168.1.9:14579___decode_addr_192.168.1.11:14580_bf1297f8dd8943549037102765e33812-0: response success",
+        "passed": true
+      },
+      {
+        "check": "cmpl-___prefill_addr_192.168.1.9:14579___decode_addr_192.168.1.11:14580_bf1297f8dd8943549037102765e33812-0: identical prompt and one output token",
+        "passed": true
+      },
+      {
+        "check": "cmpl-___prefill_addr_192.168.1.9:14579___decode_addr_192.168.1.11:14580_bf1297f8dd8943549037102765e33812-0: complete 32K payload",
+        "passed": true
+      },
+      {
+        "check": "cmpl-___prefill_addr_192.168.1.9:14579___decode_addr_192.168.1.11:14580_bf1297f8dd8943549037102765e33812-0: D computes only one token",
+        "passed": true
+      },
+      {
+        "check": "cmpl-___prefill_addr_192.168.1.9:14579___decode_addr_192.168.1.11:14580_bf1297f8dd8943549037102765e33812-0: expected P cache behavior",
+        "passed": true
+      },
+      {
+        "check": "cmpl-___prefill_addr_192.168.1.9:14579___decode_addr_192.168.1.11:14580_b96781a37716418eae69c6225f14cef2-0: response success",
+        "passed": true
+      },
+      {
+        "check": "cmpl-___prefill_addr_192.168.1.9:14579___decode_addr_192.168.1.11:14580_b96781a37716418eae69c6225f14cef2-0: identical prompt and one output token",
+        "passed": true
+      },
+      {
+        "check": "cmpl-___prefill_addr_192.168.1.9:14579___decode_addr_192.168.1.11:14580_b96781a37716418eae69c6225f14cef2-0: complete 32K payload",
+        "passed": true
+      },
+      {
+        "check": "cmpl-___prefill_addr_192.168.1.9:14579___decode_addr_192.168.1.11:14580_b96781a37716418eae69c6225f14cef2-0: D computes only one token",
+        "passed": true
+      },
+      {
+        "check": "cmpl-___prefill_addr_192.168.1.9:14579___decode_addr_192.168.1.11:14580_b96781a37716418eae69c6225f14cef2-0: expected P cache behavior",
+        "passed": true
+      },
+      {
+        "check": "cmpl-___prefill_addr_192.168.1.9:14579___decode_addr_192.168.1.11:14580_04e35cd2b60e4be29d8f23cd69067e34-0: response success",
+        "passed": true
+      },
+      {
+        "check": "cmpl-___prefill_addr_192.168.1.9:14579___decode_addr_192.168.1.11:14580_04e35cd2b60e4be29d8f23cd69067e34-0: identical prompt and one output token",
+        "passed": true
+      },
+      {
+        "check": "cmpl-___prefill_addr_192.168.1.9:14579___decode_addr_192.168.1.11:14580_04e35cd2b60e4be29d8f23cd69067e34-0: complete 32K payload",
+        "passed": true
+      },
+      {
+        "check": "cmpl-___prefill_addr_192.168.1.9:14579___decode_addr_192.168.1.11:14580_04e35cd2b60e4be29d8f23cd69067e34-0: D computes only one token",
+        "passed": true
+      },
+      {
+        "check": "cmpl-___prefill_addr_192.168.1.9:14579___decode_addr_192.168.1.11:14580_04e35cd2b60e4be29d8f23cd69067e34-0: expected P cache behavior",
+        "passed": true
+      },
+      {
+        "check": "block3: formal P hit tokens",
+        "passed": true
+      },
+      {
+        "check": "block3: formal D local hit zero",
+        "passed": true
+      },
+      {
+        "check": "block3: formal D external hit tokens",
+        "passed": true
+      },
+      {
+        "check": "block4: both GPUs idle before deployment",
+        "passed": true
+      },
+      {
+        "check": "block4: warmup gate passed",
+        "passed": true
+      },
+      {
+        "check": "block4: static PD routing",
+        "passed": true
+      },
+      {
+        "check": "block4: 7 complete TX/RX",
+        "passed": true
+      },
+      {
+        "check": "block4: no scheduler preemption",
+        "passed": true
+      },
+      {
+        "check": "block4: RDMA backend",
+        "passed": true
+      },
+      {
+        "check": "block4: Socket backend",
+        "passed": true
+      },
+      {
+        "check": "block4: D prefix cache explicitly disabled",
+        "passed": true
+      },
+      {
+        "check": "block4: prefill NCCL network configuration",
+        "passed": true
+      },
+      {
+        "check": "block4: prefill GDR explicitly disabled",
+        "passed": true
+      },
+      {
+        "check": "block4: prefill telemetry source unchanged",
+        "passed": true
+      },
+      {
+        "check": "block4: decode NCCL network configuration",
+        "passed": true
+      },
+      {
+        "check": "block4: decode GDR explicitly disabled",
+        "passed": true
+      },
+      {
+        "check": "block4: decode telemetry source unchanged",
+        "passed": true
+      },
+      {
+        "check": "after-formal-prefill.log: no runtime failure",
+        "passed": true
+      },
+      {
+        "check": "after-formal-decode.log: no runtime failure",
+        "passed": true
+      },
+      {
+        "check": "cmpl-___prefill_addr_192.168.1.9:14579___decode_addr_192.168.1.11:14580_2f6144108a2040abb994c85e4f6ec3a4-0: response success",
+        "passed": true
+      },
+      {
+        "check": "cmpl-___prefill_addr_192.168.1.9:14579___decode_addr_192.168.1.11:14580_2f6144108a2040abb994c85e4f6ec3a4-0: identical prompt and one output token",
+        "passed": true
+      },
+      {
+        "check": "cmpl-___prefill_addr_192.168.1.9:14579___decode_addr_192.168.1.11:14580_2f6144108a2040abb994c85e4f6ec3a4-0: complete 32K payload",
+        "passed": true
+      },
+      {
+        "check": "cmpl-___prefill_addr_192.168.1.9:14579___decode_addr_192.168.1.11:14580_2f6144108a2040abb994c85e4f6ec3a4-0: D computes only one token",
+        "passed": true
+      },
+      {
+        "check": "cmpl-___prefill_addr_192.168.1.9:14579___decode_addr_192.168.1.11:14580_2f6144108a2040abb994c85e4f6ec3a4-0: expected P cache behavior",
+        "passed": true
+      },
+      {
+        "check": "cmpl-___prefill_addr_192.168.1.9:14579___decode_addr_192.168.1.11:14580_abfe74709a4a42739d6ff593c4e8ee4d-0: response success",
+        "passed": true
+      },
+      {
+        "check": "cmpl-___prefill_addr_192.168.1.9:14579___decode_addr_192.168.1.11:14580_abfe74709a4a42739d6ff593c4e8ee4d-0: identical prompt and one output token",
+        "passed": true
+      },
+      {
+        "check": "cmpl-___prefill_addr_192.168.1.9:14579___decode_addr_192.168.1.11:14580_abfe74709a4a42739d6ff593c4e8ee4d-0: complete 32K payload",
+        "passed": true
+      },
+      {
+        "check": "cmpl-___prefill_addr_192.168.1.9:14579___decode_addr_192.168.1.11:14580_abfe74709a4a42739d6ff593c4e8ee4d-0: D computes only one token",
+        "passed": true
+      },
+      {
+        "check": "cmpl-___prefill_addr_192.168.1.9:14579___decode_addr_192.168.1.11:14580_abfe74709a4a42739d6ff593c4e8ee4d-0: expected P cache behavior",
+        "passed": true
+      },
+      {
+        "check": "cmpl-___prefill_addr_192.168.1.9:14579___decode_addr_192.168.1.11:14580_6dffd74296834b1bb07ddcf77b847ce1-0: response success",
+        "passed": true
+      },
+      {
+        "check": "cmpl-___prefill_addr_192.168.1.9:14579___decode_addr_192.168.1.11:14580_6dffd74296834b1bb07ddcf77b847ce1-0: identical prompt and one output token",
+        "passed": true
+      },
+      {
+        "check": "cmpl-___prefill_addr_192.168.1.9:14579___decode_addr_192.168.1.11:14580_6dffd74296834b1bb07ddcf77b847ce1-0: complete 32K payload",
+        "passed": true
+      },
+      {
+        "check": "cmpl-___prefill_addr_192.168.1.9:14579___decode_addr_192.168.1.11:14580_6dffd74296834b1bb07ddcf77b847ce1-0: D computes only one token",
+        "passed": true
+      },
+      {
+        "check": "cmpl-___prefill_addr_192.168.1.9:14579___decode_addr_192.168.1.11:14580_6dffd74296834b1bb07ddcf77b847ce1-0: expected P cache behavior",
+        "passed": true
+      },
+      {
+        "check": "cmpl-___prefill_addr_192.168.1.9:14579___decode_addr_192.168.1.11:14580_657fa9794c6a45c1bf740a81b6b92a57-0: response success",
+        "passed": true
+      },
+      {
+        "check": "cmpl-___prefill_addr_192.168.1.9:14579___decode_addr_192.168.1.11:14580_657fa9794c6a45c1bf740a81b6b92a57-0: identical prompt and one output token",
+        "passed": true
+      },
+      {
+        "check": "cmpl-___prefill_addr_192.168.1.9:14579___decode_addr_192.168.1.11:14580_657fa9794c6a45c1bf740a81b6b92a57-0: complete 32K payload",
+        "passed": true
+      },
+      {
+        "check": "cmpl-___prefill_addr_192.168.1.9:14579___decode_addr_192.168.1.11:14580_657fa9794c6a45c1bf740a81b6b92a57-0: D computes only one token",
+        "passed": true
+      },
+      {
+        "check": "cmpl-___prefill_addr_192.168.1.9:14579___decode_addr_192.168.1.11:14580_657fa9794c6a45c1bf740a81b6b92a57-0: expected P cache behavior",
+        "passed": true
+      },
+      {
+        "check": "cmpl-___prefill_addr_192.168.1.9:14579___decode_addr_192.168.1.11:14580_9e58568cf0a841cf973e9e5725743475-0: response success",
+        "passed": true
+      },
+      {
+        "check": "cmpl-___prefill_addr_192.168.1.9:14579___decode_addr_192.168.1.11:14580_9e58568cf0a841cf973e9e5725743475-0: identical prompt and one output token",
+        "passed": true
+      },
+      {
+        "check": "cmpl-___prefill_addr_192.168.1.9:14579___decode_addr_192.168.1.11:14580_9e58568cf0a841cf973e9e5725743475-0: complete 32K payload",
+        "passed": true
+      },
+      {
+        "check": "cmpl-___prefill_addr_192.168.1.9:14579___decode_addr_192.168.1.11:14580_9e58568cf0a841cf973e9e5725743475-0: D computes only one token",
+        "passed": true
+      },
+      {
+        "check": "cmpl-___prefill_addr_192.168.1.9:14579___decode_addr_192.168.1.11:14580_9e58568cf0a841cf973e9e5725743475-0: expected P cache behavior",
+        "passed": true
+      },
+      {
+        "check": "cmpl-___prefill_addr_192.168.1.9:14579___decode_addr_192.168.1.11:14580_632ade44405f4044acbb208941cfb4ef-0: response success",
+        "passed": true
+      },
+      {
+        "check": "cmpl-___prefill_addr_192.168.1.9:14579___decode_addr_192.168.1.11:14580_632ade44405f4044acbb208941cfb4ef-0: identical prompt and one output token",
+        "passed": true
+      },
+      {
+        "check": "cmpl-___prefill_addr_192.168.1.9:14579___decode_addr_192.168.1.11:14580_632ade44405f4044acbb208941cfb4ef-0: complete 32K payload",
+        "passed": true
+      },
+      {
+        "check": "cmpl-___prefill_addr_192.168.1.9:14579___decode_addr_192.168.1.11:14580_632ade44405f4044acbb208941cfb4ef-0: D computes only one token",
+        "passed": true
+      },
+      {
+        "check": "cmpl-___prefill_addr_192.168.1.9:14579___decode_addr_192.168.1.11:14580_632ade44405f4044acbb208941cfb4ef-0: expected P cache behavior",
+        "passed": true
+      },
+      {
+        "check": "cmpl-___prefill_addr_192.168.1.9:14579___decode_addr_192.168.1.11:14580_adaee42f97cf4abf9ef8a05cf485ccca-0: response success",
+        "passed": true
+      },
+      {
+        "check": "cmpl-___prefill_addr_192.168.1.9:14579___decode_addr_192.168.1.11:14580_adaee42f97cf4abf9ef8a05cf485ccca-0: identical prompt and one output token",
+        "passed": true
+      },
+      {
+        "check": "cmpl-___prefill_addr_192.168.1.9:14579___decode_addr_192.168.1.11:14580_adaee42f97cf4abf9ef8a05cf485ccca-0: complete 32K payload",
+        "passed": true
+      },
+      {
+        "check": "cmpl-___prefill_addr_192.168.1.9:14579___decode_addr_192.168.1.11:14580_adaee42f97cf4abf9ef8a05cf485ccca-0: D computes only one token",
+        "passed": true
+      },
+      {
+        "check": "cmpl-___prefill_addr_192.168.1.9:14579___decode_addr_192.168.1.11:14580_adaee42f97cf4abf9ef8a05cf485ccca-0: expected P cache behavior",
+        "passed": true
+      },
+      {
+        "check": "block4: formal P hit tokens",
+        "passed": true
+      },
+      {
+        "check": "block4: formal D local hit zero",
+        "passed": true
+      },
+      {
+        "check": "block4: formal D external hit tokens",
+        "passed": true
+      },
+      {
+        "check": "20 formal requests",
+        "passed": true
+      },
+      {
+        "check": "8 warmup requests",
+        "passed": true
+      },
+      {
+        "check": "all request IDs distinct",
+        "passed": true
+      },
+      {
+        "check": "existing proxy ID, StartedAt and config preserved",
+        "passed": true
+      },
+      {
+        "check": "dcn9: experiment containers removed",
+        "passed": true
+      },
+      {
+        "check": "dcn9: GPUs released after cleanup",
+        "passed": true
+      },
+      {
+        "check": "dcn10: experiment containers removed",
+        "passed": true
+      },
+      {
+        "check": "dcn10: GPUs released after cleanup",
+        "passed": true
+      }
+    ],
+    "blocks": [
+      {
+        "block": 1,
+        "transport": "socket",
+        "p_local_hit_tokens": 163760.0,
+        "d_local_hit_tokens": 0.0,
+        "d_external_hit_tokens": 163835.0,
+        "max_observer_us": 19.352
+      },
+      {
+        "block": 2,
+        "transport": "rdma",
+        "p_local_hit_tokens": 163760.0,
+        "d_local_hit_tokens": 0.0,
+        "d_external_hit_tokens": 163835.0,
+        "max_observer_us": 18.22
+      },
+      {
+        "block": 3,
+        "transport": "rdma",
+        "p_local_hit_tokens": 163760.0,
+        "d_local_hit_tokens": 0.0,
+        "d_external_hit_tokens": 163835.0,
+        "max_observer_us": 19.118
+      },
+      {
+        "block": 4,
+        "transport": "socket",
+        "p_local_hit_tokens": 163760.0,
+        "d_local_hit_tokens": 0.0,
+        "d_external_hit_tokens": 163835.0,
+        "max_observer_us": 26.258
+      }
+    ]
+  },
+  "source_sha256": {
+    "artifacts/two-node-phase9-kv-transport-evidence/extension-hot32k/authorized-interference-stop.json": "5738300a677e45da6cc36661bdc19bfb28c15e46f927eb3c6789163929d0f79d",
+    "artifacts/two-node-phase9-kv-transport-evidence/extension-hot32k/source-hashes.json": "9094f8377c36e8c4ce0daf1d76d65799611ddb46514cce567caa84270ca9aaa6",
+    "artifacts/two-node-phase9-kv-transport-evidence/extension-hot32k/plan.json": "bc828fea2a500a4c6edebdc351f6b5dc4e72c3b52ae1a43ff92ce5e83b1dff8e",
+    "artifacts/two-node-phase9-kv-transport-evidence/extension-hot32k/postprocessing-source-hashes.json": "2ee2ed38b0e5c3f0c8c7882d61640060c3c53e06b3883328b6ee25aeb433fb88",
+    "artifacts/two-node-phase9-kv-transport-evidence/extension-hot32k/initial-inventory.json": "976e2e215e2a0577b07ad9f0a589018b683291b6e0bbf02c73386a5fb06a4140",
+    "artifacts/two-node-phase9-kv-transport-evidence/extension-hot32k/manifest.json": "c3bb77d161bc1fd810f55eebf22d93080f66b5f7f129870145f3549abc466f35",
+    "artifacts/two-node-phase9-kv-transport-evidence/extension-hot32k/final-inventory.json": "b16753602ee30d04045827beb73354d607cf2f0674cd9774a382ac7cd53fb58f",
+    "artifacts/two-node-phase9-kv-transport-evidence/extension-hot32k/stage-dcn9.txt": "7692939f1f7ad45b71bd1b084fa967a29e17860312bc0705cba65b28473d4a0d",
+    "artifacts/two-node-phase9-kv-transport-evidence/extension-hot32k/operator.log": "1840b6322899c960ea2fa7701025a4c340e7d0c23a53f5076b3d978984e09275",
+    "artifacts/two-node-phase9-kv-transport-evidence/extension-hot32k/capture-error.json": "cc6a03a06d945b593e4f82fff5d7f61660802b0422ba1ba9611db7f2fd667979",
+    "artifacts/two-node-phase9-kv-transport-evidence/extension-hot32k/resume-source-hashes.json": "c9740f6079e29e6d404b4a719bafca644efd3838719d5f250ac89fbf1ddcace7",
+    "artifacts/two-node-phase9-kv-transport-evidence/extension-hot32k/resume-started.json": "81a8231c1ab35baa496f5b518ae1e3ce0e2436ac69c5aa5d22dcc402e0a96574",
+    "artifacts/two-node-phase9-kv-transport-evidence/extension-hot32k/stage-dcn10.txt": "7692939f1f7ad45b71bd1b084fa967a29e17860312bc0705cba65b28473d4a0d",
+    "artifacts/two-node-phase9-kv-transport-evidence/extension-hot32k/run-started.json": "5a874d6092a86d15f6cbe117b1f01197f3a35e376365ab0cb05c4a192c829fa5",
+    "artifacts/two-node-phase9-kv-transport-evidence/extension-hot32k/block4-socket/ready-prefill-counters.json": "3099e2ccf2b3ed4e2c0d3835b98cd8284d996fa276f8e050a7ab98dfc71dbe6d",
+    "artifacts/two-node-phase9-kv-transport-evidence/extension-hot32k/block4-socket/after-formal-decode.log": "aab2c68e8e4bc476b7d66e3207923e3e7d33b8acc5acccd7299ae8338e4dc507",
+    "artifacts/two-node-phase9-kv-transport-evidence/extension-hot32k/block4-socket/ready-decode.log": "571e753eb70cf3b64e292fd59483140001fb688e2f2c7eb092b97aa539ad8f56",
+    "artifacts/two-node-phase9-kv-transport-evidence/extension-hot32k/block4-socket/ready-prefill-metrics.txt": "e6a791d59d6bf440dc7c756139c3e5dde7009e825720e533d1c380f426b30c8c",
+    "artifacts/two-node-phase9-kv-transport-evidence/extension-hot32k/block4-socket/ready-decode-state.json": "909c2e5c367bc55217bdff8aeb0fb1a385e92755aabfc489ba264dfd650b9a47",
+    "artifacts/two-node-phase9-kv-transport-evidence/extension-hot32k/block4-socket/ready-proxy.log": "f99f310f2b7c942c346ce4045ebd61300b584afae0965651fe47e19c93b4deed",
+    "artifacts/two-node-phase9-kv-transport-evidence/extension-hot32k/block4-socket/before-formal-decode.log": "62864973aacaca632e04ca0af1c3a83c55f26e69d300f0046c9aa74bf74f974f",
+    "artifacts/two-node-phase9-kv-transport-evidence/extension-hot32k/block4-socket/after-formal-decode-metrics.txt": "c7d28d79ffd100ae0b26000db892a46fd780ca2fb17073f250f82ff8ce553bac",
+    "artifacts/two-node-phase9-kv-transport-evidence/extension-hot32k/block4-socket/ready-decode-metrics.txt": "931bcf9ee4367171f98fb37402d8a589f79d4b6e5a2f378de622be12af163ea9",
+    "artifacts/two-node-phase9-kv-transport-evidence/extension-hot32k/block4-socket/ready-proxy-state.json": "c1e3ae22627c81b5155e283889419ec1852a252bcb0c6ad68342f3cb18da7c3e",
+    "artifacts/two-node-phase9-kv-transport-evidence/extension-hot32k/block4-socket/ready-prefill-state.json": "a0e65a80cd50dbe8e52a282849a0daa30e0253225cbcee1ed115e0fa5b20c0e7",
+    "artifacts/two-node-phase9-kv-transport-evidence/extension-hot32k/block4-socket/after-formal-prefill-state.json": "20a9af01ad555a37ed93fff54516eaf71d92c254b512134ceb79403c2a8b112b",
+    "artifacts/two-node-phase9-kv-transport-evidence/extension-hot32k/block4-socket/after-formal-proxy.log": "31cee6483597e163859f116a3171657cb88d908415e4de6bc9bf56bee60b6738",
+    "artifacts/two-node-phase9-kv-transport-evidence/extension-hot32k/block4-socket/before-formal-decode-metrics.txt": "e4ef3097dca07bc83e402b224220a03c73bff990784f1a6ab0d8b927194dc3b7",
+    "artifacts/two-node-phase9-kv-transport-evidence/extension-hot32k/block4-socket/telemetry-decode.txt": "f05a41ac7deb834df4ab5f94ef5692fa097ca0b78fc15fd555ee06eb33b273ad",
+    "artifacts/two-node-phase9-kv-transport-evidence/extension-hot32k/block4-socket/prefill-scheduler-trace.json": "3149555d2f0eafc7c0f8df2947ff86c19d03831863465055807954f22719a52b",
+    "artifacts/two-node-phase9-kv-transport-evidence/extension-hot32k/block4-socket/create-proxy.txt": "7dc493ae5de14a693989f1d2be2a7ba72d49f6256543c60c1a9797940951ee83",
+    "artifacts/two-node-phase9-kv-transport-evidence/extension-hot32k/block4-socket/after-formal-decode-state.json": "e217384c27d4848daa80a2a1aa40907ae1f4123d798455639bc19099b8fac1fb",
+    "artifacts/two-node-phase9-kv-transport-evidence/extension-hot32k/block4-socket/before-formal-decode-state.json": "292c1616e665b4d44eb9cfa815bc2af7a2c347bd04b379cc0e5668b9f28a9a29",
+    "artifacts/two-node-phase9-kv-transport-evidence/extension-hot32k/block4-socket/create-prefill.txt": "a50873ea197c701ec4cd030fd93b95e7612c5c53fc064f8ab4cbe6bfc44298c9",
+    "artifacts/two-node-phase9-kv-transport-evidence/extension-hot32k/block4-socket/decode-scheduler-trace.json": "775039366422d024cd1b2353e8945d50ae3e8bacb55e9daa2bd1b9a1c85c3655",
+    "artifacts/two-node-phase9-kv-transport-evidence/extension-hot32k/block4-socket/ready-decode-counters.json": "ad1d247f4347dc6620991f2ff4c8af6c83a61a917bfd8455a8fcc6405af1212a",
+    "artifacts/two-node-phase9-kv-transport-evidence/extension-hot32k/block4-socket/ready-prefill.log": "a9e91e1937a4bc55d4b52b625c25981b0ea64e11c0a3b32db2bed711ff7a7002",
+    "artifacts/two-node-phase9-kv-transport-evidence/extension-hot32k/block4-socket/telemetry-prefill.txt": "f05a41ac7deb834df4ab5f94ef5692fa097ca0b78fc15fd555ee06eb33b273ad",
+    "artifacts/two-node-phase9-kv-transport-evidence/extension-hot32k/block4-socket/before-formal-proxy.log": "861dd8e20c365965216108106076ecebd45572f679aee90f3cc20ae4d65cb36a",
+    "artifacts/two-node-phase9-kv-transport-evidence/extension-hot32k/block4-socket/warmup-verification.json": "737c3eafee3de4173e62b3f2a4ea65cf5ce33edcb729e9e42227fe0f8726904b",
+    "artifacts/two-node-phase9-kv-transport-evidence/extension-hot32k/block4-socket/requests.jsonl": "9e740e32f46255ef02a99f826976e0e9a26145aeb4ff8d46f64d72fe609f7bdc",
+    "artifacts/two-node-phase9-kv-transport-evidence/extension-hot32k/block4-socket/command-prefill.json": "6140ffb84ec22ff5b8901d03311f562dec175d6a1653c146230d0b1794e7be57",
+    "artifacts/two-node-phase9-kv-transport-evidence/extension-hot32k/block4-socket/before-formal-prefill-counters.json": "48ea6a9af966d44787066ec5b5b1e6b14ff164bc1bff6c380a5f9dba51ec1f52",
+    "artifacts/two-node-phase9-kv-transport-evidence/extension-hot32k/block4-socket/ready-status.json": "fb69224c93501880ad8b1595e41f69dcd1e05ad093d0fb8aa8c68675a17bef4f",
+    "artifacts/two-node-phase9-kv-transport-evidence/extension-hot32k/block4-socket/after-formal-proxy-state.json": "64e80b4c8f700ed4d217e82d40388608f9f3debb80c8b8775e9069cdad009329",
+    "artifacts/two-node-phase9-kv-transport-evidence/extension-hot32k/block4-socket/before-formal-prefill.log": "1d88848c403290a5e1a04562c62937dbf668d3c165381360b3137436c3071fe7",
+    "artifacts/two-node-phase9-kv-transport-evidence/extension-hot32k/block4-socket/command-decode.json": "3ded25f694581c0d156f84fb73c5a64000c998188229ea0d6be359ef9756611a",
+    "artifacts/two-node-phase9-kv-transport-evidence/extension-hot32k/block4-socket/before-formal-decode-counters.json": "b10ffacfe08333010cda853028fafb95e7f56c29a11dbd98d194dd88c0033dfd",
+    "artifacts/two-node-phase9-kv-transport-evidence/extension-hot32k/block4-socket/after-formal-prefill.log": "bfd23cd1bea5f2a779a3da0b46d54b0025bc650a7b4357e39fce3582985ff9dd",
+    "artifacts/two-node-phase9-kv-transport-evidence/extension-hot32k/block4-socket/before-formal-proxy-state.json": "60a1988072aa64e3ce74dfd273c8c8a6a1dc675d4a8982b71041ada59a74ef8d",
+    "artifacts/two-node-phase9-kv-transport-evidence/extension-hot32k/block4-socket/after-formal-decode-counters.json": "eed747dd69797815fb00598866838f911e97ca5d6723eefd8d19f9bdd1c85472",
+    "artifacts/two-node-phase9-kv-transport-evidence/extension-hot32k/block4-socket/before-formal-prefill-metrics.txt": "2591eeee5c632f1cf6718286805aca21b7f6a240e0ff3f1dd77d18736e7a973f",
+    "artifacts/two-node-phase9-kv-transport-evidence/extension-hot32k/block4-socket/create-decode.txt": "042b0748465aaf960b79de73028ef9ddb1f2659873b61d0573f83d777f0665f9",
+    "artifacts/two-node-phase9-kv-transport-evidence/extension-hot32k/block4-socket/before-formal-prefill-state.json": "3353116551897e629202e9a9eb1cf7ee04c78808c03e709c66a87cecc8e3e71a",
+    "artifacts/two-node-phase9-kv-transport-evidence/extension-hot32k/block4-socket/after-formal-prefill-counters.json": "157cd82073e3a49be87b8bdcb5bb8c98dba8c6bd24474f47fc6171928a42dc98",
+    "artifacts/two-node-phase9-kv-transport-evidence/extension-hot32k/block4-socket/command-proxy.json": "bccc7c47e3659e6c454a69c96ecf45dec820ccbd6ad10d6d93a7d2668f27d3f5",
+    "artifacts/two-node-phase9-kv-transport-evidence/extension-hot32k/block4-socket/after-formal-prefill-metrics.txt": "c050613f9c5b6aacbaa39806552b920d273d3b0cd6dfdfffd00ab7a546f23c19",
+    "artifacts/two-node-phase9-kv-transport-evidence/extension-hot32k/block4-socket/before-inventory.json": "fb956dbe6cad7a3d6b309b389bf44deba9588be128196ffff64271c64194ccbd",
+    "artifacts/two-node-phase9-kv-transport-evidence/extension-hot32k/block4-socket/raw/formal-5.request.json": "cfec2cca5ad88355c59a4382d5faf00021a438491529ba7fcda3b18acba280f3",
+    "artifacts/two-node-phase9-kv-transport-evidence/extension-hot32k/block4-socket/raw/formal-1.events.json": "2a4645c8580bac0741c0f56dc54314d54cd3368d19af4ca3c90c4fa83f7ad4af",
+    "artifacts/two-node-phase9-kv-transport-evidence/extension-hot32k/block4-socket/raw/formal-2.sse": "e3e1ff8755ee777240d6ba8d72c56f0f82cc11ef10d5fa02637d49b63cfe3e74",
+    "artifacts/two-node-phase9-kv-transport-evidence/extension-hot32k/block4-socket/raw/formal-3.response.json": "a31bd6679128eaa3fc7ec028e067f0473f5a20783f0e50d49504d96add1cc963",
+    "artifacts/two-node-phase9-kv-transport-evidence/extension-hot32k/block4-socket/raw/formal-3.sse": "623e6a09ea17bbb287100b739176ee3344a46ca9336277877cea30020c8128f7",
+    "artifacts/two-node-phase9-kv-transport-evidence/extension-hot32k/block4-socket/raw/cold-warmup-1.response.json": "9e068b40c6ab3243a893ddb654e4bad4c62b126d9dffb31dd1bc2f62737c66f0",
+    "artifacts/two-node-phase9-kv-transport-evidence/extension-hot32k/block4-socket/raw/hot-warmup-1.events.json": "c2c422683d2272683443c303a2ebf8303819b2bb44d657cde362f75273380c9f",
+    "artifacts/two-node-phase9-kv-transport-evidence/extension-hot32k/block4-socket/raw/cold-warmup-1.request.json": "cfec2cca5ad88355c59a4382d5faf00021a438491529ba7fcda3b18acba280f3",
+    "artifacts/two-node-phase9-kv-transport-evidence/extension-hot32k/block4-socket/raw/formal-4.sse": "761b95b5e624b3cd0347a20785b1712fc3e2f6ef71c1b0437c9568a0747eedea",
+    "artifacts/two-node-phase9-kv-transport-evidence/extension-hot32k/block4-socket/raw/formal-5.events.json": "5f2c9cd7ff983a93291df77fe65ecb71b27bed7b538b7eb361060babcbb7930a",
+    "artifacts/two-node-phase9-kv-transport-evidence/extension-hot32k/block4-socket/raw/formal-2.response.json": "f3c496a749bcc9d289eda4b43e229dcdde0822b86454ee8ebd5bd7057ca20b7b",
+    "artifacts/two-node-phase9-kv-transport-evidence/extension-hot32k/block4-socket/raw/formal-1.response.json": "2c3445d51c913803d979cfbeb424b93f17ed0d7eed68cfec37421ed24a42aad2",
+    "artifacts/two-node-phase9-kv-transport-evidence/extension-hot32k/block4-socket/raw/formal-1.request.json": "cfec2cca5ad88355c59a4382d5faf00021a438491529ba7fcda3b18acba280f3",
+    "artifacts/two-node-phase9-kv-transport-evidence/extension-hot32k/block4-socket/raw/formal-4.response.json": "a3472fb57d3127cbb7b0d18d9a4aa0afc079f9f982a34a52e07eb9c902aad316",
+    "artifacts/two-node-phase9-kv-transport-evidence/extension-hot32k/block4-socket/raw/formal-5.response.json": "1d3e3dd0f868f0f2ce54fd0c52c57e3f5a2c5f21001d307813482847f087eb20",
+    "artifacts/two-node-phase9-kv-transport-evidence/extension-hot32k/block4-socket/raw/cold-warmup-1.sse": "20c00be54e9d582d49fdb9b1d26135716b2ce7000baae59f5f0b548909de9de5",
+    "artifacts/two-node-phase9-kv-transport-evidence/extension-hot32k/block4-socket/raw/cold-warmup-1.events.json": "e1de354e4d1197c72b771f576749353e9f2f7a50a7e38bb0df372a0f9e7e4fff",
+    "artifacts/two-node-phase9-kv-transport-evidence/extension-hot32k/block4-socket/raw/formal-3.events.json": "b7c94718f75f88c176d874356913264a96106301bd2fc923769391324f4e3a73",
+    "artifacts/two-node-phase9-kv-transport-evidence/extension-hot32k/block4-socket/raw/formal-4.request.json": "cfec2cca5ad88355c59a4382d5faf00021a438491529ba7fcda3b18acba280f3",
+    "artifacts/two-node-phase9-kv-transport-evidence/extension-hot32k/block4-socket/raw/hot-warmup-1.sse": "bf74c5536de177eee6a3a6fff5fc10bbcb1ce00138de27a747bc4c1c1c4b4214",
+    "artifacts/two-node-phase9-kv-transport-evidence/extension-hot32k/block4-socket/raw/formal-3.request.json": "cfec2cca5ad88355c59a4382d5faf00021a438491529ba7fcda3b18acba280f3",
+    "artifacts/two-node-phase9-kv-transport-evidence/extension-hot32k/block4-socket/raw/formal-1.sse": "16b338cd1c3ef276d5ea30fb3dd3d1eaacef20a774de9d59b8ef9d227576d827",
+    "artifacts/two-node-phase9-kv-transport-evidence/extension-hot32k/block4-socket/raw/formal-2.events.json": "837fe290f3dc7617c9b4ea9532618c608030c07f1197dfae7bd67cec7cbe3c9e",
+    "artifacts/two-node-phase9-kv-transport-evidence/extension-hot32k/block4-socket/raw/formal-4.events.json": "03416080390585d362d8b9817c4ba75727a159019228d08ae1b7f308c8c30bab",
+    "artifacts/two-node-phase9-kv-transport-evidence/extension-hot32k/block4-socket/raw/formal-2.request.json": "cfec2cca5ad88355c59a4382d5faf00021a438491529ba7fcda3b18acba280f3",
+    "artifacts/two-node-phase9-kv-transport-evidence/extension-hot32k/block4-socket/raw/hot-warmup-1.response.json": "e2ac4ed69df494ea08a9e7c1706d5f3da028674a49980920396c6442fb39c5eb",
+    "artifacts/two-node-phase9-kv-transport-evidence/extension-hot32k/block4-socket/raw/hot-warmup-1.request.json": "cfec2cca5ad88355c59a4382d5faf00021a438491529ba7fcda3b18acba280f3",
+    "artifacts/two-node-phase9-kv-transport-evidence/extension-hot32k/block4-socket/raw/formal-5.sse": "cad1b0a61476aa548f8b060e662d5cfbb1f48982babe566542fab2797a6d41b1",
+    "artifacts/two-node-phase9-kv-transport-evidence/extension-hot32k/block3-rdma/ready-prefill-counters.json": "1f3b9d4ff58fa083158dbe0364cf030934c8334a65030ef97138659f02f34f88",
+    "artifacts/two-node-phase9-kv-transport-evidence/extension-hot32k/block3-rdma/after-formal-decode.log": "67e22fdb48cde3df9ab9c1cc2228da934afedb752a47a36a53430ac4f3f2aed4",
+    "artifacts/two-node-phase9-kv-transport-evidence/extension-hot32k/block3-rdma/ready-decode.log": "eef536f38190f6955b033f54396479d96300249e37dbe909949e673e6fab65e0",
+    "artifacts/two-node-phase9-kv-transport-evidence/extension-hot32k/block3-rdma/ready-prefill-metrics.txt": "63a1863839f29ee466d4fee143d9ada79be8539685877c2e340a13f2d7c016b9",
+    "artifacts/two-node-phase9-kv-transport-evidence/extension-hot32k/block3-rdma/ready-decode-state.json": "145c5048940aff2693f14d75292716f48b68d766cc329fb17721a664c2c4953c",
+    "artifacts/two-node-phase9-kv-transport-evidence/extension-hot32k/block3-rdma/ready-proxy.log": "aaf5f692e0f3ae193f1fdb5c06d3353bd5f020be47577851540153e96463be18",
+    "artifacts/two-node-phase9-kv-transport-evidence/extension-hot32k/block3-rdma/before-formal-decode.log": "89098aed271ee6a7110179fd96ce8da48de9c103920b0dbcf05458d272ba8842",
+    "artifacts/two-node-phase9-kv-transport-evidence/extension-hot32k/block3-rdma/after-formal-decode-metrics.txt": "d91da9ad3a26ff340a5260bd395f18b534d71077f06c2f7f226bf4691c6f1bc1",
+    "artifacts/two-node-phase9-kv-transport-evidence/extension-hot32k/block3-rdma/ready-decode-metrics.txt": "e3b15e60b7678febd7af0fe8570cb312b4306cb65fe24c5fbe15049584ff38ec",
+    "artifacts/two-node-phase9-kv-transport-evidence/extension-hot32k/block3-rdma/ready-proxy-state.json": "9a994df55feb485850b013b3370413fb53239afe512b0f2bdfc52355c7b870ae",
+    "artifacts/two-node-phase9-kv-transport-evidence/extension-hot32k/block3-rdma/ready-prefill-state.json": "8017813c95a343a2aebe659f30a632365e00c0e73dc3daffaec335402507dff8",
+    "artifacts/two-node-phase9-kv-transport-evidence/extension-hot32k/block3-rdma/after-formal-prefill-state.json": "695fb61516e701d002099fa60e93fadb72f45891bfc5a2d6f35a9dfd8c8c6a3f",
+    "artifacts/two-node-phase9-kv-transport-evidence/extension-hot32k/block3-rdma/after-formal-proxy.log": "5fe93d3bec65659bd704107371ffb6de593ffe468f7bba8cbfda476b0822644f",
+    "artifacts/two-node-phase9-kv-transport-evidence/extension-hot32k/block3-rdma/before-formal-decode-metrics.txt": "829f58293fb5e45b7a8b45206188d1141527c860172a1a9441d764cf050043d2",
+    "artifacts/two-node-phase9-kv-transport-evidence/extension-hot32k/block3-rdma/telemetry-decode.txt": "f05a41ac7deb834df4ab5f94ef5692fa097ca0b78fc15fd555ee06eb33b273ad",
+    "artifacts/two-node-phase9-kv-transport-evidence/extension-hot32k/block3-rdma/prefill-scheduler-trace.json": "fd82e46f2218035bb54e852496e29a427db909c03109dcd400f46f17968b4a63",
+    "artifacts/two-node-phase9-kv-transport-evidence/extension-hot32k/block3-rdma/create-proxy.txt": "9d5b6460b297d834eae9e66cde57100bd9b7599226057d0b2f1a7cd9dd92ae26",
+    "artifacts/two-node-phase9-kv-transport-evidence/extension-hot32k/block3-rdma/after-formal-decode-state.json": "9d32056f70ad9f1e5cf48c4c8e130a8d8eaf781dc3fa2da1d4e0ee39baa9734d",
+    "artifacts/two-node-phase9-kv-transport-evidence/extension-hot32k/block3-rdma/before-formal-decode-state.json": "30ea88d8a8f943cf7f41f1567ae5d53eef019e234209712aeb23faac3c1cf69c",
+    "artifacts/two-node-phase9-kv-transport-evidence/extension-hot32k/block3-rdma/create-prefill.txt": "61e1cbf9b12a85b41785742696cd0571cf6f84db93a4ba02724c631b2074e236",
+    "artifacts/two-node-phase9-kv-transport-evidence/extension-hot32k/block3-rdma/decode-scheduler-trace.json": "08828948f7bf9badcb3dda6e7cb20e595ec279e5812b5aa6fed3bc965bcfcc7d",
+    "artifacts/two-node-phase9-kv-transport-evidence/extension-hot32k/block3-rdma/ready-decode-counters.json": "3741f877fc2dd4959a01f712087dbdc72b055b7e12a4723503607630e99b858e",
+    "artifacts/two-node-phase9-kv-transport-evidence/extension-hot32k/block3-rdma/ready-prefill.log": "7ed8a67c3bcb42fc57ce59eb5e2f01cd11dc5a7500c246f1cf91ea6fb5b047f0",
+    "artifacts/two-node-phase9-kv-transport-evidence/extension-hot32k/block3-rdma/telemetry-prefill.txt": "f05a41ac7deb834df4ab5f94ef5692fa097ca0b78fc15fd555ee06eb33b273ad",
+    "artifacts/two-node-phase9-kv-transport-evidence/extension-hot32k/block3-rdma/before-formal-proxy.log": "0348f7376ac8f9aa6d4314ea4f8508e5006f0d253b79166c7731d3645764c6c7",
+    "artifacts/two-node-phase9-kv-transport-evidence/extension-hot32k/block3-rdma/warmup-verification.json": "975c912db9012d44e50cdbd5763fc0c0e8a2a2e971a0e8687096aef3f5593bd9",
+    "artifacts/two-node-phase9-kv-transport-evidence/extension-hot32k/block3-rdma/requests.jsonl": "e9d8275ae089ca9098396c86a3c376c4cd465240fbaeefd0856059ce2cadee60",
+    "artifacts/two-node-phase9-kv-transport-evidence/extension-hot32k/block3-rdma/command-prefill.json": "aace4ff98c999ef647ef44439ae70048b3dd0d1daecb594b58e8dd88b8bd11cb",
+    "artifacts/two-node-phase9-kv-transport-evidence/extension-hot32k/block3-rdma/before-formal-prefill-counters.json": "b0ea8600cb6e64cd94bbe90f9223d6e36df5faffedb644b2dc304fcb99f27355",
+    "artifacts/two-node-phase9-kv-transport-evidence/extension-hot32k/block3-rdma/ready-status.json": "313b487969dd6dbada8f56dd87658a54a2c2ce7bfebdc1ac91dcaf3edaf3403a",
+    "artifacts/two-node-phase9-kv-transport-evidence/extension-hot32k/block3-rdma/after-formal-proxy-state.json": "6112cb1ab46debdae6cfe83589c60a6b8982bc673dbc0207a9cf8cde2591b1e3",
+    "artifacts/two-node-phase9-kv-transport-evidence/extension-hot32k/block3-rdma/before-formal-prefill.log": "cde5854811a4dc2c663d4e5adc5e3e23b03e7c043562842e59b33b0686c45b23",
+    "artifacts/two-node-phase9-kv-transport-evidence/extension-hot32k/block3-rdma/command-decode.json": "c2af214f3dca7cb5e4af57e85e3c4826352732a73665160d0a6d1f28a11db08a",
+    "artifacts/two-node-phase9-kv-transport-evidence/extension-hot32k/block3-rdma/before-formal-decode-counters.json": "c3a587e564055d0814a4ae53a9cf0f037d8e96fcfda182c73222f8b756d13c7b",
+    "artifacts/two-node-phase9-kv-transport-evidence/extension-hot32k/block3-rdma/after-formal-prefill.log": "284118b3fe4a76b3067a29a5675ba328357477d8f1b3dfc8c00e6a5cdf202657",
+    "artifacts/two-node-phase9-kv-transport-evidence/extension-hot32k/block3-rdma/before-formal-proxy-state.json": "9b8eb7943fedad0557ee5f598577954eb33a41486e313e669529af6835d157ce",
+    "artifacts/two-node-phase9-kv-transport-evidence/extension-hot32k/block3-rdma/after-formal-decode-counters.json": "9079a67a06684b6a5f2cd717a3bab27dc43aa1c1bc721148557fc86a552d0444",
+    "artifacts/two-node-phase9-kv-transport-evidence/extension-hot32k/block3-rdma/before-formal-prefill-metrics.txt": "160c4362cb1c394d0b7094052833070fb9889227e4b603779d4ce5befcf0aee0",
+    "artifacts/two-node-phase9-kv-transport-evidence/extension-hot32k/block3-rdma/create-decode.txt": "0863fac5529a68fd3ed8cf71f006b58aad1e7a6226f368963f93806e2ae418e0",
+    "artifacts/two-node-phase9-kv-transport-evidence/extension-hot32k/block3-rdma/before-formal-prefill-state.json": "0db21d2767bef2e9184aa9aaa0c956a7a6df7a428e5b0e444171524fd68e93c1",
+    "artifacts/two-node-phase9-kv-transport-evidence/extension-hot32k/block3-rdma/after-formal-prefill-counters.json": "cbf67db17df23ded6750dd64750a4989a8c02d5a8b8e7fb3a5713ae106e1cfeb",
+    "artifacts/two-node-phase9-kv-transport-evidence/extension-hot32k/block3-rdma/command-proxy.json": "5e755eaac260a16b0d0dff311bfa01d67730ebe88cad2730058cbdd0ebf90dca",
+    "artifacts/two-node-phase9-kv-transport-evidence/extension-hot32k/block3-rdma/after-formal-prefill-metrics.txt": "f500db3ec6deaebb829f9fce64823dc7cbb381ef78381fa82b2586a08c674053",
+    "artifacts/two-node-phase9-kv-transport-evidence/extension-hot32k/block3-rdma/before-inventory.json": "f76896a1fac87246882b3f5a6f6ecaddbf8f8ca17d4a5ee2885c1412023f239f",
+    "artifacts/two-node-phase9-kv-transport-evidence/extension-hot32k/block3-rdma/raw/formal-5.request.json": "cfec2cca5ad88355c59a4382d5faf00021a438491529ba7fcda3b18acba280f3",
+    "artifacts/two-node-phase9-kv-transport-evidence/extension-hot32k/block3-rdma/raw/formal-1.events.json": "f01b916c77be3dbb24adf4b20456eab1e3366e9441485e717c75cc1c3b305b5a",
+    "artifacts/two-node-phase9-kv-transport-evidence/extension-hot32k/block3-rdma/raw/formal-2.sse": "bb6e13044bc9b27c7e1b8479cbf227a5ef905ae8209cf310994a7a7a1474c8ca",
+    "artifacts/two-node-phase9-kv-transport-evidence/extension-hot32k/block3-rdma/raw/formal-3.response.json": "2fa9340d5a31ad953fa55250c4a5670f754bf69a71a28896575af7cbe2ef078b",
+    "artifacts/two-node-phase9-kv-transport-evidence/extension-hot32k/block3-rdma/raw/formal-3.sse": "9b97e54d19706e235433c25f73584f90ad4ae38af7f8fb7b91f9bae00402efe5",
+    "artifacts/two-node-phase9-kv-transport-evidence/extension-hot32k/block3-rdma/raw/cold-warmup-1.response.json": "3ae9107b77136f2370ecce485d7544ebd94c0dcbe711ba0188c9f56f913ada95",
+    "artifacts/two-node-phase9-kv-transport-evidence/extension-hot32k/block3-rdma/raw/hot-warmup-1.events.json": "f28add03ed3a372729f0ca7dcaaf3dd12dfcbcb43d5801147592e1617ee79776",
+    "artifacts/two-node-phase9-kv-transport-evidence/extension-hot32k/block3-rdma/raw/cold-warmup-1.request.json": "cfec2cca5ad88355c59a4382d5faf00021a438491529ba7fcda3b18acba280f3",
+    "artifacts/two-node-phase9-kv-transport-evidence/extension-hot32k/block3-rdma/raw/formal-4.sse": "333fc08d4209db896081c4a449350c68b38d41700485b74e54f8818a6689671b",
+    "artifacts/two-node-phase9-kv-transport-evidence/extension-hot32k/block3-rdma/raw/formal-5.events.json": "893b70d22b3b0e703d2070e9b5d449c5ee0ae3a981a3267d096f3a86ea945101",
+    "artifacts/two-node-phase9-kv-transport-evidence/extension-hot32k/block3-rdma/raw/formal-2.response.json": "392f7ca5ac32523cc254ed06291e176c052eea9cbb89e0ee240eacb67d55edd4",
+    "artifacts/two-node-phase9-kv-transport-evidence/extension-hot32k/block3-rdma/raw/formal-1.response.json": "82da532901c178f8f50b7828b1bfec3dbf48ba8a1359b84197102034e151823d",
+    "artifacts/two-node-phase9-kv-transport-evidence/extension-hot32k/block3-rdma/raw/formal-1.request.json": "cfec2cca5ad88355c59a4382d5faf00021a438491529ba7fcda3b18acba280f3",
+    "artifacts/two-node-phase9-kv-transport-evidence/extension-hot32k/block3-rdma/raw/formal-4.response.json": "c31bf563a5e61f9709a4b2194d7af010c1b9e242b42b54bab7d0dd6529bfa1bc",
+    "artifacts/two-node-phase9-kv-transport-evidence/extension-hot32k/block3-rdma/raw/formal-5.response.json": "4e1cdea937aaeeeb90c5b56e9260936d26c6638ae4cb6c3984db3ce02c0390de",
+    "artifacts/two-node-phase9-kv-transport-evidence/extension-hot32k/block3-rdma/raw/cold-warmup-1.sse": "51b06fc30d0be1e62b982d3ea242bd55018a29317df8c8339c92a487a3d1265a",
+    "artifacts/two-node-phase9-kv-transport-evidence/extension-hot32k/block3-rdma/raw/cold-warmup-1.events.json": "27957fa93a29357652437ab7e7199ae5fed1c175c79c8933025499a520d878bb",
+    "artifacts/two-node-phase9-kv-transport-evidence/extension-hot32k/block3-rdma/raw/formal-3.events.json": "e111c4e361a39d60205e6a7c770148a0991c2763d004800ec4eddea98529afa5",
+    "artifacts/two-node-phase9-kv-transport-evidence/extension-hot32k/block3-rdma/raw/formal-4.request.json": "cfec2cca5ad88355c59a4382d5faf00021a438491529ba7fcda3b18acba280f3",
+    "artifacts/two-node-phase9-kv-transport-evidence/extension-hot32k/block3-rdma/raw/hot-warmup-1.sse": "41e4303b3e6aaec36754472b9e952bc9eefadf41ad6231b82f8d1908d24d866f",
+    "artifacts/two-node-phase9-kv-transport-evidence/extension-hot32k/block3-rdma/raw/formal-3.request.json": "cfec2cca5ad88355c59a4382d5faf00021a438491529ba7fcda3b18acba280f3",
+    "artifacts/two-node-phase9-kv-transport-evidence/extension-hot32k/block3-rdma/raw/formal-1.sse": "e9f582d3a9f08f8cc15d8dc1d4b436ea78360393a85a96aa48fe70a6c400e3f9",
+    "artifacts/two-node-phase9-kv-transport-evidence/extension-hot32k/block3-rdma/raw/formal-2.events.json": "1342a38a1fa8799018b62df274c57cf9c306cfbfd025ee1cbfffa5c53c84f528",
+    "artifacts/two-node-phase9-kv-transport-evidence/extension-hot32k/block3-rdma/raw/formal-4.events.json": "ab639aac50f3f2dc09925fe24862c58212c62dd897d1e6e82b61c42c54ee4199",
+    "artifacts/two-node-phase9-kv-transport-evidence/extension-hot32k/block3-rdma/raw/formal-2.request.json": "cfec2cca5ad88355c59a4382d5faf00021a438491529ba7fcda3b18acba280f3",
+    "artifacts/two-node-phase9-kv-transport-evidence/extension-hot32k/block3-rdma/raw/hot-warmup-1.response.json": "71a690bea6dca013258564b653f40b9a6eba56186ba03b782ed5750a57325dcf",
+    "artifacts/two-node-phase9-kv-transport-evidence/extension-hot32k/block3-rdma/raw/hot-warmup-1.request.json": "cfec2cca5ad88355c59a4382d5faf00021a438491529ba7fcda3b18acba280f3",
+    "artifacts/two-node-phase9-kv-transport-evidence/extension-hot32k/block3-rdma/raw/formal-5.sse": "26a44b3819fefce977f1147731ed330086fc6fe76a51eb6197ff1fc51911f5cb",
+    "artifacts/two-node-phase9-kv-transport-evidence/extension-hot32k/block2-rdma/ready-prefill-counters.json": "d7c7d2b30ad2e10eb0546505472b8c56c83864eecc155ade734d7441b8515979",
+    "artifacts/two-node-phase9-kv-transport-evidence/extension-hot32k/block2-rdma/after-formal-decode.log": "cda5ce0d7164523cf45e322b244743d4bdc06fb0f7fbaf4701312f148bf100d3",
+    "artifacts/two-node-phase9-kv-transport-evidence/extension-hot32k/block2-rdma/ready-decode.log": "66006b2edd1c5eea4b38cb0119c21c59e1cf8d2365ad78300d3a9da9973ba8d2",
+    "artifacts/two-node-phase9-kv-transport-evidence/extension-hot32k/block2-rdma/ready-prefill-metrics.txt": "afad73df7bfc11fd1096edc37c9af137daa3c40d32bdcc0f822dbf2708573dbf",
+    "artifacts/two-node-phase9-kv-transport-evidence/extension-hot32k/block2-rdma/ready-decode-state.json": "fa8da73a411585e1a94ac0cf49392b7f1fc86f9f8f730c3c779bc5961c8dc920",
+    "artifacts/two-node-phase9-kv-transport-evidence/extension-hot32k/block2-rdma/ready-proxy.log": "f813a915fac03d0f2947698a9ddb568f06e181eb5f837765fcffb097433d9cc7",
+    "artifacts/two-node-phase9-kv-transport-evidence/extension-hot32k/block2-rdma/before-formal-decode.log": "007c4454b03078430cbf64b453e325fb76044910a67e81d89ba16267b9e9cdf8",
+    "artifacts/two-node-phase9-kv-transport-evidence/extension-hot32k/block2-rdma/after-formal-decode-metrics.txt": "278356bfb3a5e60f742548fc36623b1e0e59b2727d1fb1ffbd5ab788e8587a49",
+    "artifacts/two-node-phase9-kv-transport-evidence/extension-hot32k/block2-rdma/ready-decode-metrics.txt": "20e13d39f2095bf142e6b602ca46962df2170fd0f4dcc50af1684f93281a6abb",
+    "artifacts/two-node-phase9-kv-transport-evidence/extension-hot32k/block2-rdma/ready-proxy-state.json": "956d7741858dc33fdd1ad8e3eb26a8ad5c03ace10848b03efcca993cee96a189",
+    "artifacts/two-node-phase9-kv-transport-evidence/extension-hot32k/block2-rdma/ready-prefill-state.json": "6b29194a5b09c25170b6c2ab679eb0ae613602c5832cae29202d1203b0c9b31f",
+    "artifacts/two-node-phase9-kv-transport-evidence/extension-hot32k/block2-rdma/after-formal-prefill-state.json": "00589fb3872e797cb8adc10482401c0d2f3945538cc59f2e8821990a3b2f3079",
+    "artifacts/two-node-phase9-kv-transport-evidence/extension-hot32k/block2-rdma/after-formal-proxy.log": "0aa0e0952b68182b76871c24ab1ea4b7a4aebab82a9674e7f296861ece6f402f",
+    "artifacts/two-node-phase9-kv-transport-evidence/extension-hot32k/block2-rdma/before-formal-decode-metrics.txt": "c0511eaf9340940ca7de254c9962adf01df7bbab4b0c14c8f7c2583d11bee403",
+    "artifacts/two-node-phase9-kv-transport-evidence/extension-hot32k/block2-rdma/telemetry-decode.txt": "f05a41ac7deb834df4ab5f94ef5692fa097ca0b78fc15fd555ee06eb33b273ad",
+    "artifacts/two-node-phase9-kv-transport-evidence/extension-hot32k/block2-rdma/prefill-scheduler-trace.json": "fa37ee148074eb78420272f84aee25c16ab8dbc67cb42f08745cdb064108e81c",
+    "artifacts/two-node-phase9-kv-transport-evidence/extension-hot32k/block2-rdma/create-proxy.txt": "b7d899626e293b90bba9a592634d7340c9792bbd126bae1b6487406882405f53",
+    "artifacts/two-node-phase9-kv-transport-evidence/extension-hot32k/block2-rdma/after-formal-decode-state.json": "7a495e7d671c9513b89fe41ac48c059b4d5183d7d2d4b6d61d1247cde9dfb25f",
+    "artifacts/two-node-phase9-kv-transport-evidence/extension-hot32k/block2-rdma/before-formal-decode-state.json": "eb28fbd66ece74f6ea85675591c917c76a95f4962b5c63f6ea092f94450d1372",
+    "artifacts/two-node-phase9-kv-transport-evidence/extension-hot32k/block2-rdma/create-prefill.txt": "f8deec48eac9cebf711687353caafdbd41d212bc7d54b697945fa9bea16c6611",
+    "artifacts/two-node-phase9-kv-transport-evidence/extension-hot32k/block2-rdma/decode-scheduler-trace.json": "324c7c4e0caba048ac2ac65c4b57d3284b53b1915690b08977bb9662a0049545",
+    "artifacts/two-node-phase9-kv-transport-evidence/extension-hot32k/block2-rdma/ready-decode-counters.json": "62d5091861cfb68e14004800f97eca9d9d332f2a81ebb0c1f61e6e3a4168d9c6",
+    "artifacts/two-node-phase9-kv-transport-evidence/extension-hot32k/block2-rdma/ready-prefill.log": "c6e95acad204f172ac053469056bf68d282b43d718b48178d8a4e7d289e41ff7",
+    "artifacts/two-node-phase9-kv-transport-evidence/extension-hot32k/block2-rdma/telemetry-prefill.txt": "f05a41ac7deb834df4ab5f94ef5692fa097ca0b78fc15fd555ee06eb33b273ad",
+    "artifacts/two-node-phase9-kv-transport-evidence/extension-hot32k/block2-rdma/before-formal-proxy.log": "e2d12d18a48d4a11148b45c224d39b842c03e2d62859e5c12215c475578fdfa2",
+    "artifacts/two-node-phase9-kv-transport-evidence/extension-hot32k/block2-rdma/warmup-verification.json": "6da0f163169e1395a3ddde3d92b3f7c846b20a6701ed4110b1b392787adc7da2",
+    "artifacts/two-node-phase9-kv-transport-evidence/extension-hot32k/block2-rdma/requests.jsonl": "7f0d7f73ea553a4c96a5db5469e35e84961dafe9d78482312beb23b4d640ecb2",
+    "artifacts/two-node-phase9-kv-transport-evidence/extension-hot32k/block2-rdma/command-prefill.json": "4b776ccfa2554f21486ba6f0ab1586d6e0282caff1d56080fe5d0d55b87e48c6",
+    "artifacts/two-node-phase9-kv-transport-evidence/extension-hot32k/block2-rdma/before-formal-prefill-counters.json": "0ba1f46fcb265ff28aac9a77f2a9c81a977e15216c606e4fe23a3ff90d0e4f4a",
+    "artifacts/two-node-phase9-kv-transport-evidence/extension-hot32k/block2-rdma/ready-status.json": "8a06dd7691a15965425fcb38032f242ffc57f4b4480f8eff363354394b2a7d13",
+    "artifacts/two-node-phase9-kv-transport-evidence/extension-hot32k/block2-rdma/after-formal-proxy-state.json": "0d1bf40f6826447a234b8c016aed8dadaf4a5d215e66d70063f837a7f42da15f",
+    "artifacts/two-node-phase9-kv-transport-evidence/extension-hot32k/block2-rdma/before-formal-prefill.log": "932eae9d352e85aeea98d64ee06e890ed474f76ef07f6525ac1aa281db871d22",
+    "artifacts/two-node-phase9-kv-transport-evidence/extension-hot32k/block2-rdma/command-decode.json": "b0fd38838656911cd2620a6bbaaf92fd1631b6ead03741202583244cbd46b2e9",
+    "artifacts/two-node-phase9-kv-transport-evidence/extension-hot32k/block2-rdma/before-formal-decode-counters.json": "02baf99bf995c055bc71a9e966ed898921e72004836b90f9e6cdeff9a63e0ef4",
+    "artifacts/two-node-phase9-kv-transport-evidence/extension-hot32k/block2-rdma/after-formal-prefill.log": "d42722a2e5ca4c3c01cd83151517fed22d79b2cf58b5d2733b7e5fbc474303f7",
+    "artifacts/two-node-phase9-kv-transport-evidence/extension-hot32k/block2-rdma/before-formal-proxy-state.json": "db986faf3ecf76ab1c4738798bde31e1611a5bb1672654da08df9fb6d188be27",
+    "artifacts/two-node-phase9-kv-transport-evidence/extension-hot32k/block2-rdma/after-formal-decode-counters.json": "ecbc6228c9b7abddc90da0e437258ca9e854359113a88dcde054d2c1d81f93c7",
+    "artifacts/two-node-phase9-kv-transport-evidence/extension-hot32k/block2-rdma/before-formal-prefill-metrics.txt": "b398cee104af7ee8b55638cd852678a3aa7a1de075d7f40ab71f11ca6e44e733",
+    "artifacts/two-node-phase9-kv-transport-evidence/extension-hot32k/block2-rdma/create-decode.txt": "4b9adf7c285564067455aefc15b4bda86b799e290416b0485299c0ada450b199",
+    "artifacts/two-node-phase9-kv-transport-evidence/extension-hot32k/block2-rdma/before-formal-prefill-state.json": "69ba6117ee49536cfcd0893cd09264c7d993d96d0624b32dc890c2dc73a0e4a5",
+    "artifacts/two-node-phase9-kv-transport-evidence/extension-hot32k/block2-rdma/after-formal-prefill-counters.json": "8563aa03376167785c3641da2555e98cae379cde1a6aa130900d879fc4ca9aa9",
+    "artifacts/two-node-phase9-kv-transport-evidence/extension-hot32k/block2-rdma/command-proxy.json": "cfd862c8a42ca92524008256311ec2844ea83ffe512d61bcd9495b088ee03145",
+    "artifacts/two-node-phase9-kv-transport-evidence/extension-hot32k/block2-rdma/after-formal-prefill-metrics.txt": "8dddfb34e2bebd921ab3cb8700a68a4253ff2f20d41e5fa714d0d64642c8fea8",
+    "artifacts/two-node-phase9-kv-transport-evidence/extension-hot32k/block2-rdma/before-inventory.json": "9e68eec5a791037ca7b5a1af921f1bb639229c66ba92bafa0d7293c2e7028692",
+    "artifacts/two-node-phase9-kv-transport-evidence/extension-hot32k/block2-rdma/raw/formal-5.request.json": "cfec2cca5ad88355c59a4382d5faf00021a438491529ba7fcda3b18acba280f3",
+    "artifacts/two-node-phase9-kv-transport-evidence/extension-hot32k/block2-rdma/raw/formal-1.events.json": "01170c4ab165221e93ad750fc455e3466e9c4bda4a971f1e083d0faf4754e645",
+    "artifacts/two-node-phase9-kv-transport-evidence/extension-hot32k/block2-rdma/raw/formal-2.sse": "6b5d8d9480d023c8e6b3735b78ea41eb23c7b4eeb5d3b5c4607254ef6c11ef60",
+    "artifacts/two-node-phase9-kv-transport-evidence/extension-hot32k/block2-rdma/raw/formal-3.response.json": "6734d5d71c4a6d7328d0b0934848b10757f5322c3a10e5a46dfec2ba2de4ec40",
+    "artifacts/two-node-phase9-kv-transport-evidence/extension-hot32k/block2-rdma/raw/formal-3.sse": "5488eab5cb9b10ab5afc4467b5ea738d44f3d152abad950134d293d9fb80db96",
+    "artifacts/two-node-phase9-kv-transport-evidence/extension-hot32k/block2-rdma/raw/cold-warmup-1.response.json": "e0a02be08637336ee46ccbf7bdc2c1b2054871ccbf6c3f61d126ad14af8c0060",
+    "artifacts/two-node-phase9-kv-transport-evidence/extension-hot32k/block2-rdma/raw/hot-warmup-1.events.json": "3a05e8803fb2a7f48c9628b925afd8cb51eeaf9e133461ac2199000b17ede5b5",
+    "artifacts/two-node-phase9-kv-transport-evidence/extension-hot32k/block2-rdma/raw/cold-warmup-1.request.json": "cfec2cca5ad88355c59a4382d5faf00021a438491529ba7fcda3b18acba280f3",
+    "artifacts/two-node-phase9-kv-transport-evidence/extension-hot32k/block2-rdma/raw/formal-4.sse": "0d3993ece1772a5d5c0ec6403f558ea3d211bd6327e2df48350a7a63537cdc51",
+    "artifacts/two-node-phase9-kv-transport-evidence/extension-hot32k/block2-rdma/raw/formal-5.events.json": "7bc734a8394058570ccd4824c894af3cd7b0e4699851b5771d42ccf02c5ab3f9",
+    "artifacts/two-node-phase9-kv-transport-evidence/extension-hot32k/block2-rdma/raw/formal-2.response.json": "fb72183adb69c4ed18bdfe731346095733ab9898540cc1c0b4de615110aa082f",
+    "artifacts/two-node-phase9-kv-transport-evidence/extension-hot32k/block2-rdma/raw/formal-1.response.json": "523bf2e74318077dabea7f36363420b60165afcb20ccac8555cb0e3968252273",
+    "artifacts/two-node-phase9-kv-transport-evidence/extension-hot32k/block2-rdma/raw/formal-1.request.json": "cfec2cca5ad88355c59a4382d5faf00021a438491529ba7fcda3b18acba280f3",
+    "artifacts/two-node-phase9-kv-transport-evidence/extension-hot32k/block2-rdma/raw/formal-4.response.json": "1375b5ab3b9d992a65634c18afc39166eaa83c4ebf46add77f25ffa54dbdfabd",
+    "artifacts/two-node-phase9-kv-transport-evidence/extension-hot32k/block2-rdma/raw/formal-5.response.json": "644121ce2c52a38c06482cbc88bf904d89979239adff013a16c7f3bedd2c79dc",
+    "artifacts/two-node-phase9-kv-transport-evidence/extension-hot32k/block2-rdma/raw/cold-warmup-1.sse": "1e8ab7b0478872ad744e6fa3b5a6e0371229bc0433dd6cd6066f001a9b771854",
+    "artifacts/two-node-phase9-kv-transport-evidence/extension-hot32k/block2-rdma/raw/cold-warmup-1.events.json": "3e7d3a9c1cea30708fb5b456707ba50a12e9132cf69c7490901a9fe71a5b9dfb",
+    "artifacts/two-node-phase9-kv-transport-evidence/extension-hot32k/block2-rdma/raw/formal-3.events.json": "f3f9978eab0f6a704354903c35f3bae2925082c95fa6326f87f6556493c240ea",
+    "artifacts/two-node-phase9-kv-transport-evidence/extension-hot32k/block2-rdma/raw/formal-4.request.json": "cfec2cca5ad88355c59a4382d5faf00021a438491529ba7fcda3b18acba280f3",
+    "artifacts/two-node-phase9-kv-transport-evidence/extension-hot32k/block2-rdma/raw/hot-warmup-1.sse": "b2c00c0e5731c40570cd1551057f47fec1dab419e70fa0c48841431026d0eb93",
+    "artifacts/two-node-phase9-kv-transport-evidence/extension-hot32k/block2-rdma/raw/formal-3.request.json": "cfec2cca5ad88355c59a4382d5faf00021a438491529ba7fcda3b18acba280f3",
+    "artifacts/two-node-phase9-kv-transport-evidence/extension-hot32k/block2-rdma/raw/formal-1.sse": "d49925856f7922756e12480bed4d1a0b91d455caccc36c14a5d9e6334beec707",
+    "artifacts/two-node-phase9-kv-transport-evidence/extension-hot32k/block2-rdma/raw/formal-2.events.json": "b65f5939ff2e09d6f558b8917ccbb95713a443e680b74785aa2c46200951fa46",
+    "artifacts/two-node-phase9-kv-transport-evidence/extension-hot32k/block2-rdma/raw/formal-4.events.json": "285d896e288702cbce68d3dce073ee2d7a8bac0ac5b7f2a34de62587c0ddca11",
+    "artifacts/two-node-phase9-kv-transport-evidence/extension-hot32k/block2-rdma/raw/formal-2.request.json": "cfec2cca5ad88355c59a4382d5faf00021a438491529ba7fcda3b18acba280f3",
+    "artifacts/two-node-phase9-kv-transport-evidence/extension-hot32k/block2-rdma/raw/hot-warmup-1.response.json": "7594dd1c107a01ab1a5e1f44f355806961a9ca0ae61caa4671780d49ba4fa11b",
+    "artifacts/two-node-phase9-kv-transport-evidence/extension-hot32k/block2-rdma/raw/hot-warmup-1.request.json": "cfec2cca5ad88355c59a4382d5faf00021a438491529ba7fcda3b18acba280f3",
+    "artifacts/two-node-phase9-kv-transport-evidence/extension-hot32k/block2-rdma/raw/formal-5.sse": "aa313256ea7f4625783741b5c45db1fa1bbf81c65997af45f0f44ef0a61958e7",
+    "artifacts/two-node-phase9-kv-transport-evidence/extension-hot32k/block1-socket/ready-prefill-counters.json": "43d49b12cb6b06d27d4200efb52f497659465123d2aee22b679611cb2b43da1e",
+    "artifacts/two-node-phase9-kv-transport-evidence/extension-hot32k/block1-socket/after-formal-decode.log": "0b511bde5f1198da480f93d971e2141ec9baaf5881197383f194bc3c58479c8c",
+    "artifacts/two-node-phase9-kv-transport-evidence/extension-hot32k/block1-socket/failure-decode.log": "5d919fbe8703e705230c3d5d6542900cc065fd8abc396c34efd154f00cf4fdec",
+    "artifacts/two-node-phase9-kv-transport-evidence/extension-hot32k/block1-socket/ready-decode.log": "3c04660e25cee3d3ab11576c87c3801afe164d5bbe84ed0533168b09877e115f",
+    "artifacts/two-node-phase9-kv-transport-evidence/extension-hot32k/block1-socket/ready-prefill-metrics.txt": "d64a54f0f72e3ea36abb3a8d94d5ad158f01c98d9362de1ac88d3890e8eee8fb",
+    "artifacts/two-node-phase9-kv-transport-evidence/extension-hot32k/block1-socket/ready-decode-state.json": "47b881a7efa911dbbb43e7ffc409d59dbcf2b7853a32c1573ba0f1a6e98640b0",
+    "artifacts/two-node-phase9-kv-transport-evidence/extension-hot32k/block1-socket/ready-proxy.log": "287583e2bec565e74e825a4431d9af8107add3f9e2f6692055525efb38132325",
+    "artifacts/two-node-phase9-kv-transport-evidence/extension-hot32k/block1-socket/before-formal-decode.log": "ed315d3c82843a12152c589ef9dcf69357ce99b6fe119b4b8dd7ca14cead6572",
+    "artifacts/two-node-phase9-kv-transport-evidence/extension-hot32k/block1-socket/after-formal-decode-metrics.txt": "51279a2131ecd24d4e33782ee33b53c6ecc38eb8a41c9ffeabba260acb7a57c2",
+    "artifacts/two-node-phase9-kv-transport-evidence/extension-hot32k/block1-socket/ready-decode-metrics.txt": "f3d211f927801a5112c359f002c566f02adf099f2f989f45d28e90da6b3cb4f3",
+    "artifacts/two-node-phase9-kv-transport-evidence/extension-hot32k/block1-socket/ready-proxy-state.json": "1d38d0d42064d62c66bd35b849dd945d796c8db204508f5c69bd63d095a689b1",
+    "artifacts/two-node-phase9-kv-transport-evidence/extension-hot32k/block1-socket/failure-proxy.log": "206aa3084b844fd5bd90f6602457facc6b7b1d9330f233fa38d898d782f6dea6",
+    "artifacts/two-node-phase9-kv-transport-evidence/extension-hot32k/block1-socket/ready-prefill-state.json": "20545480450ff0b2bf23db9253fa7dafc23c97c83ddb1151d96b03186d7ecfa6",
+    "artifacts/two-node-phase9-kv-transport-evidence/extension-hot32k/block1-socket/failure-proxy-state.json": "091fe5928badaa1f7f464ef4858fd0808c071c098b64a505bcffe7b2063f06c1",
+    "artifacts/two-node-phase9-kv-transport-evidence/extension-hot32k/block1-socket/after-formal-prefill-state.json": "417835693cc3484b1890a6ec10de401c4c35b6b79b858486c1e7c26b89af8146",
+    "artifacts/two-node-phase9-kv-transport-evidence/extension-hot32k/block1-socket/after-formal-proxy.log": "06dc6facf6e17b602e927db7f01b4defcd4f575d041f0e90c61c57e4bddf5edd",
+    "artifacts/two-node-phase9-kv-transport-evidence/extension-hot32k/block1-socket/before-formal-decode-metrics.txt": "50263ca16d0f4d948225368f998bc0d0df126d6d81ffd2a755c854760d3c253e",
+    "artifacts/two-node-phase9-kv-transport-evidence/extension-hot32k/block1-socket/telemetry-decode.txt": "f05a41ac7deb834df4ab5f94ef5692fa097ca0b78fc15fd555ee06eb33b273ad",
+    "artifacts/two-node-phase9-kv-transport-evidence/extension-hot32k/block1-socket/prefill-scheduler-trace.json": "d98edae667d7402b8b101dcb20bcf686ab3c1ffde4b0d549945357baf5597ee3",
+    "artifacts/two-node-phase9-kv-transport-evidence/extension-hot32k/block1-socket/create-proxy.txt": "5feeefda29d6ee7dda1e25f1683a1d7656357c2e7198b5e86a235e2fd9fb59be",
+    "artifacts/two-node-phase9-kv-transport-evidence/extension-hot32k/block1-socket/after-formal-decode-state.json": "692478e6b732339e2e577b74fcc67ba813cf96b04b1fc00eb9afd21fd89985d0",
+    "artifacts/two-node-phase9-kv-transport-evidence/extension-hot32k/block1-socket/before-formal-decode-state.json": "ebb429674b0f9569c636e7403f1970683369e9e40240195f8ea55624f1b5c48d",
+    "artifacts/two-node-phase9-kv-transport-evidence/extension-hot32k/block1-socket/create-prefill.txt": "a50edec62c0432987f7ee98d58c94c42e9facda3e7b0a5d7390431cd696ac70c",
+    "artifacts/two-node-phase9-kv-transport-evidence/extension-hot32k/block1-socket/decode-scheduler-trace.json": "0c1782dc6cd98dd76cfbb12c955e5cbc41200d61c80cc25ec8257c93a92d14ec",
+    "artifacts/two-node-phase9-kv-transport-evidence/extension-hot32k/block1-socket/ready-decode-counters.json": "0072a0ee2d96f2aabdcdb192c4e19a20b748667cd65023401a4df9dedf2edb59",
+    "artifacts/two-node-phase9-kv-transport-evidence/extension-hot32k/block1-socket/ready-prefill.log": "89b837a359c7e7ed37d69bae422ee233b95710c76f70e6545bc1b0caeceea10c",
+    "artifacts/two-node-phase9-kv-transport-evidence/extension-hot32k/block1-socket/telemetry-prefill.txt": "f05a41ac7deb834df4ab5f94ef5692fa097ca0b78fc15fd555ee06eb33b273ad",
+    "artifacts/two-node-phase9-kv-transport-evidence/extension-hot32k/block1-socket/before-formal-proxy.log": "a53a1baff7e4a4069c15c5dc98ba1a232cd193cd8c2fa67d1dd7c85c86b012fb",
+    "artifacts/two-node-phase9-kv-transport-evidence/extension-hot32k/block1-socket/warmup-verification.json": "cf23ce5667de65c56ab8a1486068b595f6157b2efd9821c77713658bcda6b8ee",
+    "artifacts/two-node-phase9-kv-transport-evidence/extension-hot32k/block1-socket/requests.jsonl": "3c5b478c9687ba0eddffc756ab1479537cf47bdfa36dd293dcf4c1ca275db81f",
+    "artifacts/two-node-phase9-kv-transport-evidence/extension-hot32k/block1-socket/command-prefill.json": "6f40fb222fbace685a4ad56aad004f491b8e59496230c5bc1934f5475dfce657",
+    "artifacts/two-node-phase9-kv-transport-evidence/extension-hot32k/block1-socket/before-formal-prefill-counters.json": "4dfffd5c634f743df71ca9e2f853d6662a44556d00f44563fd8d2b8b18082c8a",
+    "artifacts/two-node-phase9-kv-transport-evidence/extension-hot32k/block1-socket/failure-prefill.log": "fa6dd1f8a6101d94a384207b725fe580d60f113812a3d446be8cd8c298b24b52",
+    "artifacts/two-node-phase9-kv-transport-evidence/extension-hot32k/block1-socket/ready-status.json": "1ae9d6efb21bc827098114d9f7c7f8529995d4cb246d1ecb4b455c9a9f15908a",
+    "artifacts/two-node-phase9-kv-transport-evidence/extension-hot32k/block1-socket/after-formal-proxy-state.json": "0b74408e1b3c5f744e3e71b0a520e71ed9fe234e4c3d861bc724c241788ff552",
+    "artifacts/two-node-phase9-kv-transport-evidence/extension-hot32k/block1-socket/before-formal-prefill.log": "8276855bd9b756c35f64e50ecfa62c6dac48886d2e6c28aadcb92d221d4188f7",
+    "artifacts/two-node-phase9-kv-transport-evidence/extension-hot32k/block1-socket/failure-prefill-state.json": "15012ad0b2cc58295c5cab76b523a828b2aa3196cee7209ec935831831fce2b4",
+    "artifacts/two-node-phase9-kv-transport-evidence/extension-hot32k/block1-socket/command-decode.json": "96d45e5fb4274049777f4ea1c086e2193be44990dbf47d4447aa0da13a2afb56",
+    "artifacts/two-node-phase9-kv-transport-evidence/extension-hot32k/block1-socket/before-formal-decode-counters.json": "38dea94a93ccbbf290dc97fa1cb987c071b9d7aef6364245304226ee3152b054",
+    "artifacts/two-node-phase9-kv-transport-evidence/extension-hot32k/block1-socket/after-formal-prefill.log": "527665fdd766147c7055ef69803403bd6c1806659bc0e8558cfd0c9fac8e495b",
+    "artifacts/two-node-phase9-kv-transport-evidence/extension-hot32k/block1-socket/before-formal-proxy-state.json": "07e69ac0b868ca96153fd678141a44c2823137a73907c30cb1997e6e9648cee3",
+    "artifacts/two-node-phase9-kv-transport-evidence/extension-hot32k/block1-socket/after-formal-decode-counters.json": "cd7979b4b2ad52091fa60814d54738175759fd43d8fa608ce113f664e8670d52",
+    "artifacts/two-node-phase9-kv-transport-evidence/extension-hot32k/block1-socket/before-formal-prefill-metrics.txt": "dbbfa1b34dfc56805809b5d0e998debcabccc5b233ddd0f9aa8160ec03732f13",
+    "artifacts/two-node-phase9-kv-transport-evidence/extension-hot32k/block1-socket/failure-decode-state.json": "c500ada7d4706841b74012abf669f62b4d616f2e442483abe787752ea507ce5a",
+    "artifacts/two-node-phase9-kv-transport-evidence/extension-hot32k/block1-socket/create-decode.txt": "2d7319d462f45312cef2b17099bcd9f033a1ecdf3257d40fc7a1e8591cba8b56",
+    "artifacts/two-node-phase9-kv-transport-evidence/extension-hot32k/block1-socket/before-formal-prefill-state.json": "9c75377189dd5564d6fc169c8b7bde8dfa36269fb61344e7e3ee31b6ed32c1e4",
+    "artifacts/two-node-phase9-kv-transport-evidence/extension-hot32k/block1-socket/after-formal-prefill-counters.json": "65cf02976f5d6982e0bd8c7ec55a580f947781caee5e67ac7fd85a4ce0853808",
+    "artifacts/two-node-phase9-kv-transport-evidence/extension-hot32k/block1-socket/command-proxy.json": "eb62d3de01ebb81da8d923a75f4052b84a5fcdb51949aa7ae699670d85e00f82",
+    "artifacts/two-node-phase9-kv-transport-evidence/extension-hot32k/block1-socket/after-formal-prefill-metrics.txt": "3299880d3210cb7acceed87bdd51ca5060edadd81827b3718cda9d734f18aba5",
+    "artifacts/two-node-phase9-kv-transport-evidence/extension-hot32k/block1-socket/before-inventory.json": "7f9d1fa31c429dfaebc6eab16e3f46a9a070372f222a00eced3fa06167e13c0d",
+    "artifacts/two-node-phase9-kv-transport-evidence/extension-hot32k/block1-socket/raw/formal-5.request.json": "cfec2cca5ad88355c59a4382d5faf00021a438491529ba7fcda3b18acba280f3",
+    "artifacts/two-node-phase9-kv-transport-evidence/extension-hot32k/block1-socket/raw/formal-1.events.json": "30051501b7faca81cfaa7a2570308984838bb2920f630828242d833a9af8c58d",
+    "artifacts/two-node-phase9-kv-transport-evidence/extension-hot32k/block1-socket/raw/formal-2.sse": "f7255eaf3c2063cba006d131a85430af655badb840507fafde5b7892c32dc49d",
+    "artifacts/two-node-phase9-kv-transport-evidence/extension-hot32k/block1-socket/raw/formal-3.response.json": "b40ec7c35f60beee2ce016ed883a505825d26c748688890a01b46052776dc367",
+    "artifacts/two-node-phase9-kv-transport-evidence/extension-hot32k/block1-socket/raw/formal-3.sse": "e04298e72f6ad4906acb88283638795ec357deefb0cfacb7ae7f35a221ef4bdf",
+    "artifacts/two-node-phase9-kv-transport-evidence/extension-hot32k/block1-socket/raw/cold-warmup-1.response.json": "a19cd7afb423aacdf7be5dac58bf5a6980662acf3f055e979d24b5c34d077964",
+    "artifacts/two-node-phase9-kv-transport-evidence/extension-hot32k/block1-socket/raw/hot-warmup-1.events.json": "115284724e501d406c64653668fd0f057cafa87c01ddc06619b64d3b8075513f",
+    "artifacts/two-node-phase9-kv-transport-evidence/extension-hot32k/block1-socket/raw/cold-warmup-1.request.json": "cfec2cca5ad88355c59a4382d5faf00021a438491529ba7fcda3b18acba280f3",
+    "artifacts/two-node-phase9-kv-transport-evidence/extension-hot32k/block1-socket/raw/formal-4.sse": "7f4b2107def9b6083b22dd8fbc9e7620064ca7e128f2687d5444363b51b95f01",
+    "artifacts/two-node-phase9-kv-transport-evidence/extension-hot32k/block1-socket/raw/formal-5.events.json": "878966edf4766d14bf2dbb480bbdeae433c3fc527417feae302f5d0a4554b617",
+    "artifacts/two-node-phase9-kv-transport-evidence/extension-hot32k/block1-socket/raw/formal-2.response.json": "19d7d78d30a3aa6f66a8a7f92bc5fd6584304be22aff8332c294b13e40446245",
+    "artifacts/two-node-phase9-kv-transport-evidence/extension-hot32k/block1-socket/raw/formal-1.response.json": "dfddc97234859bc9fc05901d2cd795994f564c944f5f161745604d1179a674a6",
+    "artifacts/two-node-phase9-kv-transport-evidence/extension-hot32k/block1-socket/raw/formal-1.request.json": "cfec2cca5ad88355c59a4382d5faf00021a438491529ba7fcda3b18acba280f3",
+    "artifacts/two-node-phase9-kv-transport-evidence/extension-hot32k/block1-socket/raw/formal-4.response.json": "0bb6a90344612bf896bdd7c2614e3f3c4a9b5fa48c9cf6113127f0f09ab72612",
+    "artifacts/two-node-phase9-kv-transport-evidence/extension-hot32k/block1-socket/raw/formal-5.response.json": "fd2e15998907a0df07038f38e5b32ee6a62296e5116a5ab56d6b82b2239dab7d",
+    "artifacts/two-node-phase9-kv-transport-evidence/extension-hot32k/block1-socket/raw/cold-warmup-1.sse": "e1d28d22fac6b524dc537703514246d05045fd57af116cebe97755201a075c50",
+    "artifacts/two-node-phase9-kv-transport-evidence/extension-hot32k/block1-socket/raw/cold-warmup-1.events.json": "bf874e26caa5b21c3eb81338ab9023422c2d195c594731fdea200449343151d7",
+    "artifacts/two-node-phase9-kv-transport-evidence/extension-hot32k/block1-socket/raw/formal-3.events.json": "c80cf6f357b76afe51b6a317f0b2612b09c27120d37996b2c369e45162f1d257",
+    "artifacts/two-node-phase9-kv-transport-evidence/extension-hot32k/block1-socket/raw/formal-4.request.json": "cfec2cca5ad88355c59a4382d5faf00021a438491529ba7fcda3b18acba280f3",
+    "artifacts/two-node-phase9-kv-transport-evidence/extension-hot32k/block1-socket/raw/hot-warmup-1.sse": "ff049f23226780c16d483ac26a1664622b7061b041e77cc4fa05c90562dce0de",
+    "artifacts/two-node-phase9-kv-transport-evidence/extension-hot32k/block1-socket/raw/formal-3.request.json": "cfec2cca5ad88355c59a4382d5faf00021a438491529ba7fcda3b18acba280f3",
+    "artifacts/two-node-phase9-kv-transport-evidence/extension-hot32k/block1-socket/raw/formal-1.sse": "921d484658598996eaed22415bdae45cb369aa2635bc418468a018fa9b246165",
+    "artifacts/two-node-phase9-kv-transport-evidence/extension-hot32k/block1-socket/raw/formal-2.events.json": "089cfd1abf7e80c26e87acfb5ca7b29eb5f9cd5a84cf662e46881b8e957a1339",
+    "artifacts/two-node-phase9-kv-transport-evidence/extension-hot32k/block1-socket/raw/formal-4.events.json": "96fd2dbf2bc343031c63ab47f6678be93146ca1e5390e3890fc558acc33fee0c",
+    "artifacts/two-node-phase9-kv-transport-evidence/extension-hot32k/block1-socket/raw/formal-2.request.json": "cfec2cca5ad88355c59a4382d5faf00021a438491529ba7fcda3b18acba280f3",
+    "artifacts/two-node-phase9-kv-transport-evidence/extension-hot32k/block1-socket/raw/hot-warmup-1.response.json": "4fe251c70df864d5df44e04fde6816a570202d92f8ab9c9075af20af99b6a611",
+    "artifacts/two-node-phase9-kv-transport-evidence/extension-hot32k/block1-socket/raw/hot-warmup-1.request.json": "cfec2cca5ad88355c59a4382d5faf00021a438491529ba7fcda3b18acba280f3",
+    "artifacts/two-node-phase9-kv-transport-evidence/extension-hot32k/block1-socket/raw/formal-5.sse": "f9c990a78b851bd991ff50dee2c6bfd43700a08934d9816201d4f4f67654c68b",
+    "artifacts/two-node-phase9-kv-transport-evidence/extension-hot32k/startup-attempt2-port-rebind/status.json": "cb5d755bb09566b3f85822df94cd78966c0c8f4dcabb87d931034fcba7111105",
+    "artifacts/two-node-phase9-kv-transport-evidence/extension-hot32k/startup-attempt2-port-rebind/final-inventory.json": "51ede643d5b8716b5ee76f7069639d34ea30d1e00b80679df7b8ecf4cb78f879",
+    "artifacts/two-node-phase9-kv-transport-evidence/extension-hot32k/startup-attempt2-port-rebind/capture-error.json": "cc6a03a06d945b593e4f82fff5d7f61660802b0422ba1ba9611db7f2fd667979",
+    "artifacts/two-node-phase9-kv-transport-evidence/extension-hot32k/startup-attempt2-port-rebind/block2-rdma/command-proxy.json": "9e51967e65c07ae9112c5ac7a4253cbf9a33d288ef16489dd35eb3a67922243d",
+    "artifacts/two-node-phase9-kv-transport-evidence/extension-hot32k/startup-attempt2-port-rebind/block2-rdma/before-inventory.json": "422004fa9013f3768635028d799cdce52fcb860bf8b527a233ffa79f0e07dcef",
+    "artifacts/two-node-phase9-kv-transport-evidence/extension-hot32k/startup-attempt2-port-rebind/failed-block2-rdma/command-proxy.json": "9e51967e65c07ae9112c5ac7a4253cbf9a33d288ef16489dd35eb3a67922243d",
+    "artifacts/two-node-phase9-kv-transport-evidence/extension-hot32k/startup-attempt2-port-rebind/failed-block2-rdma/before-inventory.json": "422004fa9013f3768635028d799cdce52fcb860bf8b527a233ffa79f0e07dcef",
+    "artifacts/two-node-phase9-kv-transport-evidence/extension-hot32k/source-code/p2p_nccl_engine.py": "1bd1126cb843bdff8e9d35bb402421e2842b4abbeb9b8dce3d75c66d7f1d95a8",
+    "artifacts/two-node-phase9-kv-transport-evidence/extension-hot32k/source-code/phase9_hot32k_analyze.py": "e3514d881623c0dc6d590f53612d80d6a323f2e14329439011d4fea69b51940d",
+    "artifacts/two-node-phase9-kv-transport-evidence/extension-hot32k/source-code/phase9_hot32k_runtime.py": "5dd4f705037a975bde3fef21cd5929f95b36e9c922583ad6ed942be5a4a4555a",
+    "artifacts/two-node-phase9-kv-transport-evidence/extension-hot32k/source-code/phase9_hot32k.py": "adf764e3efd2a62e1cb16971172b47d3bf81523fd222e2b13595d7831a19f923",
+    "artifacts/two-node-phase9-kv-transport-evidence/extension-hot32k/postprocessing-source/phase9_hot32k_analyze.py": "c9722a7ad9bb98e68ac0809b7b1cc2f6f5f8ff7648de87bb3eb42c7abc2e397d",
+    "artifacts/two-node-phase9-kv-transport-evidence/extension-hot32k/startup-attempt1-context-limit/status.json": "d0330849f76d1bf2b42f865546f73b025c09fe1e33ac96cabaef92eb8cefd132",
+    "artifacts/two-node-phase9-kv-transport-evidence/extension-hot32k/startup-attempt1-context-limit/source-hashes.json": "70bc4828dc4c64f1626ecb4886bc5029be17ceb7f4df8ea747215755f428c770",
+    "artifacts/two-node-phase9-kv-transport-evidence/extension-hot32k/startup-attempt1-context-limit/plan.json": "67bbd6e92f8e2500a320983c11af919f8d3ed300544a2dc9011d9c90bd7eaf2d",
+    "artifacts/two-node-phase9-kv-transport-evidence/extension-hot32k/startup-attempt1-context-limit/final-inventory.json": "ed5cdcef0836f1dcf15fedaa8f08ff1b165da202da2c19291920617ee24e865c",
+    "artifacts/two-node-phase9-kv-transport-evidence/extension-hot32k/startup-attempt1-context-limit/operator.log": "bda4f3b609221dfa54f207581e05353064e04f73e90841c7dd4f37356379ede9",
+    "artifacts/two-node-phase9-kv-transport-evidence/extension-hot32k/startup-attempt1-context-limit/run-started.json": "d58285eac437a27057317d17e75ef8a4a42eb58e362725d4882e857d9b0492b9",
+    "artifacts/two-node-phase9-kv-transport-evidence/extension-hot32k/startup-attempt1-context-limit/block1-socket/telemetry-decode.txt": "f05a41ac7deb834df4ab5f94ef5692fa097ca0b78fc15fd555ee06eb33b273ad",
+    "artifacts/two-node-phase9-kv-transport-evidence/extension-hot32k/startup-attempt1-context-limit/block1-socket/create-proxy.txt": "75a449a9d19d87f48b7b22d0dc24fb54a9927b7f789141424e275d5533a8110b",
+    "artifacts/two-node-phase9-kv-transport-evidence/extension-hot32k/startup-attempt1-context-limit/block1-socket/create-prefill.txt": "7c940c0af874645c119f204a7d81a325aea53feef5531ab996650f737485dcac",
+    "artifacts/two-node-phase9-kv-transport-evidence/extension-hot32k/startup-attempt1-context-limit/block1-socket/telemetry-prefill.txt": "f05a41ac7deb834df4ab5f94ef5692fa097ca0b78fc15fd555ee06eb33b273ad",
+    "artifacts/two-node-phase9-kv-transport-evidence/extension-hot32k/startup-attempt1-context-limit/block1-socket/command-prefill.json": "0d37a1bd5d144c3c39fb1b6233125567c982ac45f921ab6a537c0cb77e2823ef",
+    "artifacts/two-node-phase9-kv-transport-evidence/extension-hot32k/startup-attempt1-context-limit/block1-socket/command-decode.json": "4131746837a57bf37e844141bc6c3c0479d64131bd4bfc3326b03369c894c9b3",
+    "artifacts/two-node-phase9-kv-transport-evidence/extension-hot32k/startup-attempt1-context-limit/block1-socket/create-decode.txt": "1b38369d80d3b79884745eae13de70cad3e2198fd83c6d885805cfd0c753d474",
+    "artifacts/two-node-phase9-kv-transport-evidence/extension-hot32k/startup-attempt1-context-limit/block1-socket/command-proxy.json": "3078251a3c86db094cb254823230e0a11d6051d7b06acf4dcb23113fd077b95a",
+    "artifacts/two-node-phase9-kv-transport-evidence/extension-hot32k/startup-attempt1-context-limit/block1-socket/before-inventory.json": "3d4d0a7f3eea030ddb6141df821666ce82ebbce01767d9de5991e4ebac25780d",
+    "artifacts/two-node-phase9-kv-transport-evidence/extension-hot32k/startup-attempt1-context-limit/source-code/p2p_nccl_engine.py": "1bd1126cb843bdff8e9d35bb402421e2842b4abbeb9b8dce3d75c66d7f1d95a8",
+    "artifacts/two-node-phase9-kv-transport-evidence/extension-hot32k/startup-attempt1-context-limit/source-code/phase9_hot32k_analyze.py": "e3514d881623c0dc6d590f53612d80d6a323f2e14329439011d4fea69b51940d",
+    "artifacts/two-node-phase9-kv-transport-evidence/extension-hot32k/startup-attempt1-context-limit/source-code/phase9_hot32k_runtime.py": "5dd4f705037a975bde3fef21cd5929f95b36e9c922583ad6ed942be5a4a4555a",
+    "artifacts/two-node-phase9-kv-transport-evidence/extension-hot32k/startup-attempt1-context-limit/source-code/phase9_hot32k.py": "d5dcb9f324303b617d7fe6b967840e10bc501c7262c0bc0aeaa34d44b7135154",
+    "artifacts/two-node-phase9-kv-transport-evidence/extension-hot32k/resume-source-code/phase9_hot32k_analyze.py": "e3514d881623c0dc6d590f53612d80d6a323f2e14329439011d4fea69b51940d",
+    "artifacts/two-node-phase9-kv-transport-evidence/extension-hot32k/resume-source-code/phase9_hot32k_runtime.py": "5dd4f705037a975bde3fef21cd5929f95b36e9c922583ad6ed942be5a4a4555a",
+    "artifacts/two-node-phase9-kv-transport-evidence/extension-hot32k/resume-source-code/phase9_hot32k.py": "28f30ae9380e67ba8cba3fa586b93b63bd40e14353598c520cc1b79af2e82c58"
+  }
+}

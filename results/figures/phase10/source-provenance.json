@@ -1,0 +1,26 @@
+{
+  "evidence_root": "artifacts/phase10-multi-interference-evidence",
+  "executed_frozen_sources": {
+    "phase10_analyze.py": "3d611d22fbabcf64259431f7b627f56fbd0a46e0b05e8b09834848fffef9fc70",
+    "phase10_scheduler.py": "477f04f16dff03bb18639b56509c7057b8fd9ba5f2c178172d3b4fd7c60f433e",
+    "phase10_operate.py": "f84351ac1df18d76818d91b357f14e93c627ecc92578243730bdc60ae43cefda",
+    "phase10_run.py": "022311e0540c94b8e89eca8a285ed2548308fc383e4b775df7e7f02db03298da",
+    "phase10_interference.py": "95884d34bfd5354c0d0b06c4451417da6b6119918b02dcb26df22c3dcaf78711",
+    "phase10_plot.py": "ca413d31086f2626d21908746f4c2868acad3a4d404837488242b57542632c80",
+    "gpu-monitor.py": "8ebefb14b2401b830b754bd7cef67a549ee43f0afb60c561c00b41fd91d980c1",
+    "figure2_interference.py": "247c9a34e800e079586924722f12a876843bb7e93a45457f8014928323b04e93"
+  },
+  "final_plot_generator_sha256": "1cc3f1b8a1c07e0b2898d4938fd0adba4397f4cfc2b4aeb5faad21d50031de8b",
+  "corrected_postprocessing_sources": {
+    "phase10_operate.py": "50f861724266105ff1e028747d0cce0ccfd2e6a0669d5d3f2bb33ff75cca5f89",
+    "phase10_run.py": "d95281c15e25ab85662a7a980db2d1e8412a9358ed6c1c25df10cbdf1626e3d0",
+    "phase10_plot.py": "1cc3f1b8a1c07e0b2898d4938fd0adba4397f4cfc2b4aeb5faad21d50031de8b"
+  },
+  "formal_source_hashes": {
+    "run.json": "61a20865513fd4c4804f78e242ccf85edf690edb332f87ae50a057cbc888c0ca",
+    "requests.jsonl": "41edc97e241257c0869d91619be3cc8cac1e3899458aafeabddad514d8d88332",
+    "trials.jsonl": "883ae1f1e1e99185308e4a3a1064efdac3caed3bf650f3b03a643f91e5957271",
+    "token-pool.json": "d9b80373feb67307d441f83b7e92d9d58d50240ea413de709ba27ab5ffc1b284"
+  },
+  "scheduler_sha256": "e0c26d0921baa20c155352987cea1df2364c854d45b887f7505f719a17b31287"
+}
