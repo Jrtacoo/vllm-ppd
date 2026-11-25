@@ -1,5 +1,7 @@
 # Phase 10：随背景 batch 增加 prefill 干扰次数
 
+最新的 **batch=10～250 全部整数、每条件五次重复** 实验见 [dense-workload/README.md](dense-workload/README.md)，共 3,675 组正式实验，提供六组结果图和完整分析。下文保留原六个 batch 点的实验结果。
+
 2026-11-23，dcn9 单张 RTX 4090，Qwen2.5-7B-Instruct BF16。90 组主实验＋40 组单次对照，130 组、每条件 5 次重复；37,380 条请求（含预热）全部成功，18,400 条背景请求固定输出 128 tokens，200 条干扰请求固定输出 1 token。另有 3 组 batch 250 先导，不进入此处结果。
 
 背景为独立 256-token 历史＋32-token 新增；干扰为独立 2,048-token 历史＋128-token 新增。Append 命中 2,048-token 历史，只计算 128 tokens；Full 使用同一完整输入和冷 cache salt，重算全部 2,176 tokens。预算固定 2,048，最大序列 251，FCFS 连续批处理、chunked prefill、eager、prefix caching；实际 KV 池 120,624 tokens，显存比例 0.94。

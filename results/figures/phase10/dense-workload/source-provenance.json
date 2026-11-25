@@ -1,0 +1,37 @@
+{
+  "frozen_sources": {
+    "phase10_dense_operate.py": "51813a474f063cab11fa47edf0e0bb0b7a40808549962688bb63c2fc0e3c0a6f",
+    "phase10_dense_interference.py": "57a3a00f802ee125fc8e34dc49745265e1d76c287577b4a99a63a22f0c2e1431",
+    "phase10_dense_scheduler.py": "7d08b63f36b7f791cd580cbf3ebbf6f928fe0b9159a1c2425bbc5ed5e75a155b",
+    "phase10_dense_run.py": "c6a5e88c849fcc5f784dd661c39171214b552fd52ed586b59452625acdac433f",
+    "phase10_dense_analyze.py": "162454203ecca95d511684c1eecab586fd666d7efe74722607c070b3a21c99ee",
+    "phase10_dense_validate.py": "6b14680d856b5059280b8daa5438261e648615dd2034724b88eaf633103dc63f",
+    "phase10_dense_plot.py": "fe232bcd44c7ed5af16d94cc68764e959d7292f407c446ff0187c203d023063f",
+    "gpu-monitor.py": "8ebefb14b2401b830b754bd7cef67a549ee43f0afb60c561c00b41fd91d980c1",
+    "figure2_interference.py": "247c9a34e800e079586924722f12a876843bb7e93a45457f8014928323b04e93"
+  },
+  "resume_attempts": {
+    "resume1": {
+      "node": "dcn9",
+      "pid": 773,
+      "wall_ns": 1795581653367186643,
+      "tag": "phase10-dense-workload-resume1-runtime",
+      "attempt": "resume1",
+      "source_sha256": {
+        "phase10_dense_operate.py": "4fed210d9bde683c056204d8ff979efaf0ca2d303b598802cf59dc5e96d5ed35",
+        "phase10_dense_export_validate.py": "1ad642112f87a597e3e3d0251a7b839508e0c9ea144ec3282017e3aae8a8ae9a",
+        "phase10_dense_interference.py": "57a3a00f802ee125fc8e34dc49745265e1d76c287577b4a99a63a22f0c2e1431",
+        "phase10_dense_scheduler.py": "66f7b0c50473753a348095a108cbcd9f33a6550e9606fe2ec02ba7c2d3ec0f1c",
+        "phase10_dense_run.py": "3379ad265452aadb3b840e3ec92ea9bc1be9b5020b1f41f86ab76000fef1a085",
+        "phase10_dense_analyze.py": "162454203ecca95d511684c1eecab586fd666d7efe74722607c070b3a21c99ee",
+        "phase10_dense_resume.py": "1bd288aba852db6a808a9574ba484c1349f31ed387abf84728b64a177c4218fe",
+        "phase10_dense_validate.py": "6b14680d856b5059280b8daa5438261e648615dd2034724b88eaf633103dc63f",
+        "phase10_dense_plot.py": "c0b6a75e29a257ea6a5af31190343b75914b896b858aa4e73278783522ad3386",
+        "gpu-monitor.py": "8ebefb14b2401b830b754bd7cef67a549ee43f0afb60c561c00b41fd91d980c1",
+        "figure2_interference.py": "247c9a34e800e079586924722f12a876843bb7e93a45457f8014928323b04e93"
+      }
+    }
+  },
+  "analysis_generator_sha256": "7d892ec578b6bf7e33a6d3fac6412367f14d6ece1fc1f13a33fca36454a06f24",
+  "snapshot_sha256": "f63c136e2bac1e69296cc493533259774b54e951ab1b631a484da74d4c1b36ca"
+}

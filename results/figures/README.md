@@ -38,4 +38,4 @@ results/figures/
 
 原始请求、SSE、服务日志及完整实验数据保存在项目 `artifacts/` 下。此处的结果图、数据快照和说明可由 Git 跟踪。
 
-- [Phase 10](phase10/README.md)：dcn9 单卡多次 prefill 干扰；全输出 TPOT、单次/多次对照、五步窗口和逐步轨迹。
+- [Phase 10 最新密集扫描](phase10/dense-workload/README.md)：batch=10～250 全部整数、五次重复、3,675 组正式实验；六组图覆盖全输出 TPOT、五步窗口、单次/多次对照、逐步轨迹、负载核验和单次干扰成本。保留[原六点实验](phase10/README.md)。
