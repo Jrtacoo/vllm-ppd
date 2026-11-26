@@ -1,0 +1,105 @@
+{
+  "passed": true,
+  "trials": 90,
+  "requests": 23100,
+  "samples": 3980414,
+  "max_sample_interval_ns": 100000,
+  "gaps_over_150us": 0,
+  "preemptions": 0,
+  "measured_gpu_forwards": 11758,
+  "selected_snapshot_trials": 18,
+  "pilot": {
+    "passed": true,
+    "mechanism_verified": true,
+    "complete_gpu_forward_boundaries": true,
+    "comparisons": [
+      {
+        "batch": 10,
+        "scenario": "append_prefill",
+        "off_ms": 19.854604912598425,
+        "on_ms": 18.332253683464568,
+        "change_pct": -7.667496965239906
+      },
+      {
+        "batch": 10,
+        "scenario": "decode_only",
+        "off_ms": 17.88191101102362,
+        "on_ms": 18.1044046007874,
+        "change_pct": 1.2442383234466226
+      },
+      {
+        "batch": 10,
+        "scenario": "full_prefill",
+        "off_ms": 19.261648671653543,
+        "on_ms": 19.700019523622046,
+        "change_pct": 2.2758739889884527
+      },
+      {
+        "batch": 250,
+        "scenario": "append_prefill",
+        "off_ms": 40.778351192913384,
+        "on_ms": 41.79501694088189,
+        "change_pct": 2.4931506993965513
+      },
+      {
+        "batch": 250,
+        "scenario": "full_prefill",
+        "off_ms": 42.814135365700785,
+        "on_ms": 43.673237395244094,
+        "change_pct": 2.0065850266628216
+      },
+      {
+        "batch": 250,
+        "scenario": "decode_only",
+        "off_ms": 41.07368689782677,
+        "on_ms": 41.782209560944885,
+        "change_pct": 1.725003808108605
+      }
+    ],
+    "sampling_quality": [
+      {
+        "trial": "pilot-01-on-b10-r1-single-append_prefill",
+        "samples": 26019,
+        "median_ns": 99994.0,
+        "max_ns": 99995,
+        "gaps_over_150us": 0
+      },
+      {
+        "trial": "pilot-01-on-b10-r1-baseline-decode_only",
+        "samples": 25027,
+        "median_ns": 99994.0,
+        "max_ns": 99995,
+        "gaps_over_150us": 0
+      },
+      {
+        "trial": "pilot-01-on-b10-r1-single-full_prefill",
+        "samples": 27020,
+        "median_ns": 99994.0,
+        "max_ns": 99995,
+        "gaps_over_150us": 0
+      },
+      {
+        "trial": "pilot-01-on-b250-r1-single-append_prefill",
+        "samples": 63037,
+        "median_ns": 99994.0,
+        "max_ns": 99995,
+        "gaps_over_150us": 0
+      },
+      {
+        "trial": "pilot-01-on-b250-r1-single-full_prefill",
+        "samples": 66111,
+        "median_ns": 99994.0,
+        "max_ns": 99995,
+        "gaps_over_150us": 0
+      },
+      {
+        "trial": "pilot-01-on-b250-r1-baseline-decode_only",
+        "samples": 63007,
+        "median_ns": 99994.0,
+        "max_ns": 99995,
+        "gaps_over_150us": 0
+      }
+    ],
+    "limitations": "One paired trial per condition; differences include run-to-run variance. Capture stop flush runs after all measured requests finish; not included in TPOT."
+  }
+}
